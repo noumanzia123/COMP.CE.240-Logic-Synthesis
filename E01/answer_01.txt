@@ -1,0 +1,20 @@
+1)Brief report of the required corrections to example code:
+ 
+We detected an error in the vhd file through debugging and the state machine diagram. The error was that in line 67, during the third state, when a wrong number is introduced instead of
+going back to the beginning, it went to the fourth state. Therefore, the correction was obvious, we had to replace "next_state <= code_3;" for "next_state <= init;"
+
+
+
+2)Brief report of errors added on purpose to example code and what was their result:
+
+We tried similar errors in the code, for example instead of writing wrong the third state, we tried writing wrong the second state. The effect was the same, even though the number 
+introduced isn't correct, we could reach the next state.
+
+
+
+3)Brief report of the input generation. What is the difference between force-commands and test benches coded with VHDL? How many states is in the state machine of the test bench?:
+
+The force-commands are only used when we want to change the input manually to test the design, whereas test benches are used to test the logic of the code and make sure it is 
+working correctly.In the state machine test bench there are 5 states to generate the sequence of four-digit codes.At each state the simulated key is updated with the current value,
+while in the increment state each digit of the key is incremented.
+
