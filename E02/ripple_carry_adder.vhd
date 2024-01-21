@@ -1,15 +1,14 @@
-
 -------------------------------------------------------------------------------
--- Title      : TKT-1212, Exercise 02
+-- Title        : TKT-1212, Exercise 02
 -------------------------------------------------------------------------------
--- File       : ripple_carry_adder.vhd
--- Author     : David Rama Jimeno & Nouman Zia
--- Group      : HRH056
--- Company    : TUT/DCS
--- Created    : 20.01.2024
--- Standard   : VHDL'87
+-- File         : ripple_carry_adder.vhd
+-- Author       : David Rama Jimeno & Nouman Zia
+-- Group number : 6
+-- Company      : TUT/DCS
+-- Created      : 20.01.2024
+-- Standard     : VHDL'87
 -------------------------------------------------------------------------------
--- Description: Program all combinations of summing two 3-bit values
+-- Description  : Program all combinations of summing two 3-bit values
 -------------------------------------------------------------------------------
 
 
