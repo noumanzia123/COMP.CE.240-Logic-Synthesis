@@ -1,0 +1,65 @@
+-------------------------------------------------------------------------------
+-- Title      : TKT-1212, Exercise 02
+-- Project    : 
+-------------------------------------------------------------------------------
+-- File       : tb_ripple_carry_adder.vhd
+-- Author     : Nouman Zia, David
+-- Group number : xx
+-- Company    : TUNI
+-- Created    : 2023-01-16
+-- Platform   : 
+-- Standard   : VHDL'87
+-------------------------------------------------------------------------------
+-- Description: Tests all combinations of summing two 3-bit values
+-------------------------------------------------------------------------------
+-- Copyright (c) 2008 
+-------------------------------------------------------------------------------
+-- Revisions  :
+-- Date        Version  Author  Description
+-- 2008-11-28  1.0      ege     Created
+-------------------------------------------------------------------------------
+
+
+-- Include default libraries
+library ieee;
+use ieee.std_logic_1164.all;
+
+-- TODO: Declare entity here
+-- Name: ripple_carry_adder
+-- No generics yet
+-- Ports: a_in  3-bit std_logic_vector
+--        b_in  3-bit std_logic_vector
+--        s_out 4-bit std_logic_vector
+
+ENTITY ripple_carry_adder IS
+
+   PORT (
+      a_in  : IN  STD_LOGIC_VECTOR(2 DOWNTO 0);
+      b_in  : IN  STD_LOGIC_VECTOR(2 DOWNTO 0);
+      s_out  : OUT  STD_LOGIC_VECTOR(3 DOWNTO 0)
+     
+      );
+
+END ripple_carry_adder;
+-------------------------------------------------------------------------------
+
+-- Architecture called 'gate' is already defined. Just fill it.
+-- Architecture defines an implementation for an entity
+architecture gate of ripple_carry_adder is
+-- TODO: Add your internal signal declarations here
+   SIGNAL Carry_ha, Carry_fa  : std_logic;
+  
+begin  -- gate
+
+  -- TODO: Add signal assignments here
+  -- x(0) <= y and z(2);
+  -- Remember that VHDL signal assignments happen in parallel
+  -- Don't use processes
+     s_out(0) <= a_in(0) xor b_in(0);
+     Carry_ha <= a_in(0) and b_in(0);
+     s_out(1) <= (a_in(1) xor b_in(1)) xor Carry_ha;
+     Carry_fa <= (Carry_ha and (a_in(1) xor b_in(1))) or (a_in(1) and b_in(1));	
+     s_out(2) <= (a_in(2) xor b_in(2)) xor Carry_fa;
+     s_out(3) <= (Carry_fa and (a_in(2) xor b_in(2))) or (a_in(2) and b_in(2));	
+
+end gate;

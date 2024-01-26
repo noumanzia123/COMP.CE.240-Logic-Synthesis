@@ -1,0 +1,133 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/zian/ex1_tutorial/vhd
+T_opt
+!s110 1705748372
+V98iLzTgNElB[9[`iz04]M0
+04 7 9 work tb_lock testbench 1
+=1-000ae431a4f1-65aba794-3958e-b027f
+Z1 o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
+n@_opt
+Z3 OL;O;10.7d;67
+R0
+T_opt1
+!s110 1705748523
+VREAE;aWcgXXz0JoV89leT2
+04 4 3 work lock rtl 1
+=1-000ae431a4f1-65aba82b-69cfd-b0500
+R1
+R2
+n@_opt1
+R3
+R0
+Elock
+Z4 w1705749315
+Z5 DPx4 work 8 lock_pkg 0 22 GcM7Xz1S8F[_TVB:OLKzJ2
+Z6 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z7 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z8 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z9 d/home/zian/logsyn
+Z10 8vhd/lock.vhd
+Z11 Fvhd/lock.vhd
+l0
+L6
+VTlMKEkdCS]n@0J9@_41oN2
+!s100 @@TEdSC8i4`Fj<`RgEEW[1
+Z12 OL;C;10.7d;67
+32
+Z13 !s110 1705749328
+!i10b 1
+Z14 !s108 1705749327.000000
+Z15 !s90 -reportprogress|300|-check_synthesis|vhd/lock.vhd|
+Z16 !s107 vhd/lock.vhd|
+!i113 0
+Z17 o-check_synthesis
+Z18 tExplicit 1 CvgOpt 0
+Artl
+R5
+R6
+R7
+R8
+Z19 DEx4 work 4 lock 0 22 TlMKEkdCS]n@0J9@_41oN2
+l26
+L19
+VTlVj=46mcFn3@Ch=<]Lb:3
+!s100 I^97>>kN2@@L1>a]>eOGU3
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+R18
+Plock_pkg
+w1705160687
+R9
+8vhd/lock_pkg.vhd
+Fvhd/lock_pkg.vhd
+l0
+L1
+VGcM7Xz1S8F[_TVB:OLKzJ2
+!s100 89EhC@[7N>NoGmUm[NWea1
+R12
+32
+!s110 1705747907
+!i10b 1
+!s108 1705747906.000000
+!s90 -reportprogress|300|-check_synthesis|vhd/lock_pkg.vhd|
+!s107 vhd/lock_pkg.vhd|
+!i113 0
+R17
+R18
+Etb_lock
+Z20 w1705190597
+R5
+R6
+R7
+R8
+R9
+Z21 8tb/tb_lock.vhd
+Z22 Ftb/tb_lock.vhd
+l0
+L23
+VU@f_R^PA=eB26TZPEZ:8b1
+!s100 nNS1O@`_b3_gUz63UVz?>3
+R12
+32
+Z23 !s110 1705748356
+!i10b 1
+Z24 !s108 1705748356.000000
+Z25 !s90 -reportprogress|300|tb/tb_lock.vhd|
+Z26 !s107 tb/tb_lock.vhd|
+!i113 0
+R18
+Atestbench
+R5
+R6
+R7
+R8
+DEx4 work 7 tb_lock 0 22 U@f_R^PA=eB26TZPEZ:8b1
+l52
+L28
+VPH?9Y15kK^CaKMbdYa__K0
+!s100 =LAnRz[>9VcQfCm[d^i<I1
+R12
+32
+R23
+!i10b 1
+R24
+R25
+R26
+!i113 0
+R18
