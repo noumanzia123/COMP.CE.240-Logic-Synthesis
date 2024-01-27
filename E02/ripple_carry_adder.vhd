@@ -14,7 +14,7 @@
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL; --This library is needed in order to be able to use the "std_logic data type"
-
+USE ieee.numeric_std.ALL;
 
 
 ENTITY ripple_carry_adder IS  -- We have 3 ports. 
