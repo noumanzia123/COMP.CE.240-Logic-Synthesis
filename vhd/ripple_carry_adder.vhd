@@ -2,9 +2,9 @@
 -- Title      : TKT-1212, Exercise 02
 -- Project    : 
 -------------------------------------------------------------------------------
--- File       : tb_ripple_carry_adder.vhd
--- Author     : Nouman Zia, David
--- Group number : xx
+-- File       : ripple_carry_adder.vhd
+-- Author     : David Rama Jimeno, Nouman Zia
+-- Group number : 6
 -- Company    : TUNI
 -- Created    : 2023-01-16
 -- Platform   : 
@@ -16,7 +16,7 @@
 -------------------------------------------------------------------------------
 -- Revisions  :
 -- Date        Version  Author  Description
--- 2008-11-28  1.0      ege     Created
+-- 2023-01-27  1.0      Nouman     Created
 -------------------------------------------------------------------------------
 
 
