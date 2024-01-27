@@ -43,7 +43,7 @@ architecture gate of ripple_carry_adder is
   signal E : bit;
   signal F : bit;
   signal G : bit;
-  signal H : bit
+  signal H : bit;
   signal Carry_ha : bit;
   signal Carry_fa : bit;
   
