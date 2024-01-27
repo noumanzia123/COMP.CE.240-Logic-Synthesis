@@ -43,22 +43,34 @@ architecture gate of ripple_carry_adder is
    -- internal signal declarations here
    SIGNAL Carry_ha, Carry_fa, c, d, e, f, g, h  : std_logic;
   
-begin  -- gate architecture implementation which includes one half adder and two full adders to 
-       -- generate 4 bit sum (s_out) outpu. 
-       -- The carry output of first half adder is given as input to the carry logic of first full adder
-       -- and similarly the carry output of first full adder is given as input to the logic of second
-       -- full adder
-     s_out(0) <= a_in(0) xor b_in(0); -- lsf of sum output using XOR gate
-     Carry_ha <= a_in(0) and b_in(0);
-     c <= a_in(1) xor b_in(1);
-     s_out(1) <= c xor Carry_ha;
-     d <= Carry_ha and c;
-     e <= a_in(1) and b_in(1);
-     Carry_fa <= d or e;
-     f <= a_in(2) xor b_in(2);
-     s_out(2) <= f xor Carry_fa;
-     g <= f and Carry_fa;
-     h <= a_in(2) and b_in(2);
-     s_out(3) <= g or h;	
+begin
+   -- gate architecture implementation which includes one half adder and two full adders to 
+   -- generate 4 bit sum (s_out) output. 
+   -- The carry generated from first half adder is given as input to the first full adder
+   -- and similarly the carry generated from first full adder is given as input to the second
+   -- full adder
+
+   -- s_out(0) is '0' if both input bits are '1', otherwise '1'
+   s_out(0) <= a_in(0) xor b_in(0); 
+   -- Carry_ha is '1' if both input bits are '1'
+   Carry_ha <= a_in(0) and b_in(0); 
+   -- c is '0' if both input bits are '1', otherwise '1'
+   c <= a_in(1) xor b_in(1); 
+   -- s_out(0) is '0' if both input bits are '1', otherwise '1'
+   s_out(1) <= c xor Carry_ha; 
+   -- d and e bits are '1' if both input bits are high
+   d <= Carry_ha and c;
+   e <= a_in(1) and b_in(1);
+   -- Carry_fa is '1' if either 'd' or 'e' is high
+   Carry_fa <= d or e;
+   -- f is '0' if both input bits are '1', otherwise '1'
+   f <= a_in(2) xor b_in(2);
+   -- s_out(2) is '0' if both input bits are '1', otherwise '1'
+   s_out(2) <= f xor Carry_fa;
+   -- g and h bits are '1' if both input bits are high
+   g <= f and Carry_fa;
+   h <= a_in(2) and b_in(2);
+   -- s_out(3) is '1' if g or h is '1'
+   s_out(3) <= g or h;	
 
 end gate;
