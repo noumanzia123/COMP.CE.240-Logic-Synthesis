@@ -11,27 +11,25 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-vsim ripple_carry_adder.vhd
-# vsim ripple_carry_adder.vhd 
-# Start time: 21:23:26 on Jan 26,2024
-# ** Error (suppressible): (vsim-19) Failed to access library 'ripple_carry_adder' at "ripple_carry_adder".
-# No such file or directory. (errno = ENOENT)
-# Error loading design
-# End time: 21:23:26 on Jan 26,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-vsim ripple_carry_adder
-# vsim ripple_carry_adder 
-# Start time: 21:23:30 on Jan 26,2024
-# ** Note: (vsim-3812) Design is being optimized...
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading work.ripple_carry_adder(gate)#1
-vsim tb_ripple_carry_adder
-# End time: 21:23:46 on Jan 26,2024, Elapsed time: 0:00:16
+pwd
+# /home/zian/logsyn/sim
+vcom -check_synthesis ../vhd/ripple_carry_adder.vhd ../tb/tb_ripple_carry_adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 13:05:36 on Jan 27,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/ripple_carry_adder.vhd ../tb/tb_ripple_carry_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adder
+# -- Compiling architecture gate of ripple_carry_adder
+# -- Loading package NUMERIC_STD
+# -- Compiling entity tb_ripple_carry_adder
+# -- Compiling architecture testbench of tb_ripple_carry_adder
+# End time: 13:05:36 on Jan 27,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+vsim tb_ripple_carry_adder
 # vsim tb_ripple_carry_adder 
-# Start time: 21:23:46 on Jan 26,2024
+# Start time: 13:06:00 on Jan 27,2024
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading std.standard
 # Loading std.textio(body)
@@ -39,7 +37,24 @@ vsim tb_ripple_carry_adder
 # Loading ieee.numeric_std(body)
 # Loading work.tb_ripple_carry_adder(testbench)#1
 # Loading work.ripple_carry_adder(gate)#1
-run 10us
+run 10 us
 # ** Failure: Simulation ended!
 #    Time: 6550 ns  Iteration: 0  Process: /tb_ripple_carry_adder/input_gen_output_check File: ../tb/tb_ripple_carry_adder.vhd
 # Break in Process input_gen_output_check at ../tb/tb_ripple_carry_adder.vhd line 108
+vsim ripple_carry_adder
+# End time: 13:07:29 on Jan 27,2024, Elapsed time: 0:01:29
+# Errors: 1, Warnings: 0
+# vsim ripple_carry_adder 
+# Start time: 13:07:29 on Jan 27,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.ripple_carry_adder(gate)#1
+add wave -position insertpoint  \
+sim:/ripple_carry_adder/a_in \
+sim:/ripple_carry_adder/b_in \
+sim:/ripple_carry_adder/s_out
+force -freeze sim:/ripple_carry_adder/a_in 3'h7 0
+force -freeze sim:/ripple_carry_adder/b_in 3'h5 0
+run

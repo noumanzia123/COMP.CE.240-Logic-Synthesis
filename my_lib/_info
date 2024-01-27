@@ -19,24 +19,24 @@ n@_opt
 Z3 OL;O;10.7d;67
 R0
 T_opt1
-!s110 1706297026
-V>]AT7XbL9AVU[W0gh5Jhd1
+!s110 1706353561
+Vli2jELkLnHmb]<;Sh0g;z2
 04 21 9 work tb_ripple_carry_adder testbench 1
-=1-000ae431a4f1-65b406c2-98fb2-3a31b0
+=1-000ae431a4f1-65b4e399-17e33-3b4479
 R1
 R2
 n@_opt1
 R3
+R0
 T_opt2
-!s110 1706297010
-VBgc5U6RUI_fR=VFzcEOX83
+!s110 1706353649
+V@[kB>k=Pk4?43Q4mLcIM60
 04 18 4 work ripple_carry_adder gate 1
-=1-000ae431a4f1-65b406b2-37806-3a3166
+=1-000ae431a4f1-65b4e3f1-9e0c6-3b45ad
 R1
 R2
 n@_opt2
 R3
-R0
 Elock
 Z4 w1705753320
 Z5 DPx4 work 8 lock_pkg 0 22 GcM7Xz1S8F[_TVB:OLKzJ2
@@ -100,7 +100,7 @@ R16
 R17
 R18
 Eripple_carry_adder
-Z19 w1706295927
+Z19 w1706353407
 R7
 R8
 R9
@@ -112,10 +112,10 @@ VO_U5XjF>Ah9:=maJI4<Oo0
 !s100 eePi7^j0JLEEffnQk`O402
 R12
 32
-Z22 !s110 1706296978
+Z22 !s110 1706353536
 !i10b 1
-Z23 !s108 1706296978.000000
-Z24 !s90 -check_synthesis|../vhd/ripple_carry_adder.vhd|../tb/tb_ripple_carry_adder.vhd|
+Z23 !s108 1706353536.000000
+Z24 !s90 -reportprogress|300|-check_synthesis|../vhd/ripple_carry_adder.vhd|../tb/tb_ripple_carry_adder.vhd|
 Z25 !s107 ../tb/tb_ripple_carry_adder.vhd|../vhd/ripple_carry_adder.vhd|
 !i113 0
 R17
@@ -126,8 +126,8 @@ R8
 DEx4 work 18 ripple_carry_adder 0 22 O_U5XjF>Ah9:=maJI4<Oo0
 l46
 L42
-Vm3Gai^BHDT_5ZIDz9a=Mk2
-!s100 @>P8R>]eiaCdGd4Xk1PJ30
+VO3CK<MUi<m<ZJjWFa72za2
+!s100 _Iek30=QR>dI68JkEJ43A1
 R12
 32
 R22
