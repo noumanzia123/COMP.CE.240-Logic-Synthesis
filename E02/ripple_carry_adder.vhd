@@ -43,7 +43,7 @@ architecture gate of ripple_carry_adder is
   signal E : bit;
   signal F : bit;
   signal G : bit;
-  signal H : bit
+  signal H : bit;
   signal Carry_ha : bit;
   signal Carry_fa : bit;
   
@@ -70,9 +70,9 @@ begin  -- gate
   -- If both a_in(2) and b_in(2) are 1, the carry value will be sent to s_out(3) through E
 
 
-  s_out(0) <= to_std_logic(to_bit(a_in(0)) xor to_bit(b_in(0)));
-  s_out(1) <= to_std_logic(C xor Carry_ha);
-  s_out(2) <= to_std_logic(F xor Carry_fa);
-  s_out(3) <= to_std_logic(G or H);
+  s_out(0) <= to_stdulogic(to_bit(a_in(0)) xor to_bit(b_in(0)));
+  s_out(1) <= to_stdulogic(C xor Carry_ha);
+  s_out(2) <= to_stdulogic(F xor Carry_fa);
+  s_out(3) <= to_stdulogic(G or H);
     
 end gate;
