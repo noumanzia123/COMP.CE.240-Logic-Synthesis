@@ -1,0 +1,12 @@
+- What difficulties could be expected in a generic multiple number adder if the count of numbers is not a power of two or if the count is not pre-defined?
+
+If the count is not predefined then manually adding the adder component will not be easy. In this case one would reqiure a loop which will add the number of adders according to the number of operaands. 
+
+- What is the difference between VHDL's architecture levels structural and RTL?
+
+Structural view is a block diagram implementation of entity architecture that is implemented with pre-defined components and interconnections.
+RTL architecture is on lower abstraction level than structural view where one implements the architecture by using adders, mux, ALU and registers. RTL is synchronus where processes are used to transfer the data between registers.
+
+- How is hierarchical design implemented with VHDL?
+
+One way of implementing hierarchical design in VHDL which so far we learnt in this course is by using the pre-defined components and interconnections between them by structural manner. These components are defined at RTL level. 

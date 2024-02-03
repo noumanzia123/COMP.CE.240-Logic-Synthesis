@@ -11,3 +11,466 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
+cd sim
+# reading modelsim.ini
+vcom -check_synthesis adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 00:32:13 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis adder.vhd 
+# ** Error: (vcom-7) Failed to open design unit file "adder.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 00:32:13 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ..vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 00:32:31 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ..vhd/adder.vhd 
+# ** Error: (vcom-7) Failed to open design unit file "..vhd/adder.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 00:32:31 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+cd ..
+# reading /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/../modelsim.ini
+cd vhd
+ls
+# adder.vhd
+# lock_pkg.vhd
+# lock.vhd
+# lock.vhd.bak
+# lock.vhd.lck
+# ripple_carry_adder_david.vhd
+# ripple_carry_adder.vhd
+# ripple_carry_adder.vhd.bak
+cd ..
+cd sim
+# reading modelsim.ini
+vcom -check_synthesis ..vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 00:33:13 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ..vhd/adder.vhd 
+# ** Error: (vcom-7) Failed to open design unit file "..vhd/adder.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 00:33:13 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ..vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 00:33:41 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ..vhd/adder.vhd 
+# ** Error: (vcom-7) Failed to open design unit file "..vhd/adder.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 00:33:41 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ../vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 00:34:33 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity adder
+# -- Compiling architecture rtl of adder
+# ** Error: ../vhd/adder.vhd(43): Cannot read output "sum_out".
+# 	VHDL 2008 allows reading outputs.
+# 	This facility is enabled by compiling with -2008.
+# ** Error: ../vhd/adder.vhd(47): near "if": syntax error
+# End time: 00:34:33 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ../vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 00:41:57 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity adder
+# -- Compiling architecture rtl of adder
+# ** Error: ../vhd/adder.vhd(47): near "if": syntax error
+# End time: 00:41:57 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ../vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 00:43:55 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity adder
+# -- Compiling architecture rtl of adder
+# ** Error: ../vhd/adder.vhd(47): near "if": syntax error
+# End time: 00:43:55 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ../vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 00:45:03 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity adder
+# -- Compiling architecture rtl of adder
+# End time: 00:45:04 on Feb 01,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../tb/tb_adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 00:45:18 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity tb_adder
+# -- Compiling architecture testbench of tb_adder
+# End time: 00:45:18 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim tb_adder
+# vsim tb_adder 
+# Start time: 00:45:51 on Feb 01,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_adder(testbench)#1
+# Loading work.adder(rtl)#1
+# ** Fatal: (vsim-3348) Port length (10) does not match actual length (9) for port "/tb_adder/adder_1/sum_out".
+#    Time: 0 ns  Iteration: 0  Instance: /tb_adder/adder_1 File: ../vhd/adder.vhd Line: 31
+# FATAL ERROR while loading design
+# Error loading design
+# End time: 00:45:52 on Feb 01,2024, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+vcom -check_synthesis ../vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 00:48:21 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity adder
+# -- Compiling architecture rtl of adder
+# End time: 00:48:21 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim tb_adder
+# vsim tb_adder 
+# Start time: 00:48:23 on Feb 01,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_adder(testbench)#1
+# Loading work.adder(rtl)#1
+add wave  \
+sim:/tb_adder/clk \
+sim:/tb_adder/term1_r \
+sim:/tb_adder/term2_r \
+sim:/tb_adder/sum
+run 7 ms
+# ** Fatal: (vsim-3420) Array lengths do not match. Left is 9 (8 downto 0). Right is 10 (9 downto 0).
+#    Time: 0 ns  Iteration: 0  Process: /tb_adder/adder_1/line__43 File: ../vhd/adder.vhd
+# Fatal error in Architecture rtl at ../vhd/adder.vhd line 43
+# 
+# HDL call sequence:
+# Stopped at ../vhd/adder.vhd 43 Architecture rtl
+# 
+vcom -check_synthesis ../vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 00:50:33 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity adder
+# -- Compiling architecture rtl of adder
+# End time: 00:50:33 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim tb_adder
+# End time: 00:50:39 on Feb 01,2024, Elapsed time: 0:02:16
+# Errors: 2, Warnings: 0
+# vsim tb_adder 
+# Start time: 00:50:39 on Feb 01,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_adder(testbench)#1
+# Loading work.adder(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_adder/clk \
+sim:/tb_adder/rst_n \
+sim:/tb_adder/term1_r \
+sim:/tb_adder/term2_r \
+sim:/tb_adder/sum \
+sim:/tb_adder/expected_sum_r \
+sim:/tb_adder/end_simulation_r \
+sim:/tb_adder/input_w_c \
+sim:/tb_adder/output_w_c \
+sim:/tb_adder/clk_period_c \
+sim:/tb_adder/min_value_c \
+sim:/tb_adder/max_value_c
+vsim 7 ms
+# End time: 00:51:07 on Feb 01,2024, Elapsed time: 0:00:28
+# Errors: 0, Warnings: 0
+# vsim 7 ms 
+# Start time: 00:51:07 on Feb 01,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: (vopt-13130) Failed to find design unit 7.
+#         Searched libraries:
+#             work
+# ** Error: (vopt-13130) Failed to find design unit ms.
+#         Searched libraries:
+#             work
+# Optimization failed
+# Error loading design
+# End time: 00:51:08 on Feb 01,2024, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 0
+vsim 7ms
+# vsim 7ms 
+# Start time: 00:54:07 on Feb 01,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: (vopt-13130) Failed to find design unit 7ms.
+#         Searched libraries:
+#             work
+# Optimization failed
+# Error loading design
+# End time: 00:54:07 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+run 7ms
+# No Design Loaded!
+vsim tb_adder
+# vsim tb_adder 
+# Start time: 00:55:25 on Feb 01,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_adder(testbench)#1
+# Loading work.adder(rtl)#1
+run 7ms
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 250 ns  Iteration: 0  Instance: /tb_adder
+# ** Fatal: (vsim-3420) Array lengths do not match. Left is 9 (8 downto 0). Right is 8 (7 downto 0).
+#    Time: 250 ns  Iteration: 0  Process: /tb_adder/adder_1/adder_sync File: ../vhd/adder.vhd
+# Fatal error in Process adder_sync at ../vhd/adder.vhd line 54
+# 
+# HDL call sequence:
+# Stopped at ../vhd/adder.vhd 54 Process adder_sync
+# 
+vcom -check_synthesis ../vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 01:01:39 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity adder
+# -- Compiling architecture rtl of adder
+# End time: 01:01:39 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../tb/tb_adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 01:01:57 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity tb_adder
+# -- Compiling architecture testbench of tb_adder
+# End time: 01:01:57 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim tb_adder
+# End time: 01:02:04 on Feb 01,2024, Elapsed time: 0:06:39
+# Errors: 2, Warnings: 1
+# vsim tb_adder 
+# Start time: 01:02:04 on Feb 01,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_adder(testbench)#1
+# Loading work.adder(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_adder/clk \
+sim:/tb_adder/rst_n \
+sim:/tb_adder/term1_r \
+sim:/tb_adder/term2_r \
+sim:/tb_adder/sum \
+sim:/tb_adder/expected_sum_r \
+sim:/tb_adder/end_simulation_r \
+sim:/tb_adder/input_w_c \
+sim:/tb_adder/output_w_c \
+sim:/tb_adder/clk_period_c \
+sim:/tb_adder/min_value_c \
+sim:/tb_adder/max_value_c
+run 7ms
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 250 ns  Iteration: 0  Instance: /tb_adder
+# ** Fatal: (vsim-3420) Array lengths do not match. Left is 9 (8 downto 0). Right is 8 (7 downto 0).
+#    Time: 250 ns  Iteration: 0  Process: /tb_adder/adder_1/adder_sync File: ../vhd/adder.vhd
+# Fatal error in Process adder_sync at ../vhd/adder.vhd line 54
+# 
+# HDL call sequence:
+# Stopped at ../vhd/adder.vhd 54 Process adder_sync
+# 
+vcom -check_synthesis ../vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 01:03:53 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity adder
+# -- Compiling architecture rtl of adder
+# End time: 01:03:53 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim tb_adder
+# End time: 01:03:57 on Feb 01,2024, Elapsed time: 0:01:53
+# Errors: 2, Warnings: 1
+# vsim tb_adder 
+# Start time: 01:03:57 on Feb 01,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_adder(testbench)#1
+# Loading work.adder(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_adder/clk \
+sim:/tb_adder/rst_n \
+sim:/tb_adder/term1_r \
+sim:/tb_adder/term2_r \
+sim:/tb_adder/sum \
+sim:/tb_adder/expected_sum_r \
+sim:/tb_adder/end_simulation_r \
+sim:/tb_adder/input_w_c \
+sim:/tb_adder/output_w_c \
+sim:/tb_adder/clk_period_c \
+sim:/tb_adder/min_value_c \
+sim:/tb_adder/max_value_c
+run 7ms
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 250 ns  Iteration: 0  Instance: /tb_adder
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 350 ns  Iteration: 0  Instance: /tb_adder
+# ** Failure: output signal is not equal to the sum of the inputs
+#    Time: 350 ns  Iteration: 0  Process: /tb_adder/input_gen_output_check File: ../tb/tb_adder.vhd
+# Break in Process input_gen_output_check at ../tb/tb_adder.vhd line 133
+vcom -check_synthesis ../vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 01:18:50 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity adder
+# -- Compiling architecture rtl of adder
+# End time: 01:18:50 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim tb_adder
+# End time: 01:18:58 on Feb 01,2024, Elapsed time: 0:15:01
+# Errors: 1, Warnings: 2
+# vsim tb_adder 
+# Start time: 01:18:58 on Feb 01,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_adder(testbench)#1
+# Loading work.adder(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_adder/clk \
+sim:/tb_adder/term1_r \
+sim:/tb_adder/term2_r \
+sim:/tb_adder/sum
+run 7ms
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 250 ns  Iteration: 0  Instance: /tb_adder
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 350 ns  Iteration: 0  Instance: /tb_adder
+# ** Failure: output signal is not equal to the sum of the inputs
+#    Time: 350 ns  Iteration: 0  Process: /tb_adder/input_gen_output_check File: ../tb/tb_adder.vhd
+# Break in Process input_gen_output_check at ../tb/tb_adder.vhd line 133
+vcom -check_synthesis ../vhd/adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 01:22:58 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity adder
+# -- Compiling architecture rtl of adder
+# End time: 01:22:58 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../tb/tb_adder.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 01:23:16 on Feb 01,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity tb_adder
+# -- Compiling architecture testbench of tb_adder
+# End time: 01:23:16 on Feb 01,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim tb_adder
+# End time: 01:23:22 on Feb 01,2024, Elapsed time: 0:04:24
+# Errors: 1, Warnings: 2
+# vsim tb_adder 
+# Start time: 01:23:22 on Feb 01,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.tb_adder(testbench)#1
+# Loading work.adder(rtl)#1
+run 7ms
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 250 ns  Iteration: 0  Instance: /tb_adder
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 350 ns  Iteration: 0  Instance: /tb_adder
+# ** Failure: output signal is not equal to the sum of the inputs
+#    Time: 350 ns  Iteration: 0  Process: /tb_adder/input_gen_output_check File: ../tb/tb_adder.vhd
+# Break in Process input_gen_output_check at ../tb/tb_adder.vhd line 133
+add wave -position insertpoint  \
+sim:/tb_adder/clk \
+sim:/tb_adder/rst_n \
+sim:/tb_adder/term1_r \
+sim:/tb_adder/term2_r \
+sim:/tb_adder/sum \
+sim:/tb_adder/expected_sum_r \
+sim:/tb_adder/end_simulation_r \
+sim:/tb_adder/input_w_c \
+sim:/tb_adder/output_w_c \
+sim:/tb_adder/clk_period_c \
+sim:/tb_adder/min_value_c \
+sim:/tb_adder/max_value_c
+run 7 ms
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 450 ns  Iteration: 0  Instance: /tb_adder
+# ** Failure: output signal is not equal to the sum of the inputs
+#    Time: 450 ns  Iteration: 0  Process: /tb_adder/input_gen_output_check File: ../tb/tb_adder.vhd
+# Break in Process input_gen_output_check at ../tb/tb_adder.vhd line 133
