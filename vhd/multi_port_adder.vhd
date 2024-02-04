@@ -36,7 +36,7 @@ END multi_port_adder;
 
 architecture structural of multi_port_adder is
 
-    COMPONENT adder
+    COMPONENT adder -- component "adder" declaration
         generic (
             operand_width_g : integer
             );
@@ -57,7 +57,7 @@ architecture structural of multi_port_adder is
 
 
 begin -- structural architecture
-
+    -- creating three instantances of adder components required for summing 4 operands
     first_adder : adder
         generic map (
             operand_width_g => 16
