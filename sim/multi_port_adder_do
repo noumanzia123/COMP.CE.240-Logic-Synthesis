@@ -1,0 +1,20 @@
+view source
+view objects
+view variables
+view wave
+
+delete wave *
+add wave *
+
+force -deposit /rst_n 0 0, 1 {45 ns}
+force -deposit /clk 1 0, 0 {10 ns} -repeat 20
+force -deposit /keys_in 0000 0
+
+set StdArithNoWarnings 1
+run 0 ns
+set StdArithNoWarnings 0
+run 100
+
+run 100
+force -deposit /keys_in 2#0100
+

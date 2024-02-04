@@ -1,6 +1,7 @@
 - What difficulties could be expected in a generic multiple number adder if the count of numbers is not a power of two or if the count is not pre-defined?
 
-If the count is not predefined then manually adding the adder component will not be easy. In this case one would reqiure a loop which will add the number of adders according to the number of operaands. 
+If the count of numbers is not a power of two: Since the adder component accepts two inputs, therefore if inputs are not power of two then one of the input has to be initiate to zero inorder to use our adder component and the rest of process will remain same.
+If the count is not predefined then manually adding the adder component will not be easy. In this case one would reqiure a loop which will add the number of adders according to the number of operands. 
 
 - What is the difference between VHDL's architecture levels structural and RTL?
 
