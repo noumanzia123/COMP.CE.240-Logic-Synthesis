@@ -23,6 +23,10 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f0eeb963188abd7c0c6a788276acca3166fd7d87
 entity tb_adder is
 end tb_adder;
 
