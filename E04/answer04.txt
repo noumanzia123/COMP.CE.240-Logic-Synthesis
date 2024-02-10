@@ -1,12 +1,13 @@
 - What difficulties could be expected in a generic multiple number adder if the count of numbers is not a power of two or if the count is not pre-defined?
 
 If the count of numbers is not a power of two: Since the adder component accepts two inputs, therefore if inputs are not power of two then one of the input has to be initiate to zero inorder to use our adder component and the rest of process will remain same.
-If the count is not predefined then manually adding the adder component will not be easy. In this case one would reqiure a loop which will add the number of adders according to the number of operands. 
+If the count is not predefined: then in this case manually adding the adder component will not be easy. In this case one would reqiure a loop which will add the number of adders according to the number of operands. A similar problem given in the bonus exercise
 
 - What is the difference between VHDL's architecture levels structural and RTL?
 
-Structural view is a block diagram implementation of entity architecture that is implemented with pre-defined components and interconnections.
+In thie context of this course structural view is a block diagram implementation of entity's architecture that is implemented with pre-defined components and interconnections between them.
 RTL architecture is on lower abstraction level than structural view where one implements the architecture by using adders, mux, ALU and registers. RTL is synchronus where processes are used to transfer the data between registers.
+These definations are valid so far in this course where we used RTL to design adder component and then structual design to connect these components on top level.
 
 - How is hierarchical design implemented with VHDL?
 
