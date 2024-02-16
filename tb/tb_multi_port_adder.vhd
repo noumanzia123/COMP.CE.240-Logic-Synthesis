@@ -22,10 +22,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
-library std;
 use std.textio.all;
-use IEEE.std_logic_textio.all;
+
 
 
 entity tb_multi_port_adder is
@@ -51,9 +49,9 @@ architecture testbench of tb_multi_port_adder is
    signal sum            : std_logic_vector(operand_width_g downto 0);
    signal output_valid_r : std_logic_vector(duv_delay_c+1-1 downto 0);
 
-   file input_f       : text open read_mode is "input.txt";
-   file ref_results_f : text open read_mode is "ref_results.txt";
-   file output_f      : text open write_mode is "output.txt";
+   file input_f       : text open read_mode is "/home/kddara/logsyn/input.txt";
+   file ref_results_f : text open read_mode is "/home/kddara/logsyn/ref_results_4b.txt";
+   file output_f      : text open write_mode is "/home/kddara/logsyn/output.txt";
 
   
   -- Component declaration of DUV
@@ -116,11 +114,11 @@ begin  -- testbench
 
       elsif clk'event and clk ='1' then   -- rising clock edge
          output_valid_r    <= output_valid_r(duv_delay_c-1 downto 0) & '1';
-         if (not endfile(input_f)) then
+         if not (endfile(input_f)) then
             readline(input_f,line_in_v);
             for i in num_of_operands_g_c-1 downto 0 loop
                read(line_in_v,value_reader_v(i));
-               operands_r(((num_of_operands_g_c * (i + 1)) - 1) downto (num_of_operands_g_c * i)) <= std_logic_vector(to_signed(value_reader_v(i),4));
+               operands_r(((num_of_operands_g_c * (i + 1)) - 1) downto (num_of_operands_g_c * i)) <= std_logic_vector(to_signed(value_reader_v(i),num_of_operands_g_c));
             end loop;
          end if;
       end if;	
@@ -142,7 +140,7 @@ begin  -- testbench
       elsif clk'event and clk = '1' then  -- rising clock edge
     
          if output_valid_r(duv_delay_c) = '1' then
-            if (not endfile(ref_results_f)) then
+            if not (endfile(ref_results_f)) then
                readline(ref_results_f,line_ref_v);
                read(line_ref_v,value_check_v);
                assert to_integer(signed(sum)) = value_check_v
