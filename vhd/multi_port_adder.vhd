@@ -21,9 +21,10 @@ use ieee.std_logic_1164.all;
 ENTITY multi_port_adder IS
     generic (
         operand_width_g : integer := 16;
-        num_of_operands_g  : integer := 4);
+        num_of_operands_g  : integer := 4
+        );
 
-    port (
+    PORT (
         clk : in std_logic;
         rst_n : in std_logic;
         operands_in : in std_logic_vector(operand_width_g*num_of_operands_g-1 DOWNTO 0);
@@ -34,14 +35,15 @@ END multi_port_adder;
 
 -- Architecture called 'structure' is  defined below
 
-architecture structural of multi_port_adder is
+ARCHITECTURE structural of multi_port_adder IS
 
-    COMPONENT adder -- component "adder" declaration
+    -- component "adder" declaration
+    COMPONENT adder 
         generic (
             operand_width_g : integer
             );
 
-        port (
+        PORT (
             clk : in std_logic;
             rst_n : in std_logic;
             a_in : in std_logic_vector(operand_width_g-1 DOWNTO 0);
@@ -60,9 +62,9 @@ begin -- structural architecture
     -- creating three instantances of adder components required for summing 4 operands
     first_adder : adder
         generic map (
-            operand_width_g => 16
+            operand_width_g => operand_width_g
         )
-        port map (
+        PORT map (
             clk => clk, 
             rst_n => rst_n, 
             a_in => operands_in(operand_width_g-1 DOWNTO 0), 
@@ -72,9 +74,9 @@ begin -- structural architecture
 
     second_adder : adder
         generic map (
-            operand_width_g => 16
+            operand_width_g => operand_width_g
         )
-        port map (
+        PORT map (
             clk => clk, 
             rst_n => rst_n, 
             a_in => operands_in(3*operand_width_g-1 DOWNTO 2*operand_width_g), 
@@ -84,9 +86,9 @@ begin -- structural architecture
 
     third_adder : adder
         generic map (
-            operand_width_g => 17
+            operand_width_g => operand_width_g+1
         )
-        port map (
+        PORT map (
             clk => clk, 
             rst_n => rst_n, 
             a_in => subtotal(0), 
@@ -97,15 +99,8 @@ begin -- structural architecture
     -- connect part of the signal total to the output sum_out_top leaving two most significant bits unconnected    
     sum_out_top <= total(operand_width_g-1 DOWNTO 0);
 
-    ASSERT  num_of_operands_g /= 4
+    ASSERT  num_of_operands_g = 4
         REPORT "Number of operands should be 4"
         SEVERITY failure;
 
 end structural;
-
-
-
-
-    
-
-    

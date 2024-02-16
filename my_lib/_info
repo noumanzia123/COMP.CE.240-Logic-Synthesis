@@ -9,338 +9,400 @@ z2
 cModel Technology
 Z0 d/home/zian/ex1_tutorial
 T_opt
-!s110 1706793454
-VClk?LdXeM6GD3YBb;1D=M2
-04 8 9 work tb_adder testbench 1
-=1-000ae431a4f1-65bb99ed-85e62-21e484
-Z1 o-quiet -auto_acc_if_foreign -work work
+!s110 1708008516
+VGIbngYZD`WHlDJOGkPQa?1
+Z1 04 19 9 work tb_multi_port_adder testbench 1
+=1-000ae431a4f1-65ce2444-aec97-3fe453
+o-quiet -auto_acc_if_foreign -work work
 Z2 tCvgOpt 0
 n@_opt
 Z3 OL;O;10.7d;67
 R0
 T_opt1
-!s110 1706972069
-V:V:D0J_@6DgkzGiUbZ`?j2
-04 5 3 work adder rtl 1
-=1-000ae431a4f1-65be53a5-6e602-27fa03
+!s110 1708068805
+VaV8NdhHo1hBPEXL9cQ>BW0
 R1
+=1-000ae431a4f1-65cf0fc4-ce82e-391431
+Z4 o-quiet -auto_acc_if_foreign -work work +acc
 R2
 n@_opt1
 R3
-R0
 T_opt2
-!s110 1707060970
-VJ7Zm57<M=TIoBeW5b[OIS1
+!s110 1707996840
+Va@`:dK?Qog_440<MG:4`i2
 04 16 10 work multi_port_adder structural 1
-=1-000ae431a4f1-65bfaeea-48426-2d5d14
-R1
+=1-000ae431a4f1-65cdf6a7-c6da7-2ee385
+R4
 R2
 n@_opt2
 R3
 R0
 Eadder
-Z4 w1706793351
-Z5 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
-Z6 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z7 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-Z8 d/home/zian/logsyn/sim
-Z9 8../vhd/adder.vhd
-Z10 F../vhd/adder.vhd
+Z5 w1707994215
+Z6 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z7 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z8 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z9 d/home/zian/logsyn/sim
+Z10 8../vhd/adder.vhd
+Z11 F../vhd/adder.vhd
 l0
 L22
 V]_9zMZ_9EP2IA=ijJC_`E1
 !s100 =?Jl0oP:a6GVfL9cz_cNI2
-Z11 OL;C;10.7d;67
+Z12 OL;C;10.7d;67
 32
-Z12 !s110 1706793431
+Z13 !s110 1708013787
 !i10b 1
-Z13 !s108 1706793430.000000
-Z14 !s90 -reportprogress|300|-check_synthesis|../vhd/adder.vhd|../tb/tb_adder.vhd|
-Z15 !s107 ../tb/tb_adder.vhd|../vhd/adder.vhd|
+Z14 !s108 1708013787.000000
+Z15 !s90 -reportprogress|300|-check_synthesis|../vhd/adder.vhd|
+Z16 !s107 ../vhd/adder.vhd|
 !i113 0
-Z16 o-check_synthesis
-Z17 tExplicit 1 CvgOpt 0
+Z17 o-check_synthesis
+Z18 tExplicit 1 CvgOpt 0
 Artl
-R5
 R6
 R7
+R8
 DEx4 work 5 adder 0 22 ]_9zMZ_9EP2IA=ijJC_`E1
 l42
 L38
 V29;9KSALP_=@nio8G6GK@0
 !s100 QHlz8[7k8KbJ>jJ@CB0950
-R11
-32
 R12
-!i10b 1
+32
 R13
+!i10b 1
 R14
 R15
-!i113 0
 R16
+!i113 0
 R17
+R18
 Elock
-Z18 w1705753320
-Z19 DPx4 work 8 lock_pkg 0 22 GcM7Xz1S8F[_TVB:OLKzJ2
-R5
+Z19 w1705753320
+Z20 DPx4 work 8 lock_pkg 0 22 GcM7Xz1S8F[_TVB:OLKzJ2
 R6
 R7
 R8
-Z20 8../vhd/lock.vhd
-Z21 F../vhd/lock.vhd
+R9
+Z21 8../vhd/lock.vhd
+Z22 F../vhd/lock.vhd
 l0
 L6
 VTlMKEkdCS]n@0J9@_41oN2
 !s100 @@TEdSC8i4`Fj<`RgEEW[1
-R11
+R12
 32
-Z22 !s110 1706190468
+Z23 !s110 1706190468
 !i10b 1
-Z23 !s108 1706190468.000000
-Z24 !s90 -reportprogress|300|-check_synthesis|../vhd/lock.vhd|../vhd/lock_pkg.vhd|../tb/tb_lock.vhd|
-Z25 !s107 ../tb/tb_lock.vhd|../vhd/lock_pkg.vhd|../vhd/lock.vhd|
+Z24 !s108 1706190468.000000
+Z25 !s90 -reportprogress|300|-check_synthesis|../vhd/lock.vhd|../vhd/lock_pkg.vhd|../tb/tb_lock.vhd|
+Z26 !s107 ../tb/tb_lock.vhd|../vhd/lock_pkg.vhd|../vhd/lock.vhd|
 !i113 0
-R16
 R17
+R18
 Artl
-R19
-R5
+R20
 R6
 R7
+R8
 DEx4 work 4 lock 0 22 TlMKEkdCS]n@0J9@_41oN2
 l26
 L19
 VRc?2H]PABd_lEX4]Ya]Uz0
 !s100 fUQW8cgOPlME9G=_4AJm=2
-R11
+R12
 32
-R22
-!i10b 1
 R23
+!i10b 1
 R24
 R25
+R26
 !i113 0
-R16
 R17
+R18
 Plock_pkg
 w1705160687
-R8
+R9
 8../vhd/lock_pkg.vhd
 F../vhd/lock_pkg.vhd
 l0
 L1
 VGcM7Xz1S8F[_TVB:OLKzJ2
 !s100 89EhC@[7N>NoGmUm[NWea1
-R11
+R12
 32
-R22
-!i10b 1
 R23
+!i10b 1
 R24
 R25
+R26
 !i113 0
-R16
 R17
+R18
 Emulti_port_adder
-Z26 w1707062502
-R6
+Z27 w1708014374
 R7
 R8
-Z27 8../vhd/multi_port_adder.vhd
-Z28 F../vhd/multi_port_adder.vhd
+R9
+Z28 8../vhd/multi_port_adder.vhd
+Z29 F../vhd/multi_port_adder.vhd
 l0
 L21
-VE5dXKYf>`CLD_53b2Ei8O1
-!s100 X?>Mo]cXH^]bceNL0]2O;0
-R11
+VLQJkX?znIZlLQRhN?;3EI1
+!s100 VnY2@QLYTBoF@N3e`<>Wi3
+R12
 32
-Z29 !s110 1707398181
+Z30 !s110 1708040020
 !i10b 1
-Z30 !s108 1707398181.000000
-Z31 !s90 -reportprogress|300|-check_synthesis|../vhd/multi_port_adder.vhd|
-Z32 !s107 ../vhd/multi_port_adder.vhd|
+Z31 !s108 1708040020.000000
+Z32 !s90 -reportprogress|300|-check_synthesis|../vhd/multi_port_adder.vhd|
+Z33 !s107 ../vhd/multi_port_adder.vhd|
 !i113 0
-R16
 R17
+R18
 Astructural
-R6
-R7
-Z33 DEx4 work 16 multi_port_adder 0 22 E5dXKYf>`CLD_53b2Ei8O1
-l59
-L37
-Z34 Vn8cohnf1:bC>XFoDjUAVB1
-Z35 !s100 oN1zYWEzc09nVna60;1CV1
-R11
-32
-R29
-!i10b 1
-R30
-R31
-R32
-!i113 0
-R16
-R17
-Eripple_carry_adder
-Z36 w1706353407
-R6
 R7
 R8
-Z37 8../vhd/ripple_carry_adder.vhd
-Z38 F../vhd/ripple_carry_adder.vhd
+DEx4 work 16 multi_port_adder 0 22 LQJkX?znIZlLQRhN?;3EI1
+l61
+L38
+VJWgCOmEke6ogW9f7`diRX0
+!s100 9Z=oAm<<ATX0@m[z;]=<L3
+R12
+32
+R30
+!i10b 1
+R31
+R32
+R33
+!i113 0
+R17
+R18
+Eripple_carry_adder
+Z34 w1706353407
+R7
+R8
+R9
+Z35 8../vhd/ripple_carry_adder.vhd
+Z36 F../vhd/ripple_carry_adder.vhd
 l0
 L28
 VO_U5XjF>Ah9:=maJI4<Oo0
 !s100 eePi7^j0JLEEffnQk`O402
-R11
+R12
 32
-Z39 !s110 1706353536
+Z37 !s110 1706353536
 !i10b 1
-Z40 !s108 1706353536.000000
-Z41 !s90 -reportprogress|300|-check_synthesis|../vhd/ripple_carry_adder.vhd|../tb/tb_ripple_carry_adder.vhd|
-Z42 !s107 ../tb/tb_ripple_carry_adder.vhd|../vhd/ripple_carry_adder.vhd|
+Z38 !s108 1706353536.000000
+Z39 !s90 -reportprogress|300|-check_synthesis|../vhd/ripple_carry_adder.vhd|../tb/tb_ripple_carry_adder.vhd|
+Z40 !s107 ../tb/tb_ripple_carry_adder.vhd|../vhd/ripple_carry_adder.vhd|
 !i113 0
-R16
 R17
+R18
 Agate
-R6
 R7
+R8
 DEx4 work 18 ripple_carry_adder 0 22 O_U5XjF>Ah9:=maJI4<Oo0
 l46
 L42
 VO3CK<MUi<m<ZJjWFa72za2
 !s100 _Iek30=QR>dI68JkEJ43A1
-R11
+R12
 32
-R39
+R37
 !i10b 1
+R38
+R39
 R40
-R41
-R42
 !i113 0
-R16
 R17
+R18
 Etb_adder
-Z43 w1706740198
-R5
+Z41 w1706740198
 R6
 R7
 R8
-Z44 8../tb/tb_adder.vhd
-Z45 F../tb/tb_adder.vhd
+R9
+Z42 8../tb/tb_adder.vhd
+Z43 F../tb/tb_adder.vhd
 l0
 L26
 VEU>F==dPfmG?AWS78glej3
 !s100 =J1I<ZaYmdQ;>_6o6Xz@F0
-R11
-32
 R12
+32
+Z44 !s110 1706793431
 !i10b 1
-R13
-R14
-R15
+Z45 !s108 1706793430.000000
+Z46 !s90 -reportprogress|300|-check_synthesis|../vhd/adder.vhd|../tb/tb_adder.vhd|
+Z47 !s107 ../tb/tb_adder.vhd|../vhd/adder.vhd|
 !i113 0
-R16
 R17
+R18
 Atestbench
-R5
 R6
 R7
+R8
 DEx4 work 8 tb_adder 0 22 EU>F==dPfmG?AWS78glej3
 l71
 L30
 V6O<P4:f@HfR4=H2AIYAY10
 !s100 j5J6MVif0_l>clHh1PW:m3
-R11
-32
 R12
+32
+R44
 !i10b 1
-R13
-R14
-R15
+R45
+R46
+R47
 !i113 0
-R16
 R17
+R18
 Etb_lock
-Z46 w1705190597
-R19
-R5
+Z48 w1705190597
+R20
 R6
 R7
 R8
-Z47 8../tb/tb_lock.vhd
-Z48 F../tb/tb_lock.vhd
+R9
+Z49 8../tb/tb_lock.vhd
+Z50 F../tb/tb_lock.vhd
 l0
 L23
 V8<>Q`7CHS`<JzcJzdBEEo2
 !s100 nNS1O@`_b3_gUz63UVz?>3
-R11
+R12
 32
-R22
-!i10b 1
 R23
+!i10b 1
 R24
 R25
+R26
 !i113 0
-R16
 R17
+R18
 Atestbench
-R19
-R5
+R20
 R6
 R7
+R8
 DEx4 work 7 tb_lock 0 22 8<>Q`7CHS`<JzcJzdBEEo2
 l52
 L28
 VH0Y3Yi94@OTKJ3nYJSVQV2
 !s100 =LAnRz[>9VcQfCm[d^i<I1
-R11
+R12
 32
-R22
-!i10b 1
 R23
+!i10b 1
 R24
 R25
+R26
 !i113 0
-R16
 R17
-Etb_ripple_carry_adder
-Z49 w1706296407
-R5
+R18
+Etb_multi_port_adder
+Z51 w1708040520
 R6
 R7
 R8
-Z50 8../tb/tb_ripple_carry_adder.vhd
-Z51 F../tb/tb_ripple_carry_adder.vhd
+R9
+Z52 8../vhd/tb_multi_port_adder.vhd
+Z53 F../vhd/tb_multi_port_adder.vhd
+l0
+L23
+V=o>aV[^aXV59OG0WNS1B_2
+!s100 [0QWh2@Cd2iL6cD<9WVo;0
+R12
+32
+Z54 !s110 1708068650
+!i10b 1
+Z55 !s108 1708068650.000000
+Z56 !s90 -reportprogress|300|-check_synthesis|../vhd/tb_multi_port_adder.vhd|
+Z57 !s107 ../vhd/tb_multi_port_adder.vhd|
+!i113 0
+R17
+R18
+Atestbench
+R6
+R7
+R8
+DEx4 work 19 tb_multi_port_adder 0 22 =o>aV[^aXV59OG0WNS1B_2
+l68
+L32
+VY9F?4mX?1=k=dn_HkXoSb0
+!s100 3W77;<>M5A2VcV?27Of>X2
+R12
+32
+R54
+!i10b 1
+R55
+R56
+R57
+!i113 0
+R17
+R18
+Etb_ripple_carry_adder
+Z58 w1706296407
+R6
+R7
+R8
+R9
+Z59 8../tb/tb_ripple_carry_adder.vhd
+Z60 F../tb/tb_ripple_carry_adder.vhd
 l0
 L30
 V8QP?>J8;5GF45@4L_UUoM0
 !s100 3RFIGgdFMOeA2Mi?R70^R2
-R11
+R12
 32
-R39
+R37
 !i10b 1
+R38
+R39
 R40
-R41
-R42
 !i113 0
-R16
 R17
+R18
 Atestbench
-R5
 R6
 R7
+R8
 DEx4 work 21 tb_ripple_carry_adder 0 22 8QP?>J8;5GF45@4L_UUoM0
 l61
 L35
 V18gJn:5B205klW0DdOT_S2
 !s100 NVElk9D;_XW15@@<KMb0Y0
-R11
+R12
 32
-R39
+R37
 !i10b 1
+R38
+R39
 R40
-R41
-R42
 !i113 0
-R16
 R17
+R18
+Etestbench
+w1707821604
+R6
+R7
+R8
+R9
+R52
+R53
+l0
+L23
+Vf3MO70n?oK;3TfdZin8?23
+!s100 T9hb79kjnLkgcR71z]TU^1
+R12
+32
+!s110 1707822378
+!i10b 1
+!s108 1707822378.000000
+R56
+R57
+!i113 0
+R17
+R18
