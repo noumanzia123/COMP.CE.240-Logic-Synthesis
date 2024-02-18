@@ -60,7 +60,7 @@ ARCHITECTURE testbench of tb_multi_port_adder IS
             clk : in std_logic;
             rst_n : in std_logic;
             operands_in : in std_logic_vector(operand_width_g*num_of_operands_g-1 DOWNTO 0);
-            sum_out_top : out std_logic_vector(operand_width_g-1 DOWNTO 0)
+            sum_out : out std_logic_vector(operand_width_g-1 DOWNTO 0)
             );
     END COMPONENT;
 
@@ -78,7 +78,7 @@ begin -- testbench architecture
         clk => clk, 
         rst_n => rst_n, 
         operands_in => operands_r, 
-        sum_out_top => sum
+        sum_out => sum
         );
 
     -- create clock and reset signals
