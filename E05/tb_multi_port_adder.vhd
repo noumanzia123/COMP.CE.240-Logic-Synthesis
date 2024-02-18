@@ -2,15 +2,15 @@
 -- Title      : TKT-1212, Exercise 05
 -- Project    : 
 -------------------------------------------------------------------------------
--- File       : tb_adder.vhd
--- Author     : Antti Rasmus
+-- File       : tb_multi_port_adder.vhd
+-- Author     : Antti Rasmus & David Rama
 -- Company    : TUT/DCS
--- Created    : 2008-11-28
--- Last update: 2008-11-28
+-- Created    : 2024-02-08
+-- Last update: 2024-02-18
 -- Platform   : 
 -- Standard   : VHDL'87
 -------------------------------------------------------------------------------
--- Description: Tests all combinations of summing two 8-bit values
+-- Description: Tests all combinations of a multiport adder
 -------------------------------------------------------------------------------
 -- Copyright (c) 2008 
 -------------------------------------------------------------------------------
