@@ -63,7 +63,7 @@ architecture testbench of tb_multi_port_adder is
       port (
          clk         : in  std_logic;
          rst_n       : in  std_logic;
-         operands_in : in std_logic_vector(operand_width_g*num_of_operands_g_c-1 DOWNTO 0);
+         operands_in : in std_logic_vector(num_of_operands_g_c*num_of_operands_g_c-1 DOWNTO 0);
          sum_out     : out std_logic_vector(operand_width_g-1 DOWNTO 0));
    end component;
 
