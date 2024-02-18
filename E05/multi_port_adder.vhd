@@ -74,7 +74,7 @@ begin -- structural architecture
 
     second_adder : adder
         generic map (
-            operand_width_g => operand_width_g+1
+            operand_width_g => operand_width_g
         )
         PORT map (
             clk => clk, 
