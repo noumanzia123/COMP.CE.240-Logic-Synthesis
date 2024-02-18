@@ -45,12 +45,12 @@ architecture testbench of tb_multi_port_adder is
    signal rst_n : std_logic := '0';
    signal end_simulation_r : std_logic;
 
-   signal operands_r     : std_logic_vector(num_of_operands_g_c*num_of_operands_g_c-1 downto 0);
+   signal operands_r     : std_logic_vector(operand_width_g*num_of_operands_g_c-1 downto 0);
    signal sum            : std_logic_vector(operand_width_g downto 0);
    signal output_valid_r : std_logic_vector(duv_delay_c+1-1 downto 0);
 
    file input_f       : text open read_mode is "/home/kddara/logsyn/input.txt";
-   file ref_results_f : text open read_mode is "/home/kddara/logsyn/ref_results_4b.txt";
+   file ref_results_f : text open read_mode is "/home/kddara/logsyn/ref_results.txt";
    file output_f      : text open write_mode is "/home/kddara/logsyn/output.txt";
 
   
@@ -99,8 +99,8 @@ begin  -- testbench
 
    -- purpose: Read input files
    -- type   : combinational
-   -- inputs : input_f
-   -- outputs: clk  (this is a special case for test purposes!)
+   -- inputs : clk,rst_n
+   -- outputs: operands_r,output_valid_r
 
    input_reader : process (clk,rst_n)
       type int_array is array (num_of_operands_g_c-1 downto 0) of integer; 
@@ -118,7 +118,8 @@ begin  -- testbench
             readline(input_f,line_in_v);
             for i in num_of_operands_g_c-1 downto 0 loop
                read(line_in_v,value_reader_v(i));
-               operands_r(((num_of_operands_g_c * (i + 1)) - 1) downto (num_of_operands_g_c * i)) <= std_logic_vector(to_signed(value_reader_v(i),num_of_operands_g_c));
+               operands_r(((num_of_operands_g_c * (i + 1)) - 1) downto (num_of_operands_g_c * i)) 
+               <= std_logic_vector(to_signed(value_reader_v(i),num_of_operands_g_c));
             end loop;
          end if;
       end if;	
@@ -127,14 +128,14 @@ begin  -- testbench
   -- purpose: Generate all possible inputs values and check the result
   -- type   : sequential
   -- inputs : clk, rst_n
-  -- outputs:   
+  -- outputs: operands_r,output_valid_r 
    checker : process (clk, rst_n)
       variable line_ref_v : line;
       variable line_out_v : line;
       variable value_check_v : integer;
    begin  -- process input_gen_output_check 
       if rst_n = '0' then                 -- asynchronous reset (active low)
-         --operands_r     <= (others => '0');
+         operands_r     <= (others => '0');
          output_valid_r <= (others => '0'); 
       
       elsif clk'event and clk = '1' then  -- rising clock edge
