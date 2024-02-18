@@ -75,7 +75,7 @@ begin  -- testbench
    -- Instantiate DUV and connect the ports to testbench's signals
    DUV : multi_port_adder
       generic map (
-         operand_width_g   => operand_width_g,
+         operand_width_g   => operand_width_g+1,
          num_of_operands_g => num_of_operands_g_c
          )
       port map (
