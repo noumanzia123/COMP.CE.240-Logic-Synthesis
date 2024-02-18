@@ -3,7 +3,7 @@
 -- Project    : 
 -------------------------------------------------------------------------------
 -- File       : tb_multi_port_adder.vhd
--- Author     : Antti Rasmus & David Rama
+-- Author     : Nouman Zia & David Rama
 -- Company    : TUT/DCS
 -- Created    : 2024-02-08
 -- Last update: 2024-02-18
@@ -64,7 +64,7 @@ architecture testbench of tb_multi_port_adder is
          clk         : in  std_logic;
          rst_n       : in  std_logic;
          operands_in : in std_logic_vector(operand_width_g*num_of_operands_g_c-1 DOWNTO 0);
-         sum_out_top : out std_logic_vector(operand_width_g-1 DOWNTO 0));
+         sum_out     : out std_logic_vector(operand_width_g-1 DOWNTO 0));
    end component;
 
   
@@ -82,7 +82,7 @@ begin  -- testbench
          clk         => clk,
          rst_n       => rst_n,
          operands_in => operands_r,
-         sum_out_top => sum
+         sum_out     => sum
          );
 
    -- Reset the DUV
