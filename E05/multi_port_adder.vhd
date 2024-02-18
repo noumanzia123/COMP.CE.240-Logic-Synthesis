@@ -1,106 +1,96 @@
+
 -------------------------------------------------------------------------------
 -- Title      : TKT-1212, Exercise 04
--- Project    : 
 -------------------------------------------------------------------------------
 -- File       : multi_port_adder.vhd
--- Author     : David Rama Jimeno, Nouman Zia
--- Group number : 6
--- Company    : TUNI
--- Created    : 2023-01-16
--- Platform   : 
+-- Author     : David Rama Jimeno & Nouman Zia
+-- Group      : HRH056
+-- Company    : TUT/DCS
+-- Created    : 01.02.2024
 -- Standard   : VHDL'87
 -------------------------------------------------------------------------------
--- Description: A multiport adder using the premade adder block with structural architecture
+-- Description: Program all combinations of summing two n-bit values
 -------------------------------------------------------------------------------
 
--- Include default libraries
-library ieee;
-use ieee.std_logic_1164.all;
 
--- Declare entity
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL; --This library is needed in order to be able to use the "std_logic data type"
+USE ieee.numeric_std.ALL;
+
+
 ENTITY multi_port_adder IS
-    generic (
-        operand_width_g : integer := 16;
-        num_of_operands_g  : integer := 4
-        );
-
-    PORT (
-        clk : in std_logic;
-        rst_n : in std_logic;
-        operands_in : in std_logic_vector(operand_width_g*num_of_operands_g-1 DOWNTO 0);
-        sum_out     : out std_logic_vector(operand_width_g-1 DOWNTO 0)
-        );   
+   GENERIC(
+      operand_width_g : INTEGER := 16;
+      num_of_operands_g : INTEGER := 4
+      );
+   PORT(
+      clk         : IN STD_LOGIC;
+      rst_n       : IN STD_LOGIC;
+      operands_in : IN STD_LOGIC_VECTOR(operand_width_g*num_of_operands_g-1 DOWNTO 0);
+      sum_out     : OUT STD_LOGIC_VECTOR(operand_width_g-1 DOWNTO 0)
+      );
 END multi_port_adder;
--------------------------------------------------------------------------------
 
--- Architecture called 'structure' is  defined below
+ARCHITECTURE STRUCTURAL OF multi_port_adder IS
 
-ARCHITECTURE structural of multi_port_adder IS
+   COMPONENT adder
+      GENERIC(
+         operand_width_g : INTEGER := 16
+	 );
+      PORT(
+         clk     : IN STD_LOGIC;
+         rst_n   : IN  STD_LOGIC;
+         a_in    : IN STD_LOGIC_VECTOR(operand_width_g-1 DOWNTO 0);
+         b_in    : IN STD_LOGIC_VECTOR(operand_width_g-1 DOWNTO 0); 
+         sum_out : OUT STD_LOGIC_VECTOR(operand_width_g DOWNTO 0)
+         );
+   END COMPONENT;
 
-    -- component "adder" declaration
-    COMPONENT adder 
-        generic (
-            operand_width_g : integer
-            );
+TYPE operand_vector IS ARRAY (num_of_operands_g/2-1 DOWNTO 0) OF STD_LOGIC_VECTOR(operand_width_g DOWNTO 0);
+SIGNAL subtotal : operand_vector;
+SIGNAL total    : std_logic_vector(operand_width_g+1 DOWNTO 0);
 
-        PORT (
-            clk : in std_logic;
-            rst_n : in std_logic;
-            a_in : in std_logic_vector(operand_width_g-1 DOWNTO 0);
-            b_in : in std_logic_vector(operand_width_g-1 DOWNTO 0);
-            sum_out : out std_logic_vector(operand_width_g DOWNTO 0)
-            );   
-    END COMPONENT;
+BEGIN
 
-    -- internal signals
-    TYPE  subtotal_array is ARRAY (0 to num_of_operands_g/2-1) of std_logic_vector(operand_width_g DOWNTO 0); -- created an array with elements containing vectors of bits for the outputs from the first adders
-    SIGNAL subtotal : subtotal_array; -- internal signal for subtotals defined
-    SIGNAL total: std_logic_vector(operand_width_g+1 DOWNTO 0); -- output from the third adder
+   adder_1 : adder 
+      GENERIC MAP(
+         operand_width_g => operand_width_g
+         )
+      PORT MAP(
+         clk     => clk,
+         rst_n   => rst_n,
+         a_in    => operands_in(operand_width_g*num_of_operands_g-1 DOWNTO operand_width_g*(num_of_operands_g-1)),
+         b_in    => operands_in(operand_width_g*(num_of_operands_g-1)-1 DOWNTO operand_width_g*(num_of_operands_g-2)),
+         sum_out => subtotal(0)
+         );
 
+   adder_2 : adder 
+      GENERIC MAP(
+         operand_width_g => operand_width_g
+         )
+      PORT MAP(
+         clk     => clk,
+         rst_n   => rst_n,
+         a_in    => operands_in(operand_width_g*(num_of_operands_g-2)-1 DOWNTO operand_width_g*(num_of_operands_g-3)),
+         b_in    => operands_in(operand_width_g*(num_of_operands_g-3)-1 DOWNTO 0),
+         sum_out => subtotal(1)
+         );
 
-begin -- structural architecture
-    -- creating three instantances of adder components required for summing 4 operands
-    first_adder : adder
-        generic map (
-            operand_width_g => operand_width_g
-        )
-        PORT map (
-            clk => clk, 
-            rst_n => rst_n, 
-            a_in => operands_in(operand_width_g-1 DOWNTO 0), 
-            b_in => operands_in(2*operand_width_g-1 DOWNTO operand_width_g), 
-            sum_out => subtotal(0)
-            );
+   adder_3 : adder 
+      GENERIC MAP(
+         operand_width_g => operand_width_g+1
+         )
+      PORT MAP(
+         clk     => clk,
+         rst_n   => rst_n,
+         a_in    => subtotal(0),
+         b_in    => subtotal(1),
+         sum_out => total
+         );
+sum_out <= total((operand_width_g-1) DOWNTO 0);
+ 
+   ASSERT num_of_operands_g = 4
+      REPORT "Parameter num_of_operands_g different than 4"
+      SEVERITY failure;
 
-    second_adder : adder
-        generic map (
-            operand_width_g => operand_width_g
-        )
-        PORT map (
-            clk => clk, 
-            rst_n => rst_n, 
-            a_in => operands_in(3*operand_width_g-1 DOWNTO 2*operand_width_g), 
-            b_in => operands_in(4*operand_width_g-1 DOWNTO 3*operand_width_g), 
-            sum_out => subtotal(1)
-            );
-
-    third_adder : adder
-        generic map (
-            operand_width_g => operand_width_g+1
-        )
-        PORT map (
-            clk => clk, 
-            rst_n => rst_n, 
-            a_in => subtotal(0), 
-            b_in => subtotal(1), 
-            sum_out => total
-            );
-    
-    -- connect part of the signal total to the output sum_out_top leaving two most significant bits unconnected    
-    sum_out <= total(operand_width_g-1 DOWNTO 0);
-
-    ASSERT  num_of_operands_g = 4
-        REPORT "Number of operands should be 4"
-        SEVERITY failure;
-
-end structural;
+END STRUCTURAL;
