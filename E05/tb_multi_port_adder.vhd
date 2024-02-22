@@ -46,7 +46,7 @@ architecture testbench of tb_multi_port_adder is
    signal end_simulation_r : std_logic;
 
    signal operands_r     : std_logic_vector(operand_width_g*num_of_operands_g_c-1 downto 0);
-   signal sum            : std_logic_vector(operand_width_g downto 0);
+   signal sum            : std_logic_vector(operand_width_g-1 downto 0);
    signal output_valid_r : std_logic_vector(duv_delay_c+1-1 downto 0);
 
    file input_f       : text open read_mode is "input.txt";
