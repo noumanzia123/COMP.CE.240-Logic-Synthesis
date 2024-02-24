@@ -28,7 +28,7 @@ ENTITY multi_port_adder IS
         clk : in std_logic;
         rst_n : in std_logic;
         operands_in : in std_logic_vector(operand_width_g*num_of_operands_g-1 DOWNTO 0);
-        sum_out_top : out std_logic_vector(operand_width_g-1 DOWNTO 0)
+        sum_out : out std_logic_vector(operand_width_g-1 DOWNTO 0)
         );   
 END multi_port_adder;
 -------------------------------------------------------------------------------
@@ -96,8 +96,8 @@ begin -- structural architecture
             sum_out => total
             );
     
-    -- connect part of the signal total to the output sum_out_top leaving two most significant bits unconnected    
-    sum_out_top <= total(operand_width_g-1 DOWNTO 0);
+    -- connect part of the signal total to the output sum_out leaving two most significant bits unconnected    
+    sum_out <= total(operand_width_g-1 DOWNTO 0);
 
     ASSERT  num_of_operands_g = 4
         REPORT "Number of operands should be 4"
