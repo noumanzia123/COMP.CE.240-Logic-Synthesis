@@ -53,33 +53,27 @@ begin -- rtl
     
     begin -- process counter
         
-        IF rst_n = '0' then -- initialize registers
+        IF rst_n = '0' then -- asynchronous reset initialize registers
             counter_r <= (others => '0');
-            direction <= '1';
-
-        ELSIF clk'event and clk = '1' then
-            --IF rst_n = '1' then -- the counter starts from value zero and counting begins upwards
+            direction <= '1';   
+        ELSIF clk'event and clk = '1' then -- clk edge            
+            IF sync_clear_n_in = '0' then -- asynchronous reset clears the counter and sets the count direction upwards
+                counter_r <= (others => '0');
+                direction <= '1';            
+            ELSIF sync_clear_n_in = '1' then
+                --IF rst_n = '1' and sync_clear_n_in = '1' then counter starts from value zero and counting begins upwards     
                 IF direction = '1' then
                     counter_r <= counter_r + to_signed(step_g,width_g);
-                    --IF (counter_r xor to_signed(max_c)) = "0000" then  -- check IF counter is maximum, then change direction
-                    IF counter_r + step_g = max_c  then
+                    IF counter_r + step_g = max_c  then -- check if counter is maximum, then change direction
                         direction <= '0';
                     end IF;
-
                 ELSIF direction = '0' then
                     counter_r <= counter_r - to_signed(step_g,width_g);
-                    -- IF (counter_r xor to_signed(min_c)) = "0000" then  -- check IF counter is minimum, then change direction
-                    IF counter_r - step_g = min_c  then    
+                    IF counter_r - step_g = min_c  then  -- check if counter is minimum, then change direction
                         direction <= '1';
                     end IF;
                 end IF;
-            --end IF;  
-
-            IF sync_clear_n_in = '0' then -- if sync_clear_n_in is '0' the counter turns zero and sets the count direction upwards
-                counter_r <= (others => '0');
-                direction <= '1';
-            end IF;      
-
+            end IF;
         end IF;
 
     end process counter;
