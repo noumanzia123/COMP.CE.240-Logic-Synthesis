@@ -119,7 +119,8 @@ begin  -- testbench
             for i in 1 to num_of_operands_g_c loop
                read(line_in_v,value_reader_v(i));
                operands_r(operand_width_g*num_of_operands_g_c-1-(i-1)*3 
-               DOWNTO operand_width_g*num_of_operands_g_c-1-(i-1)*3-2) <= std_logic_vector(to_signed(value_reader_v(i),3));
+               DOWNTO operand_width_g*num_of_operands_g_c-1-(i-1)*3-2) <= 
+               std_logic_vector(to_signed(value_reader_v(i),operand_width_g));
             end loop;
          end if;
       end if;	
