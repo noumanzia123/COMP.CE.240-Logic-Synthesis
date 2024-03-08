@@ -15,7 +15,7 @@ max_bit_counter : ((ref_clk_freq_g / (sample_rate_g * data_width_g * 2)) - 1) / 
 
 Only one process was defined, although more can be used. As it is a synchronous process, clk and 
 rst_n are on the sensitibility list. First we define the bit clock; if it is different to the max 
-value, it adds one to the counter, if it is equal; the counter is reset and the clock registe
+value, it adds one to the counter, if it is equal; the counter is reset and the clock register
 signal inverted.
 
 For the lr clock, we must know that it only receives data on the falling edge of the bit clock. That
