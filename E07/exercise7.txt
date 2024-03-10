@@ -1,17 +1,21 @@
 EXERCISE 7
+1) Bit clock frequency
 
-Using the clock frequency and the sampling rate we can obtain the maximum value of the counters.
-We know that the LR counter should be up to width_g-1 as width_g
-is the size of each of the channels.
-Now we obtain the max value of the bit counter first by dividing the clock frequency by the sampling
-rate so we know the data transfer rate. However, as we want to have only 16 bits sent for each half
-counter of LR clock, we divide it by (2*width_g), as the counters only count for half a cycle in each 
-of the clocks. As they start counting from 0, we substract 1 and finally, we divide it by 2 so it
-only calculates half a counter.
+BCLK was defined in such when Left Channel or Right Channel is active all the 16 bits are transferred. So BCLK frequency should be atleadt 2 times the sample_rate_g. Since we want to send 16bits so it should be eventually atleast sample_rate_g*2*(data_width_g). The maximum value of Bit clock frequency is given in data sheet which is 1/75ns.
+
+2) Limit values of the clock divider counters and how they were derived  
+
+Using the clock frequency and the sampling rate we can obtain the maximum value of the counters used to generate the bit.
+We know that the LR counter should be defined by the sample_rate_g, so LR counter max value is (ref_clk_freq_g/sample_rate_g)/2.
+The max value of the bit counter first is obtained by dividing the clock frequency by the sampling
+rate so we know the bit transfer rate. However, as we want to have only 16 bits sent for each half
+counter of LR clock, we divide it by (2*width_g), as the counters only count for half a cycle in each of the clocks. As they start counting from 0, we substract 1 and finally, we divide it by 2 so it only calculates half a counter.
 
 With all the explanation above:
 max_lr_counter  : data_width_g-1
 max_bit_counter : ((ref_clk_freq_g / (sample_rate_g * data_width_g * 2)) - 1) / 2
+
+3) A brief plain language summary of the controller's process/processes and what they do
 
 Only one process was defined, although more can be used. As it is a synchronous process, clk and 
 rst_n are on the sensitibility list. First we define the bit clock; if it is different to the max 
