@@ -49,9 +49,9 @@ architecture testbench of tb_multi_port_adder is
    signal sum            : std_logic_vector(operand_width_g-1 downto 0);
    signal output_valid_r : std_logic_vector(duv_delay_c+1-1 downto 0);
 
-   file input_f       : text open read_mode is "input.txt";
-   file ref_results_f : text open read_mode is "ref_results.txt";
-   file output_f      : text open write_mode is "output.txt";
+   file input_f       : text open read_mode is "/home/kddara/logsyn/input.txt";
+   file ref_results_f : text open read_mode is "/home/kddara/logsyn/ref_results.txt";
+   file output_f      : text open write_mode is "/home/kddara/logsyn/output.txt";
 
   
   -- Component declaration of DUV
@@ -116,11 +116,10 @@ begin  -- testbench
          output_valid_r    <= output_valid_r(duv_delay_c-1 downto 0) & '1';
          if not (endfile(input_f)) then
             readline(input_f,line_in_v);
-            for i in 1 to num_of_operands_g_c loop
+            for i in num_of_operands_g_c downto 1 loop
                read(line_in_v,value_reader_v(i));
-               operands_r(operand_width_g*num_of_operands_g_c-1-(i-1)*3 
-               DOWNTO operand_width_g*num_of_operands_g_c-1-(i-1)*3-2) <= 
-               std_logic_vector(to_signed(value_reader_v(i),num_of_operands_g_c-1));
+               operands_r((operand_width_g *i  - 1) downto (operand_width_g * (i-1))) 
+               <= std_logic_vector(to_signed(value_reader_v(i),operand_width_g));
             end loop;
          end if;
       end if;	
@@ -163,3 +162,4 @@ begin  -- testbench
 
 
 end testbench;
+
