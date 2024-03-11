@@ -49,9 +49,9 @@ architecture testbench of tb_multi_port_adder is
    signal sum            : std_logic_vector(operand_width_g-1 downto 0);
    signal output_valid_r : std_logic_vector(duv_delay_c+1-1 downto 0);
 
-   file input_f       : text open read_mode is "/home/kddara/logsyn/input.txt";
-   file ref_results_f : text open read_mode is "/home/kddara/logsyn/ref_results.txt";
-   file output_f      : text open write_mode is "/home/kddara/logsyn/output.txt";
+   file input_f       : text open read_mode is "input.txt";
+   file ref_results_f : text open read_mode is "ref_results.txt";
+   file output_f      : text open write_mode is "output.txt";
 
   
   -- Component declaration of DUV
