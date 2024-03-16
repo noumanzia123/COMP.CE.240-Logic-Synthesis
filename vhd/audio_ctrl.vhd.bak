@@ -1,0 +1,126 @@
+-------------------------------------------------------------------------------
+-- Title      : COMP.CE.240 Logic Synthesis, Exercise 07
+-------------------------------------------------------------------------------
+-- File       : audio_ctrl.vhd
+-- Author     : Nouman Zia, David Rama Jimeno
+-- Group number : 6
+-- Company    : TUNI
+-- Created    : 2024-02-25
+-- Platform   : 
+-- Standard   : VHDL'87
+-------------------------------------------------------------------------------
+-- Description: controller for the DA7212 Audio codec
+-------------------------------------------------------------------------------
+
+-- Include default libraries
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+-- Declare entity audio_ctrl
+
+ENTITY audio_ctrl IS
+
+    generic (
+        ref_clk_freq_g : integer := 12288000; -- frequency of lrclk
+        sample_rate_g : integer := 48000; -- frequency of bclk
+        data_width_g : integer := 16
+        );
+    PORT (
+        clk : in std_logic;
+        rst_n : in std_logic;
+        left_data_in  : in std_logic_vector(data_width_g-1 DOWNTO 0);
+        right_data_in   : in std_logic_vector(data_width_g-1 DOWNTO 0);
+        aud_bclk_out  : out std_logic; -- Bit clock
+        aud_data_out  : out std_logic;
+        aud_lrclk_out  : out std_logic -- Left-right clock
+        );   
+END audio_ctrl;
+
+-------------------------------------------------------------------------------
+-- Architecture 'rtl' is  defined
+
+ARCHITECTURE rtl of audio_ctrl is
+
+-- Define internal signals and constants
+SIGNAL data_r  : std_logic_vector(2*data_width_g-1 DOWNTO 0);
+SIGNAL counter1_r  : signed(2*data_width_g-1 DOWNTO 0); -- counter for lrclk
+SIGNAL counter2_r  : signed(2*data_width_g-1 DOWNTO 0); -- counter for bclk
+signal shift_left1_r : std_logic_vector(data_width_g-1 downto 0);  -- internal data
+signal shift_left2_r : std_logic_vector(data_width_g-1 downto 0);  -- internal data
+CONSTANT max1_c : integer := (100); -- limit value for Left-right clock divider 
+CONSTANT max2_c : integer := (4); -- limit value for Bit clock divider 
+
+
+begin -- rtl
+
+    parallel_serial : PROCESS (clk,rst_n) -- process for parallel-serial transformation
+    
+    BEGIN -- process parallel_serial
+        IF rst_n = '0' THEN -- asynchronous reset initialize registers
+            --data_r <= (OTHERS => '0');
+            aud_data_out <= '0';
+            shift_left1_r <= (OTHERS => '0');
+            shift_left2_r <= (OTHERS => '0');   
+        ELSIF clk'event AND clk = '1' THEN -- clk edge
+            IF counter1_r = max1_c THEN -- fetch the data to register at lrclk edge
+                shift_left1_r <= left_data_in;
+                shift_left2_r <= right_data_in;
+                -- data_r(2*data_width_g-1 DOWNTO (2*data_width_g-1)-data_width_g) <= left_data_in;
+                -- data_r((2*data_width_g-1)-data_width_g+1 DOWNTO 0) <= right_data_in;
+            END IF;
+            IF counter1_r > max1_c THEN
+                IF counter2_r = max2_c THEN -- sampling left channel at bclk by shifting left
+                    aud_data_out <= shift_left1_r(data_width_g-1);                  
+                    shift_left1_r <= shift_left1_r(data_width_g-2 downto 0) & '0';   
+                END IF;             
+            ELSIF counter1_r = 2*max1_c THEN -- fetch the data to register at lrclk edge
+                IF counter2_r = max2_c THEN -- sampling left channel at bclk by shifting left    
+                    aud_data_out <= shift_left2_r(data_width_g-1);                  
+                    shift_left2_r <= shift_left2_r(data_width_g-2 downto 0) & '0'; 
+                END IF;
+            END IF;
+        END IF;        
+    
+    END PROCESS parallel_serial;
+
+    clock_divider: process (clk,rst_n) -- process for generation of clk signal for DA7212 codec
+
+    BEGIN -- process clock_divider
+        IF rst_n = '0' THEN -- asynchronous reset initialize registers
+            counter1_r <= (OTHERS => '0');
+            counter2_r <= (OTHERS => '0');
+            aud_bclk_out <= '0';
+            aud_lrclk_out <= '0';
+        ELSIF clk'event AND clk = '1' THEN -- clk edge
+            counter1_r <= counter1_r + 1;
+            counter2_r <= counter2_r + 1;
+            IF counter1_r -1 = max1_c THEN -- lrclk set '1' when counter reaches half of the clock period length
+                aud_lrclk_out <= '1';
+                --aud_bclk_out <= '0';
+            ELSIF counter1_r -1 = 2*max1_c THEN -- lrclk set '0' when counter reaches clock period length
+                aud_lrclk_out <= '0';
+                --aud_bclk_out <= '0';
+                counter1_r <= (OTHERS => '0');
+            END IF;
+            IF counter2_r -1 = max2_c THEN -- bclk set '1' when counter reaches half of the clock period length
+                aud_bclk_out <= '1';
+            ELSIF counter2_r -1 = 2*max2_c THEN -- lrclk set '0' when counter reaches clock period length
+                aud_bclk_out <= '0';
+                counter2_r <= (OTHERS => '0');  
+            END IF;
+        END IF;
+
+    END PROCESS clock_divider;
+
+end rtl;
+    
+
+
+        
+
+
+
+
+
+

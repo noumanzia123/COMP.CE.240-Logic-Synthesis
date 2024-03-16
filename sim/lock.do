@@ -8,7 +8,7 @@ add wave *
 # add wave /lock/sttran/count_v
 
 force -deposit /rst_n 0 0, 1 {45 ns}
-force -deposit /clk 1 0, 0 {10 ns} -repeat 20
+force -deposit /clk 1 0, 0 {40 ns} -repeat 80
 force -deposit /keys_in 0000 0
 
 set StdArithNoWarnings 1

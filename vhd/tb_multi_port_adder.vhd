@@ -34,7 +34,7 @@ ARCHITECTURE testbench of tb_multi_port_adder IS
     -- Define constants
     CONSTANT period_c : TIME := 10 ns;
     CONSTANT num_of_operands_c : integer := 4;
-    CONSTANT duv_delay_c : integer := 2;
+    CONSTANT duv_delay_c : integer := 2; -- the delay unit after which the output is checked
 
     -- create signals
     SIGNAL clk : std_logic := '0'; -- init values only in tb
