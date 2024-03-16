@@ -26,7 +26,7 @@ END tb_audio_ctrl;
 ARCHITECTURE testbench of tb_audio_ctrl IS
 
 -- set the clock period
-CONSTANT period_c : TIME := 33.5 ns; -- 30ns = 33 MHz
+CONSTANT period_c : TIME := 50 ns; -- 50ns = 20 MHz
 
 -- Set the time when generator is cleared synchronously
 CONSTANT clear_delay_c    : INTEGER := 74000;
@@ -38,7 +38,7 @@ CONSTANT stepl_c    : INTEGER := 2;
 CONSTANT stepr_c    : INTEGER := 10;
 
 -- audio controller parameters
-CONSTANT ref_clk_freq_c : INTEGER := 29851000; -- 0 ns
+CONSTANT ref_clk_freq_c : INTEGER := 20000000; -- 50 ns
 CONSTANT sample_rate_c  : INTEGER := 48000; -- lrclk
 
 -- internal signals
@@ -111,32 +111,32 @@ begin -- testbench architecture
     '0' AFTER period_c*clear_delay_c,
     '1' AFTER period_c*(clear_delay_c+clear_duration_c);
   
-    l_data_wg_actrl <= "1110101010101011";
-    r_data_wg_actrl <= "1110101010101011";
+    --l_data_wg_actrl <= "1110101010101011";
+    --r_data_wg_actrl <= "1110101010101011";
     -- Port mappings
-    --left_channel : wave_gen
-    --    generic map (
-    --    width_g => data_width_c,
-    --    step_g => stepl_c
-    --    )
-    --    PORT map (
-    --    clk => clk, 
-    --    rst_n => rst_n, 
-    --    sync_clear_n_in => sync_clear, 
-    --    value_out => l_data_wg_actrl
-    --    );
+    left_channel : wave_gen
+        generic map (
+        width_g => data_width_c,
+        step_g => stepl_c
+        )
+        PORT map (
+        clk => clk, 
+        rst_n => rst_n, 
+        sync_clear_n_in => sync_clear, 
+        value_out => l_data_wg_actrl
+        );
     
-    --right_channel : wave_gen
-    --    generic map (
-    --    width_g => data_width_c,
-    --    step_g => stepr_c
-    --    )
-    --    PORT map (
-    --    clk => clk, 
-    --    rst_n => rst_n, 
-    --    sync_clear_n_in => sync_clear, 
-    --   value_out => r_data_wg_actrl
-    --    );
+    right_channel : wave_gen
+        generic map (
+        width_g => data_width_c,
+        step_g => stepr_c
+        )
+        PORT map (
+        clk => clk, 
+        rst_n => rst_n, 
+        sync_clear_n_in => sync_clear, 
+       value_out => r_data_wg_actrl
+        );
     
     controller : audio_ctrl
         generic map (

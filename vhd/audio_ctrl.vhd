@@ -22,7 +22,7 @@ use ieee.numeric_std.all;
 ENTITY audio_ctrl IS
 
     generic (
-        ref_clk_freq_g : integer := 30303000; -- clk frequency
+        ref_clk_freq_g : integer := 10000000; -- clk frequency
         sample_rate_g : integer := 48000; -- frequency of lrclk
         data_width_g : integer := 16
         );
@@ -45,14 +45,14 @@ ARCHITECTURE rtl of audio_ctrl is
 -- Define internal SIGNALs and constants
 SIGNAL counter1_r  : signed(data_width_g-1 DOWNTO 0); -- counter for lrclk
 SIGNAL counter2_r  : signed(data_width_g-1 DOWNTO 0); -- counter for bclk
-SIGNAL counter3_r  : signed(data_width_g-1 DOWNTO 0); -- counter for 16 pulses
+--SIGNAL counter3_r  : signed(data_width_g-1 DOWNTO 0); -- counter for 16 pulses
 SIGNAL left_channel_data_r : std_logic_vector(data_width_g-1 downto 0);  -- internal data
 SIGNAL right_channel_data_r : std_logic_vector(data_width_g-1 downto 0);  -- internal data
 SIGNAL right_channel_r : STD_LOGIC; -- '1' for counting upwards, '0' for counting downwards
 --CONSTANT bclk_freq_c : integer := sample_rate_g*2*(data_width_g+1); -- sample_rate_g*2*(data_width_g+1);
 --CONSTANT max_bit_c : integer := (ref_clk_freq_g/bclk_freq_c)/2; -- limit value for Bit clock divider 
 CONSTANT max_lr_c : integer := (ref_clk_freq_g/sample_rate_g)/2; -- limit value for Left-right clock divider 
-CONSTANT max_bit_c : integer := (max_lr_c/data_width_g)/2; -- limit value for Bit clock divider 
+CONSTANT max_bit_c : integer := (max_lr_c/(data_width_g))/2; -- limit value for Bit clock divider 
 
 
 begin -- rtl
@@ -90,7 +90,7 @@ begin -- rtl
         IF rst_n = '0' THEN -- asynchronous reset initialize registers
             counter1_r <= (OTHERS => '0'); -- lrclk
             counter2_r <= (OTHERS => '0'); -- bclk
-            counter3_r <= (OTHERS => '0'); -- counter for 16 rising edges of bclk
+            --counter3_r <= (OTHERS => '0'); -- counter for 16 rising edges of bclk
             aud_bclk_out <= '0';
             aud_lrclk_out <= '0';
             right_channel_r <= '0'; --- flag for right channel reading
@@ -102,26 +102,22 @@ begin -- rtl
                 right_channel_r <= '0';
                 aud_bclk_out <= '0';
                 counter2_r <= (OTHERS => '0');
-                counter3_r <= (OTHERS => '0');
+                --counter3_r <= (OTHERS => '0');
             ELSIF counter1_r + 1 = 2*max_lr_c THEN -- lrclk set '0' when counter reaches clock period length
                 aud_lrclk_out <= '0';
                 right_channel_r <= '1';
                 aud_bclk_out <= '0';
                 counter1_r <= (OTHERS => '0');
                 counter2_r <= (OTHERS => '0');
-                counter3_r <= (OTHERS => '0');
+                --counter3_r <= (OTHERS => '0');
             END IF;
-            IF counter3_r  + 1 /= data_width_g THEN                  
-                IF counter2_r + 1 = max_bit_c THEN -- bclk set '1' when counter reaches half of the clock period length
+            -- BCLK generation   
+            IF counter2_r + 1 = max_bit_c and (counter1_r + 1 /= 2*max_lr_c) and counter1_r + 1 /= max_lr_c THEN -- bclk set '1' when counter reaches half of the clock period length
                     aud_bclk_out <= '1';
-                    counter3_r <= counter3_r + 1;
+                    --counter3_r <= counter3_r + 1;
                 ELSIF counter2_r + 1 = 2*max_bit_c THEN -- lrclk set '0' when counter reaches clock period length
                     aud_bclk_out <= '0';
                     counter2_r <= (OTHERS => '0');
-                END IF;
-            ELSE
-                aud_bclk_out <= '0';  
-            END IF;
         END IF;
 
     END PROCESS clock_divider;

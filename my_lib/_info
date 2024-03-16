@@ -9,14 +9,15 @@ z2
 cModel Technology
 Z0 d/home/zian/ex1_tutorial
 T_opt
-!s110 1710586651
-VLABdFj1<06RgGE5TN50S61
+!s110 1710603448
+V3o?1_l@C8P^C57SKa=K8H2
 04 10 3 work audio_ctrl rtl 1
-=1-000ae431a4f1-65f57b1b-59d9e-f151c
+=1-000ae431a4f1-65f5bcb8-790a6-102fb4
 Z1 o-quiet -auto_acc_if_foreign -work work
 Z2 tCvgOpt 0
 n@_opt
 Z3 OL;O;10.7d;67
+R0
 T_opt1
 !s110 1708068805
 VaV8NdhHo1hBPEXL9cQ>BW0
@@ -28,15 +29,14 @@ n@_opt1
 R3
 R0
 T_opt2
-!s110 1710586641
-VLzKVfWC5FS^i5DZz2Wn5z2
+!s110 1710604776
+VFTImHmfgfVBOGFLLlFC1R0
 04 13 9 work tb_audio_ctrl testbench 1
-=1-000ae431a4f1-65f57b11-2607e-f14f1
+=1-000ae431a4f1-65f5c1e8-17299-10442c
 R1
 R2
 n@_opt2
 R3
-R0
 Eadder
 Z4 w1707994215
 Z5 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
@@ -120,7 +120,7 @@ R24
 R16
 R17
 Eaudio_ctrl
-Z25 w1710586558
+Z25 w1710603414
 R5
 R6
 R7
@@ -129,13 +129,13 @@ Z26 8../vhd/audio_ctrl.vhd
 Z27 F../vhd/audio_ctrl.vhd
 l0
 L22
-VfDG1>Rm5ZXU3U>1>U@U^O1
-!s100 9SaNWU<<lHYTTR;4?CW:`0
+VmYUP8n1zJ2PRJgWSkgE?62
+!s100 W]9H?fZzN]TLk2D26G4<;2
 R11
 32
-Z28 !s110 1710586632
+Z28 !s110 1710603440
 !i10b 1
-Z29 !s108 1710586632.000000
+Z29 !s108 1710603440.000000
 Z30 !s90 -reportprogress|300|-check_synthesis|../vhd/audio_ctrl.vhd|
 Z31 !s107 ../vhd/audio_ctrl.vhd|
 !i113 0
@@ -145,11 +145,11 @@ Artl
 R5
 R6
 R7
-DEx4 work 10 audio_ctrl 0 22 fDG1>Rm5ZXU3U>1>U@U^O1
+DEx4 work 10 audio_ctrl 0 22 mYUP8n1zJ2PRJgWSkgE?62
 l58
 L43
-VC9cP4]1hko_WeOn?:^n`[2
-!s100 1A6G<jK>fbPFm6@6?eVm82
+V_IP5I0ABAnBB@l7OIMSb00
+!s100 E6JDVY92d734FA^odnV5[2
 R11
 32
 R28
@@ -342,7 +342,7 @@ R60
 R16
 R17
 Etb_audio_ctrl
-Z61 w1710585585
+Z61 w1710604763
 R5
 R6
 R7
@@ -355,9 +355,9 @@ Vfd<5j?aJ05GG;1CT<iH=f3
 !s100 cH[bRkdSz7?V]`Vza7dCi1
 R11
 32
-Z64 !s110 1710585629
+Z64 !s110 1710604771
 !i10b 1
-Z65 !s108 1710585629.000000
+Z65 !s108 1710604771.000000
 Z66 !s90 -reportprogress|300|-check_synthesis|../vhd/tb_audio_ctrl.vhd|
 Z67 !s107 ../vhd/tb_audio_ctrl.vhd|
 !i113 0
@@ -370,8 +370,8 @@ R7
 DEx4 work 13 tb_audio_ctrl 0 22 fd<5j?aJ05GG;1CT<iH=f3
 l104
 L26
-VZkk:kQ>FRCWOW[iMQhhDT3
-!s100 CSj;245N2@e?KZeU>P=dz0
+V2zJQQMEZ7z]GWE:nTBWRb2
+!s100 TP]k[=`7Rg[VLKlSzGkF:1
 R11
 32
 R64
