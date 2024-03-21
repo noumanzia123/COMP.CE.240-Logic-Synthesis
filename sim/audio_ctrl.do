@@ -13,7 +13,7 @@ add wave *
 
 
 force -deposit /rst_n 0 0, 1 {10 ns}
-force -deposit /clk 0 0, 1 50 -r 100
+force -deposit /clk 0 0, 1 25 -r 50
 force -deposit /counter1_r 0 0
 force -deposit /counter2_r 0 0
 --force -deposit /shift_left1_r 0 0

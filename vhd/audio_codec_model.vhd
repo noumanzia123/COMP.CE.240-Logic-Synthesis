@@ -44,17 +44,15 @@ architecture rtl_mealy_1_reg of audio_codec_model is
     -- counter to stop storing input data 
     SIGNAL counter_r  : signed(data_width_g-1 DOWNTO 0); 
 
-    -- output registers
+    -- shift registers and output registers
     signal left_data_r  : std_logic_vector(data_width_g-1 DOWNTO 0);
     signal right_data_r  : std_logic_vector(data_width_g-1 DOWNTO 0);
-
-    -- internal signals
-    signal value_left  : std_logic_vector(data_width_g-1 DOWNTO 0);
-    signal value_right  : std_logic_vector(data_width_g-1 DOWNTO 0);
+    signal value_left_r  : std_logic_vector(data_width_g-1 DOWNTO 0);
+    signal value_right_r  : std_logic_vector(data_width_g-1 DOWNTO 0);
 
 begin  -- rtl_mealy_1_reg
-    value_left_out <= value_left;
-    value_right_out <= value_right;
+    value_left_out <= value_left_r;
+    value_right_out <= value_right_r;
     -- This only process handles the state changes as well as output.
     -- Hence, output will be registered. It will change simultaneously with
     -- curr_state_r in this example.
@@ -67,8 +65,8 @@ begin  -- rtl_mealy_1_reg
             left_data_r <= (OTHERS => '0');
             right_data_r <= (OTHERS => '0');
             counter_r <= (OTHERS => '0');
-            value_left <= (OTHERS => '0');
-            value_right <= (OTHERS => '0');
+            value_left_r <= (OTHERS => '0');
+            value_right_r <= (OTHERS => '0');
     
         elsif aud_bclk_in'event and aud_bclk_in = '1' then  -- rising clock edge
             -- FSM always checks what is the current state
@@ -88,8 +86,8 @@ begin  -- rtl_mealy_1_reg
                         & aud_data_in; -- serial to parallel data transfer by left shift
                         counter_r <= counter_r + 1;
                     end if;
-                    if counter_r + 1 = data_width_g then
-                        value_left <= left_data_r; -- 
+                    if counter_r = data_width_g - 1 then -- loading data to output register when all bits are recieved
+                        value_left_r <= left_data_r; 
                     end if;
                     
                     if aud_lrclk_in = '0' then -- lrclk falling edge
@@ -106,8 +104,8 @@ begin  -- rtl_mealy_1_reg
                          & aud_data_in; -- serial to parallel data transfer by left shift
                         counter_r <= counter_r + 1;
                     end if;
-                    if counter_r + 1 = data_width_g then
-                        value_right <= right_data_r;
+                    if counter_r = data_width_g - 1 then -- loading data to output register when all bits are recieved
+                        value_right_r <= right_data_r;
                     end if;                        
                     if aud_lrclk_in = '1' then -- lrclk raising edge
                         right_data_r <= (OTHERS => '0');

@@ -22,7 +22,7 @@ use ieee.numeric_std.all;
 ENTITY audio_ctrl IS
 
     generic (
-        ref_clk_freq_g : integer := 10000000; -- clk frequency
+        ref_clk_freq_g : integer := 20000000; -- clk frequency
         sample_rate_g : integer := 48000; -- frequency of lrclk
         data_width_g : integer := 16
         );
@@ -45,15 +45,13 @@ ARCHITECTURE rtl of audio_ctrl is
 -- Define internal SIGNALs and constants
 SIGNAL counter1_r  : signed(data_width_g-1 DOWNTO 0); -- counter for lrclk
 SIGNAL counter2_r  : signed(data_width_g-1 DOWNTO 0); -- counter for bclk
---SIGNAL counter3_r  : signed(data_width_g-1 DOWNTO 0); -- counter for 16 pulses
 SIGNAL left_channel_data_r : std_logic_vector(data_width_g-1 downto 0);  -- internal data
 SIGNAL right_channel_data_r : std_logic_vector(data_width_g-1 downto 0);  -- internal data
 SIGNAL right_channel_r : STD_LOGIC; -- '1' for counting upwards, '0' for counting downwards
+SIGNAL left_channel_r : STD_LOGIC; -- '1' for counting upwards, '0' for counting downwards
 SIGNAL lrclk_r : STD_LOGIC;
 SIGNAL bclk_r : STD_LOGIC;
 SIGNAL aud_data_r : STD_LOGIC;
---CONSTANT bclk_freq_c : integer := sample_rate_g*2*(data_width_g+1); -- sample_rate_g*2*(data_width_g+1);
---CONSTANT max_bit_c : integer := (ref_clk_freq_g/bclk_freq_c)/2; -- limit value for Bit clock divider 
 CONSTANT max_lr_c : integer := (ref_clk_freq_g/sample_rate_g)/2; -- limit value for Left-right clock divider 
 CONSTANT max_bit_c : integer := (max_lr_c/(data_width_g))/2; -- limit value for Bit clock divider 
 
@@ -72,17 +70,18 @@ begin -- rtl
             right_channel_data_r <= (OTHERS => '0'); 
 
         ELSIF clk'event AND clk = '1' THEN -- clk edge
-            IF counter1_r + 1 = max_lr_c THEN -- load the data to registers at lrclk edge
+            -- load the data to registers at lrclk rising edge defined by the clock_divider process
+            IF counter1_r + 1 = 1 OR counter1_r = 2*data_width_g  THEN 
                 left_channel_data_r <= left_data_in;
                 right_channel_data_r <= right_data_in;
             END IF;
-            IF counter1_r + 1 > max_lr_c THEN
-                IF counter2_r + 1 = max_bit_c THEN -- transfering left channel at bclk edge by shifting left
+            IF left_channel_r = '1' THEN
+                IF counter2_r + 1 = max_bit_c THEN -- sampling left channel at bclk edge by shifting left
                     aud_data_r <= left_channel_data_r(data_width_g-1);                  
                     left_channel_data_r <= left_channel_data_r(data_width_g-2 downto 0) & '0';   
                 END IF;             
-            ELSIF right_channel_r = '1' THEN -- fetch the data to register at lrclk edge
-                IF counter2_r + 1 = max_bit_c THEN -- sampling left channel at bclk by shifting left    
+            ELSIF right_channel_r = '1' THEN
+                IF counter2_r + 1 = max_bit_c THEN -- sampling right channel at bclk by shifting left    
                     aud_data_r <= right_channel_data_r(data_width_g-1);                  
                     right_channel_data_r <= right_channel_data_r(data_width_g-2 downto 0) & '0'; 
                 END IF;
@@ -92,39 +91,38 @@ begin -- rtl
     END PROCESS parallel_serial;
 
     clock_divider: process (clk,rst_n) -- process for generation of clk SIGNALs for DA7212 codec
-
     BEGIN -- process clock_divider
         IF rst_n = '0' THEN -- asynchronous reset initialize registers
             counter1_r <= (OTHERS => '0'); -- lrclk
             counter2_r <= (OTHERS => '0'); -- bclk
-            --counter3_r <= (OTHERS => '0'); -- counter for 16 rising edges of bclk
             bclk_r <= '0';
             lrclk_r <= '0';
-            right_channel_r <= '0'; --- flag for right channel reading
+            right_channel_r <= '0'; -- flag for right channel data tranmission
+            left_channel_r <= '0';  -- flag for left channel data tranmission
         ELSIF clk'event AND clk = '1' THEN -- clk edge
-            counter1_r <= counter1_r + 1;
-            counter2_r <= counter2_r + 1;
-            IF counter1_r + 1 = max_lr_c THEN -- lrclk set '1' when counter reaches half of the clock period length
-                lrclk_r <= '1';
-                right_channel_r <= '0';
-                bclk_r <= '0';
-                counter2_r <= (OTHERS => '0');
-                --counter3_r <= (OTHERS => '0');
-            ELSIF counter1_r + 1 = 2*max_lr_c THEN -- lrclk set '0' when counter reaches clock period length
-                lrclk_r <= '0';
-                right_channel_r <= '1';
-                bclk_r <= '0';
-                counter1_r <= (OTHERS => '0');
-                counter2_r <= (OTHERS => '0');
             
-            END IF;
-            -- BCLK generation   
-            IF counter2_r + 1 = max_bit_c and (counter1_r + 1 /= 2*max_lr_c) and counter1_r + 1 /= max_lr_c THEN -- bclk set '1' when counter reaches half of the clock period length
+            counter2_r <= counter2_r + 1;
+            -- BCLK generation 
+            IF counter2_r + 1 = max_bit_c THEN -- bclk set '1' when counter reaches half of the clock period length
                     bclk_r <= '1';
-                    --counter3_r <= counter3_r + 1;
-                ELSIF counter2_r + 1 = 2*max_bit_c THEN -- lrclk set '0' when counter reaches clock period length
+                ELSIF counter2_r + 1 = 2*max_bit_c THEN -- bclk set '0' when counter reaches full clock period length
                     bclk_r <= '0';
                     counter2_r <= (OTHERS => '0');
+                    counter1_r <= counter1_r + 1;
+                    IF counter1_r + 1 = 1 THEN -- rising edge of lrclk
+                        lrclk_r <= '1';
+                        right_channel_r <= '0';
+                        left_channel_r <= '1';
+                    ELSIF counter1_r = data_width_g THEN -- falling edge of lrclk
+                        lrclk_r <= '0';
+                        right_channel_r <= '1';
+                        left_channel_r <= '0';
+                    ELSIF counter1_r = 2*data_width_g THEN -- rising edge of lrclk
+                        lrclk_r <= '1';
+                        right_channel_r <= '0';
+                        left_channel_r <= '1';
+                        counter1_r <= "0000000000000001";                     
+                    END IF;                    
             END IF;
         END IF;
     END PROCESS clock_divider;
