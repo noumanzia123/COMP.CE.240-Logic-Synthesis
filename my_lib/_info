@@ -9,10 +9,10 @@ z2
 cModel Technology
 Z0 d/home/zian/ex1_tutorial
 T_opt
-!s110 1711045637
-V4h:>O>BZoWN>__zNYNeL43
+!s110 1711320886
+VN0XJEFk35d7H5>;IFCk<J3
 04 10 3 work audio_ctrl rtl 1
-=1-000ae431a4f1-65fc7c05-6ae29-9c53
+=1-000ae431a4f1-6600af36-5282b-1126ea
 Z1 o-quiet -auto_acc_if_foreign -work work
 Z2 tCvgOpt 0
 n@_opt
@@ -29,10 +29,10 @@ n@_opt1
 R3
 R0
 T_opt2
-!s110 1711058158
-V2A5m<n?lzkSM2>2<;3ndf1
+!s110 1711326052
+Vo619T2:LP<<Ee>k061^mT2
 04 13 9 work tb_audio_ctrl testbench 1
-=1-000ae431a4f1-65fcacee-12a49-153ff
+=1-000ae431a4f1-6600c363-f128e-116a5f
 R1
 R2
 n@_opt2
@@ -79,7 +79,7 @@ R15
 R16
 R17
 Eaudio_codec_model
-Z18 w1711058010
+Z18 w1711325828
 R5
 R6
 R7
@@ -92,9 +92,9 @@ Vf3]lo?<no4IcBmKLRM6O73
 !s100 UOXW?6T6]N_dc6aROQIi32
 R11
 32
-Z21 !s110 1711058012
+Z21 !s110 1711325832
 !i10b 1
-Z22 !s108 1711058012.000000
+Z22 !s108 1711325832.000000
 Z23 !s90 -reportprogress|300|-check_synthesis|../vhd/audio_codec_model.vhd|
 Z24 !s107 ../vhd/audio_codec_model.vhd|
 !i113 0
@@ -107,8 +107,8 @@ R7
 DEx4 work 17 audio_codec_model 0 22 f3]lo?<no4IcBmKLRM6O73
 l53
 L37
-V^ijS_Yfdlb<_QXVhbQjCn2
-!s100 O>9MDcoelkT2SH7gMem8a1
+VKL9P[>5BIl?MZLACMRc]D0
+!s100 YohT9D`JjEnbLo_;^`6291
 R11
 32
 R21
@@ -120,7 +120,7 @@ R24
 R16
 R17
 Eaudio_ctrl
-Z25 w1711045628
+Z25 w1711320872
 R5
 R6
 R7
@@ -133,9 +133,9 @@ VO;GPH[b^g?mh@ZZG2Y[FK3
 !s100 V`gdHk8^NdzNhJn=<`j4n2
 R11
 32
-Z28 !s110 1711045632
+Z28 !s110 1711320882
 !i10b 1
-Z29 !s108 1711045632.000000
+Z29 !s108 1711320882.000000
 Z30 !s90 -reportprogress|300|-check_synthesis|../vhd/audio_ctrl.vhd|
 Z31 !s107 ../vhd/audio_ctrl.vhd|
 !i113 0
@@ -148,8 +148,8 @@ R7
 DEx4 work 10 audio_ctrl 0 22 O;GPH[b^g?mh@ZZG2Y[FK3
 l59
 L43
-V15G7OC;O@l4_EjmDkgE:K0
-!s100 OF;2;@nk1UjdcAE^kBn941
+VnGQdLV1IhCG>TVmF]XSDM0
+!s100 5X`ln^eR6Qk<C9XQFjOgb3
 R11
 32
 R28
@@ -223,7 +223,7 @@ R39
 R16
 R17
 Emulti_port_adder
-Z40 w1708014374
+Z40 w1711063174
 R6
 R7
 R8
@@ -231,13 +231,13 @@ Z41 8../vhd/multi_port_adder.vhd
 Z42 F../vhd/multi_port_adder.vhd
 l0
 L21
-VLQJkX?znIZlLQRhN?;3EI1
-!s100 VnY2@QLYTBoF@N3e`<>Wi3
+VRVe5N8m4H;^CSQEE3efnk3
+!s100 <T5mZDO0mZ3dA5Bh:kSaf0
 R11
 32
-Z43 !s110 1708040020
+Z43 !s110 1711063190
 !i10b 1
-Z44 !s108 1708040020.000000
+Z44 !s108 1711063190.000000
 Z45 !s90 -reportprogress|300|-check_synthesis|../vhd/multi_port_adder.vhd|
 Z46 !s107 ../vhd/multi_port_adder.vhd|
 !i113 0
@@ -246,11 +246,11 @@ R17
 Astructural
 R6
 R7
-DEx4 work 16 multi_port_adder 0 22 LQJkX?znIZlLQRhN?;3EI1
+DEx4 work 16 multi_port_adder 0 22 RVe5N8m4H;^CSQEE3efnk3
 l61
 L38
-VJWgCOmEke6ogW9f7`diRX0
-!s100 9Z=oAm<<ATX0@m[z;]=<L3
+VPK;zK=5ToQBU1Ji0;IBS13
+!s100 E1H^Ob@h48gLeMD9hE3UU3
 R11
 32
 R43
@@ -300,25 +300,66 @@ R53
 !i113 0
 R16
 R17
-Etb_adder
-Z54 w1706740198
+Esynthesizer
+Z54 w1711062545
 R5
 R6
 R7
 R8
-Z55 8../tb/tb_adder.vhd
-Z56 F../tb/tb_adder.vhd
+Z55 8../vhd/synthesizer.vhd
+Z56 F../vhd/synthesizer.vhd
+l0
+L21
+VgbYioR5?4]A5;7eJW4Qf73
+!s100 `7V:kLiRDdk7]1NNICEGL1
+R11
+32
+Z57 !s110 1711062743
+!i10b 1
+Z58 !s108 1711062743.000000
+Z59 !s90 -reportprogress|300|-check_synthesis|../vhd/synthesizer.vhd|
+Z60 !s107 ../vhd/synthesizer.vhd|
+!i113 0
+R16
+R17
+Astructural
+R5
+R6
+R7
+DEx4 work 11 synthesizer 0 22 gbYioR5?4]A5;7eJW4Qf73
+l114
+L41
+VoVe2FOXhZQ`S^Lbo5lWU`2
+!s100 ShoA14KFOTZ6i3Z<F7oJD0
+R11
+32
+R57
+!i10b 1
+R58
+R59
+R60
+!i113 0
+R16
+R17
+Etb_adder
+Z61 w1706740198
+R5
+R6
+R7
+R8
+Z62 8../tb/tb_adder.vhd
+Z63 F../tb/tb_adder.vhd
 l0
 L26
 VEU>F==dPfmG?AWS78glej3
 !s100 =J1I<ZaYmdQ;>_6o6Xz@F0
 R11
 32
-Z57 !s110 1706793431
+Z64 !s110 1706793431
 !i10b 1
-Z58 !s108 1706793430.000000
-Z59 !s90 -reportprogress|300|-check_synthesis|../vhd/adder.vhd|../tb/tb_adder.vhd|
-Z60 !s107 ../tb/tb_adder.vhd|../vhd/adder.vhd|
+Z65 !s108 1706793430.000000
+Z66 !s90 -reportprogress|300|-check_synthesis|../vhd/adder.vhd|../tb/tb_adder.vhd|
+Z67 !s107 ../tb/tb_adder.vhd|../vhd/adder.vhd|
 !i113 0
 R16
 R17
@@ -333,33 +374,33 @@ V6O<P4:f@HfR4=H2AIYAY10
 !s100 j5J6MVif0_l>clHh1PW:m3
 R11
 32
-R57
+R64
 !i10b 1
-R58
-R59
-R60
+R65
+R66
+R67
 !i113 0
 R16
 R17
 Etb_audio_ctrl
-Z61 w1711058148
+Z68 w1711326030
 R5
 R6
 R7
 R8
-Z62 8../vhd/tb_audio_ctrl.vhd
-Z63 F../vhd/tb_audio_ctrl.vhd
+Z69 8../vhd/tb_audio_ctrl.vhd
+Z70 F../vhd/tb_audio_ctrl.vhd
 l0
 L21
 Vfd<5j?aJ05GG;1CT<iH=f3
 !s100 cH[bRkdSz7?V]`Vza7dCi1
 R11
 32
-Z64 !s110 1711058152
+Z71 !s110 1711326048
 !i10b 1
-Z65 !s108 1711058152.000000
-Z66 !s90 -reportprogress|300|-check_synthesis|../vhd/tb_audio_ctrl.vhd|
-Z67 !s107 ../vhd/tb_audio_ctrl.vhd|
+Z72 !s108 1711326048.000000
+Z73 !s90 -reportprogress|300|-check_synthesis|../vhd/tb_audio_ctrl.vhd|
+Z74 !s107 ../vhd/tb_audio_ctrl.vhd|
 !i113 0
 R16
 R17
@@ -370,27 +411,27 @@ R7
 DEx4 work 13 tb_audio_ctrl 0 22 fd<5j?aJ05GG;1CT<iH=f3
 l104
 L26
-V3FLEij@lGVZPi3F3E2::i1
-!s100 D;lL5YA1>Q?]<@Pl8EkP11
+V2zJQQMEZ7z]GWE:nTBWRb2
+!s100 TP]k[=`7Rg[VLKlSzGkF:1
 R11
 32
-R64
+R71
 !i10b 1
-R65
-R66
-R67
+R72
+R73
+R74
 !i113 0
 R16
 R17
 Etb_lock
-Z68 w1705190597
+Z75 w1705190597
 R33
 R5
 R6
 R7
 R8
-Z69 8../tb/tb_lock.vhd
-Z70 F../tb/tb_lock.vhd
+Z76 8../tb/tb_lock.vhd
+Z77 F../tb/tb_lock.vhd
 l0
 L23
 V8<>Q`7CHS`<JzcJzdBEEo2
@@ -426,24 +467,24 @@ R39
 R16
 R17
 Etb_multi_port_adder
-Z71 w1708040520
+Z78 w1708040520
 R5
 R6
 R7
 R8
-Z72 8../vhd/tb_multi_port_adder.vhd
-Z73 F../vhd/tb_multi_port_adder.vhd
+Z79 8../vhd/tb_multi_port_adder.vhd
+Z80 F../vhd/tb_multi_port_adder.vhd
 l0
 L23
 V=o>aV[^aXV59OG0WNS1B_2
 !s100 [0QWh2@Cd2iL6cD<9WVo;0
 R11
 32
-Z74 !s110 1708068650
+Z81 !s110 1708068650
 !i10b 1
-Z75 !s108 1708068650.000000
-Z76 !s90 -reportprogress|300|-check_synthesis|../vhd/tb_multi_port_adder.vhd|
-Z77 !s107 ../vhd/tb_multi_port_adder.vhd|
+Z82 !s108 1708068650.000000
+Z83 !s90 -reportprogress|300|-check_synthesis|../vhd/tb_multi_port_adder.vhd|
+Z84 !s107 ../vhd/tb_multi_port_adder.vhd|
 !i113 0
 R16
 R17
@@ -458,22 +499,22 @@ VY9F?4mX?1=k=dn_HkXoSb0
 !s100 3W77;<>M5A2VcV?27Of>X2
 R11
 32
-R74
+R81
 !i10b 1
-R75
-R76
-R77
+R82
+R83
+R84
 !i113 0
 R16
 R17
 Etb_ripple_carry_adder
-Z78 w1706296407
+Z85 w1706296407
 R5
 R6
 R7
 R8
-Z79 8../tb/tb_ripple_carry_adder.vhd
-Z80 F../tb/tb_ripple_carry_adder.vhd
+Z86 8../tb/tb_ripple_carry_adder.vhd
+Z87 F../tb/tb_ripple_carry_adder.vhd
 l0
 L30
 V8QP?>J8;5GF45@4L_UUoM0
@@ -507,25 +548,66 @@ R53
 !i113 0
 R16
 R17
-Etb_wave_gen
-Z81 w1708810103
+Etb_synthesizer
+Z88 w1711061267
 R5
 R6
 R7
 R8
-Z82 8../tb/tb_wave_gen.vhd
-Z83 F../tb/tb_wave_gen.vhd
+Z89 8../tb/tb_synthesizer.vhd
+Z90 F../tb/tb_synthesizer.vhd
+l0
+L26
+VKCz@FXEQz9o7GR<9GFaS[2
+!s100 DGd9O>J8nW0ozKL]8d5mg3
+R11
+32
+Z91 !s110 1711063201
+!i10b 1
+Z92 !s108 1711063201.000000
+Z93 !s90 -reportprogress|300|-check_synthesis|../tb/tb_synthesizer.vhd|
+Z94 !s107 ../tb/tb_synthesizer.vhd|
+!i113 0
+R16
+R17
+Astructural
+R5
+R6
+R7
+DEx4 work 14 tb_synthesizer 0 22 KCz@FXEQz9o7GR<9GFaS[2
+l84
+L31
+VGz347P:9EKXQh0^XD<lYJ3
+!s100 kD=cC7OK79FoDTPbR1]lW2
+R11
+32
+R91
+!i10b 1
+R92
+R93
+R94
+!i113 0
+R16
+R17
+Etb_wave_gen
+Z95 w1708810103
+R5
+R6
+R7
+R8
+Z96 8../tb/tb_wave_gen.vhd
+Z97 F../tb/tb_wave_gen.vhd
 l0
 L25
 V?7Z=o;OL?LzcPGi;Pn<;]1
 !s100 X9niiL?E6[k8fnAD9z1IX2
 R11
 32
-Z84 !s110 1710029483
+Z98 !s110 1710029483
 !i10b 1
-Z85 !s108 1710029483.000000
-Z86 !s90 -reportprogress|300|-check_synthesis|../tb/tb_wave_gen.vhd|
-Z87 !s107 ../tb/tb_wave_gen.vhd|
+Z99 !s108 1710029483.000000
+Z100 !s90 -reportprogress|300|-check_synthesis|../tb/tb_wave_gen.vhd|
+Z101 !s107 ../tb/tb_wave_gen.vhd|
 !i113 0
 R16
 R17
@@ -540,11 +622,11 @@ VP5:E^Td[]Gh[UH^RD6QVP3
 !s100 nn3QhhJMEomGQ89g^;zIP2
 R11
 32
-R84
+R98
 !i10b 1
-R85
-R86
-R87
+R99
+R100
+R101
 !i113 0
 R16
 R17
@@ -554,8 +636,8 @@ R5
 R6
 R7
 R8
-R72
-R73
+R79
+R80
 l0
 L23
 Vf3MO70n?oK;3TfdZin8?23
@@ -565,30 +647,30 @@ R11
 !s110 1707822378
 !i10b 1
 !s108 1707822378.000000
-R76
-R77
+R83
+R84
 !i113 0
 R16
 R17
 Ewave_gen
-Z88 w1710588229
+Z102 w1710588229
 R5
 R6
 R7
 R8
-Z89 8../vhd/wave_gen.vhd
-Z90 F../vhd/wave_gen.vhd
+Z103 8../vhd/wave_gen.vhd
+Z104 F../vhd/wave_gen.vhd
 l0
 L21
 VIDjB[6FNPUXBDlEjYm>6g3
 !s100 OI:Y1`SE08mLSKW[3QVAX0
 R11
 32
-Z91 !s110 1711045975
+Z105 !s110 1711278554
 !i10b 1
-Z92 !s108 1711045975.000000
-Z93 !s90 -reportprogress|300|-check_synthesis|../vhd/wave_gen.vhd|
-Z94 !s107 ../vhd/wave_gen.vhd|
+Z106 !s108 1711278553.000000
+Z107 !s90 -reportprogress|300|-check_synthesis|../vhd/wave_gen.vhd|
+Z108 !s107 ../vhd/wave_gen.vhd|
 !i113 0
 R16
 R17
@@ -603,11 +685,11 @@ Vf1gAJdcWB`1;hcQ?R4[Ci1
 !s100 NKA>49Z4F=@Wh6R_QcFi<0
 R11
 32
-R91
+R105
 !i10b 1
-R92
-R93
-R94
+R106
+R107
+R108
 !i113 0
 R16
 R17

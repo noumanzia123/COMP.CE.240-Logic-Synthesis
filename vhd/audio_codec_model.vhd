@@ -77,6 +77,7 @@ begin  -- rtl_mealy_1_reg
                     if aud_lrclk_in = '1' then -- lrclk raising edge
                         left_data_r <= left_data_r(data_width_g-2 downto 0) 
                         & aud_data_in; -- serial to parallel data transfer by left shift
+                        --counter_r <= counter_r + 1;
                         curr_state_r <= read_left;
                     end if;
                     
@@ -86,8 +87,9 @@ begin  -- rtl_mealy_1_reg
                         & aud_data_in; -- serial to parallel data transfer by left shift
                         counter_r <= counter_r + 1;
                     end if;
-                    if counter_r = data_width_g - 1 then -- loading data to output register when all bits are recieved
-                        value_left_r <= left_data_r; 
+                    -- concatinating left_data_r with input data bit to avoid delay in updating output register                 
+                    if counter_r + 1 = data_width_g - 1 then 
+                        value_left_r <= left_data_r(data_width_g-2 downto 0) & aud_data_in; 
                     end if;
                     
                     if aud_lrclk_in = '0' then -- lrclk falling edge
@@ -104,8 +106,9 @@ begin  -- rtl_mealy_1_reg
                          & aud_data_in; -- serial to parallel data transfer by left shift
                         counter_r <= counter_r + 1;
                     end if;
-                    if counter_r = data_width_g - 1 then -- loading data to output register when all bits are recieved
-                        value_right_r <= right_data_r;
+                    -- concatinating left_data_r with input data bit to avoid delay in updating output register
+                    if counter_r + 1 = data_width_g - 1 then
+                        value_right_r <= right_data_r(data_width_g-2 downto 0) & aud_data_in;
                     end if;                        
                     if aud_lrclk_in = '1' then -- lrclk raising edge
                         right_data_r <= (OTHERS => '0');

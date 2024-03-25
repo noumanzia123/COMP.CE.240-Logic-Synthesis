@@ -70,18 +70,18 @@ begin -- rtl
             right_channel_data_r <= (OTHERS => '0'); 
 
         ELSIF clk'event AND clk = '1' THEN -- clk edge
-            -- load the data to registers at lrclk rising edge defined by the clock_divider process
-            IF counter1_r + 1 = 1 OR counter1_r = 2*data_width_g  THEN 
+            -- load the data to registers before lrclk rising edge 
+            IF counter2_r + 2 = 2*max_bit_c AND (counter1_r + 1 = 1 OR counter1_r = 2*data_width_g)  THEN 
                 left_channel_data_r <= left_data_in;
                 right_channel_data_r <= right_data_in;
             END IF;
             IF left_channel_r = '1' THEN
-                IF counter2_r + 1 = max_bit_c THEN -- sampling left channel at bclk edge by shifting left
+                IF counter2_r + 1 = 2*max_bit_c THEN -- sampling left channel at bclk edge by shifting left
                     aud_data_r <= left_channel_data_r(data_width_g-1);                  
                     left_channel_data_r <= left_channel_data_r(data_width_g-2 downto 0) & '0';   
                 END IF;             
             ELSIF right_channel_r = '1' THEN
-                IF counter2_r + 1 = max_bit_c THEN -- sampling right channel at bclk by shifting left    
+                IF counter2_r + 1 = 2*max_bit_c THEN -- sampling right channel at bclk by shifting left    
                     aud_data_r <= right_channel_data_r(data_width_g-1);                  
                     right_channel_data_r <= right_channel_data_r(data_width_g-2 downto 0) & '0'; 
                 END IF;
@@ -99,31 +99,32 @@ begin -- rtl
             lrclk_r <= '0';
             right_channel_r <= '0'; -- flag for right channel data tranmission
             left_channel_r <= '0';  -- flag for left channel data tranmission
-        ELSIF clk'event AND clk = '1' THEN -- clk edge
-            
+        ELSIF clk'event AND clk = '1' THEN -- clk edge       
             counter2_r <= counter2_r + 1;
-            -- BCLK generation 
+            -- BCLK & LRCLK generation 
             IF counter2_r + 1 = max_bit_c THEN -- bclk set '1' when counter reaches half of the clock period length
-                    bclk_r <= '1';
-                ELSIF counter2_r + 1 = 2*max_bit_c THEN -- bclk set '0' when counter reaches full clock period length
-                    bclk_r <= '0';
-                    counter2_r <= (OTHERS => '0');
-                    counter1_r <= counter1_r + 1;
-                    IF counter1_r + 1 = 1 THEN -- rising edge of lrclk
-                        lrclk_r <= '1';
-                        right_channel_r <= '0';
-                        left_channel_r <= '1';
-                    ELSIF counter1_r = data_width_g THEN -- falling edge of lrclk
-                        lrclk_r <= '0';
-                        right_channel_r <= '1';
-                        left_channel_r <= '0';
-                    ELSIF counter1_r = 2*data_width_g THEN -- rising edge of lrclk
-                        lrclk_r <= '1';
-                        right_channel_r <= '0';
-                        left_channel_r <= '1';
-                        counter1_r <= "0000000000000001";                     
-                    END IF;                    
+                bclk_r <= '1';
+            ELSIF counter2_r + 1 = 2*max_bit_c THEN -- bclk set '0' when counter reaches full clock period length
+                bclk_r <= '0';
+                counter2_r <= (OTHERS => '0');
+                counter1_r <= counter1_r + 1;
+                IF counter1_r + 1 = 1 THEN -- rising edge of lrclk
+                    lrclk_r <= '1';              
+                ELSIF counter1_r = data_width_g THEN -- falling edge of lrclk
+                    lrclk_r <= '0';
+                ELSIF counter1_r = 2*data_width_g THEN -- rising edge of lrclk
+                    lrclk_r <= '1';
+                    counter1_r <= "0000000000000001";                     
+                END IF;
             END IF;
+            -- flags for right and left channel data tranmission
+            IF counter2_r + 2 = 2*max_bit_c AND (counter1_r + 1 = 1 OR counter1_r = 2*data_width_g) THEN
+                left_channel_r <= '1';
+                right_channel_r <= '0';
+            ELSIF counter2_r + 2 = 2*max_bit_c AND counter1_r = data_width_g THEN
+                left_channel_r <= '0';
+                right_channel_r <= '1';                    
+            END IF;            
         END IF;
     END PROCESS clock_divider;
 end rtl;
