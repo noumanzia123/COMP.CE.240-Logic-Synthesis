@@ -1,0 +1,35 @@
+11) A small plan of your block in file
+  11.a) Brief textual description of your processes
+
+We defined the i2c configuration with 2 processes. The first process takes care of the clock
+generation "sclk_out" with the desired "i2c_freq_g". The process is similar as the ones done 
+in previous exercises. When it reaches half of the max value(ref_clk_freq_g/i2c_freq_g)/2
+, the signal is inverted.
+
+The second process will focus on the transmission between the controller and the audio codec.
+It was implemented with state machines, with the states mentioned in the png file.
+1) At the beginning we are at "wait_start" state we add necessary delay (buffer time between start and stop) and set SCLK and SDAT high.
+2) Then we move to "start" state, in this state we set sdat_r = 0. We can enable start if our clock signal is at '1'.
+3) Then we enter the "write_data" state. In this state we will transfer one bit at a time during the rising edge of SCLK. 
+During the high state of the clock the signal must be stable (setup and hold time must be satisfied), 
+so the next bit is available at the low state of the clock having passed the minimum time
+for stability purposes. In this state we use our sclk generated before, once a full cycle is complete
+, we move to the next bit. Once whole byte is sent we will move to "acknowledge" state.
+The transfer data state will transfer 3 bytes. The first being the device address+write bit, the 
+second is the register address, and the third its value. We will do this for a total of 15 parameters.
+4) In the "ack" state we will make sure that the data has been transmitted correctly. This is done as
+explained in the exercise. 'Z' value is written in the inout port, the transmitter release the SDA 
+line and the receiver pulls SDA low during the ack. So the transmitter reads the value. This is also
+implemented with the sclk generation. After the ack state we have three options. If SDA = 0 then data written is acknowledged, but if transmitter received a 'NACK' signal (instead of pulling SDA low, it was pulled high), then it goes to stop state independently if
+three bytes were transferred or not. If three bytes were transferred, we also go to stop state. But
+if we haven't sent the 3 bytes, we go back to write_data state.
+5) At "stop" state, the clock must be at '1'. We will also add one in our parameter counter
+counter so we can write the next parameter to codec. If NACK if received from the slave before, we won't add one. After this,
+we have two options. If we haven't read all the parameters, we will go back to wait_start state
+and continue with the next paramter assigned. 
+6) If we have transmitted all parameters we go to 'finish state' and finished_out is set to '1'.
+
+
+11.b)The missing configuration values from the table and where you found them
+We only need to get DAI_CTRL value. We searched it in the datasheet. The table was found on page 80.
+That with the table provided in the exercise we can get its value being: "10000001"

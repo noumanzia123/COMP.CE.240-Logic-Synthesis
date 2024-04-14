@@ -1,0 +1,94 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date         : Thu Apr  4 16:02:01 2024
+| Host         : WKS-94958-LT running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file system_top_level_wrapper_control_sets_placed.rpt
+| Design       : system_top_level_wrapper
+| Device       : xc7z020
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    16 |
+|    Minimum number of control sets                        |    16 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    48 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    16 |
+| >= 0 to < 4        |     3 |
+| >= 4 to < 6        |     4 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     2 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     2 |
+| >= 16              |     5 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              16 |            2 |
+| No           | No                    | Yes                    |             143 |           56 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |              14 |            5 |
+| Yes          | No                    | Yes                    |              83 |           23 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++---------------------------------------------------------------------------------+-----------------------------------------------------------------------------+-----------------------------------------------------------------------------+------------------+----------------+--------------+
+|                                   Clock Signal                                  |                                Enable Signal                                |                               Set/Reset Signal                              | Slice Load Count | Bel Load Count | Bels / Slice |
++---------------------------------------------------------------------------------+-----------------------------------------------------------------------------+-----------------------------------------------------------------------------+------------------+----------------+--------------+
+|  system_top_level_i/clk_wiz_0/inst/clk_out2                                     | system_top_level_i/synthesizer_0/inst/ctrl/aud_data_r_i_1_n_0               | system_top_level_i/synthesizer_0/inst/ctrl/plle2_adv_inst                   |                1 |              1 |         1.00 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out2                                     | system_top_level_i/synthesizer_0/inst/ctrl/bclk_r_i_1_n_0                   | system_top_level_i/synthesizer_0/inst/ctrl/plle2_adv_inst                   |                1 |              1 |         1.00 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out2                                     | system_top_level_i/synthesizer_0/inst/ctrl/lrclk_r1_out                     | system_top_level_i/synthesizer_0/inst/ctrl/plle2_adv_inst                   |                1 |              1 |         1.00 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out1                                     | system_top_level_i/i2c_config_0/inst/FSM_sequential_curr_state_r[3]_i_1_n_0 | system_top_level_i/i2c_config_0/inst/FSM_sequential_curr_state_r[3]_i_3_n_0 |                2 |              4 |         2.00 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out1                                     | system_top_level_i/i2c_config_0/inst/param_counter_r[3]_i_1_n_0             | system_top_level_i/i2c_config_0/inst/FSM_sequential_curr_state_r[3]_i_3_n_0 |                1 |              4 |         4.00 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out1                                     | system_top_level_i/i2c_config_0/inst/param_status_out[3]_i_1_n_0            | system_top_level_i/i2c_config_0/inst/FSM_sequential_curr_state_r[3]_i_3_n_0 |                1 |              4 |         4.00 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out1                                     | system_top_level_i/i2c_config_0/inst/bit_counter_r[4]_i_1_n_0               | system_top_level_i/i2c_config_0/inst/FSM_sequential_curr_state_r[3]_i_3_n_0 |                2 |              5 |         2.50 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out1_system_top_level_clk_wiz_0_0_en_clk |                                                                             |                                                                             |                1 |              8 |         8.00 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out2_system_top_level_clk_wiz_0_0_en_clk |                                                                             |                                                                             |                1 |              8 |         8.00 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out1                                     | system_top_level_i/util_vector_logic_0/Res[0]                               |                                                                             |                5 |             14 |         2.80 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out1                                     | system_top_level_i/i2c_config_0/inst/data_r[18]_i_1_n_0                     | system_top_level_i/i2c_config_0/inst/FSM_sequential_curr_state_r[3]_i_3_n_0 |                4 |             15 |         3.75 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out2                                     | system_top_level_i/synthesizer_0/inst/ctrl/counter1_r[0]_i_1_n_0            | system_top_level_i/synthesizer_0/inst/ctrl/plle2_adv_inst                   |                4 |             16 |         4.00 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out2                                     | system_top_level_i/synthesizer_0/inst/ctrl/left_channel_data_r[15]_i_1_n_0  | system_top_level_i/synthesizer_0/inst/ctrl/plle2_adv_inst                   |                3 |             16 |         5.33 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out2                                     | system_top_level_i/synthesizer_0/inst/ctrl/right_channel_data_r[15]_i_1_n_0 | system_top_level_i/synthesizer_0/inst/ctrl/plle2_adv_inst                   |                3 |             16 |         5.33 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out1                                     |                                                                             | system_top_level_i/i2c_config_0/inst/FSM_sequential_curr_state_r[3]_i_3_n_0 |                8 |             17 |         2.12 |
+|  system_top_level_i/clk_wiz_0/inst/clk_out2                                     |                                                                             | system_top_level_i/synthesizer_0/inst/ctrl/plle2_adv_inst                   |               48 |            126 |         2.62 |
++---------------------------------------------------------------------------------+-----------------------------------------------------------------------------+-----------------------------------------------------------------------------+------------------+----------------+--------------+
+
+

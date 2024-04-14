@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root MajorVersion="0" MinorVersion="40">
+  <CompositeFile CompositeFileTopName="system_top_level" CanBeSetAsTop="true" CanDisplayChildGraph="true">
+    <Description>Composite Fileset</Description>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1712235464"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1712235464"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1712235464"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1712235464"/>
+    <FileCollection Name="SOURCES" Type="SOURCES">
+      <File Name="synth\system_top_level.v" Type="Verilog">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="sim\system_top_level.v" Type="Verilog">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="system_top_level_ooc.xdc" Type="XDC">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="OUT_OF_CONTEXT"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="hw_handoff\system_top_level.hwh" Type="HwHandoff">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="system_top_level.bda">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="synth\system_top_level.hwdef">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+      <File Name="sim\system_top_level.protoinst">
+        <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+        <ProcessingOrder Val="NORMAL"/>
+      </File>
+    </FileCollection>
+  </CompositeFile>
+</Root>

@@ -1,0 +1,22 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Thu Apr  4 15:50:54 2024
+# Process ID: 15836
+# Current directory: P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent18196 P:\INTRA_HOME\DATA\Logic Synthesis\6\syn\synth_top\synth_top.xpr
+# Log file: P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/vivado.log
+# Journal file: P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.xpr}
+CRITICAL WARNING: [Project 1-19] Could not find the file '$PGENDIR/sources_1/bd/system_top_level/hdl/system_top_level_wrapper.v'.
+ERROR: [Project 1-208] No val for DA Elab Attr
+ERROR: [Runs 36-378] The checkpoint 'P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.srcs/utils_1/imports/synth_1/system_top_level_wrapper.dcp' was created with 'Vivado v2023.1 (64-bit)', and cannot be opened in this version.
+open_project {P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.xpr}
+CRITICAL WARNING: [Project 1-19] Could not find the file '$PGENDIR/sources_1/bd/system_top_level/hdl/system_top_level_wrapper.v'.
+ERROR: [Project 1-208] No val for DA Elab Attr
+ERROR: [Runs 36-378] The checkpoint 'P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.srcs/utils_1/imports/synth_1/system_top_level_wrapper.dcp' was created with 'Vivado v2023.1 (64-bit)', and cannot be opened in this version.
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Apr  4 15:54:26 2024...

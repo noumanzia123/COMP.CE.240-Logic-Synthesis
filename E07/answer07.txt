@@ -1,0 +1,35 @@
+EXERCISE 7
+1) Bit clock frequency
+
+BCLK was defined in such when Left Channel or Right Channel is active all the 16 bits are transferred. So BCLK frequency should be atleadt 2 times the sample_rate_g. Since we want to send 16bits so it should be eventually atleast sample_rate_g*2*(data_width_g). The maximum value of Bit clock frequency is given in data sheet which is 1/75ns.
+
+2) Limit values of the clock divider counters and how they were derived  
+
+Using the clock frequency and the sampling rate we can obtain the maximum value of the counters used to generate the bit.
+We know that the LR counter should be defined by the sample_rate_g, so LR counter max value is (ref_clk_freq_g/sample_rate_g)/2.
+The max value of the bit counter first is obtained by dividing the clock frequency by the sampling
+rate so we know the bit transfer rate. However, as we want to have only 16 bits sent for each half
+counter of LR clock, we divide it by (2*width_g), as the counters only count for half a cycle in each of the clocks. As they start counting from 0, we substract 1 and finally, we divide it by 2 so it only calculates half a counter.
+
+With all the explanation above:
+max_lr_counter  : data_width_g-1
+max_bit_counter : ((ref_clk_freq_g / (sample_rate_g * data_width_g * 2)) - 1) / 2
+
+3) A brief plain language summary of the controller's process/processes and what they do
+
+Only one process was defined, although more can be used. As it is a synchronous process, clk and 
+rst_n are on the sensitibility list. First we define the bit clock; if it is different to the max 
+value, it adds one to the counter, if it is equal; the counter is reset and the clock register
+signal inverted.
+
+For the lr clock, we must know that it only receives data on the falling edge of the bit clock. That
+is the reason for the if ((counter_bit = max_bit) and clock_bit_r = '1'). After, if the counter 
+reaches its max value, it is reset to 0 and the clock inverted. We also register the input data in
+register signals. When it isn't equal to the max value; if the clock is '1', each bit of the register
+ left signal is sent to a bit register depending on the counter value, but it is done backwards. First
+the MSB and later the LSB. Same structure is defined for the right register except the clock is '0'.
+The counter is also incremented by one during this else clause.
+
+Finally, we assign the registers of the bit clock and lr clock to its outputs and the bit register
+is connected to the data output through a wire.
+
