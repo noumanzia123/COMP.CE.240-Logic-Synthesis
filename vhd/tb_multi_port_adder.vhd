@@ -70,7 +70,7 @@ begin -- testbench architecture
     -- Port mappings of the DUT
     DUT : multi_port_adder
         generic map (
-            operand_width_g => 3,
+            operand_width_g => operand_width_g,
             num_of_operands_g => num_of_operands_c
             )
 
@@ -107,16 +107,17 @@ begin -- process input_reader
         operands_r  <= (OTHERS => '0');
         output_valid_r <= (OTHERS => '0');
         
-    ELSIF clk'EVENT AND clk = '1' THEN
-        output_valid_r <= std_logic_vector(shift_left(unsigned(output_valid_r), 1));
-        output_valid_r(0) <= '1';
+    ELSIF clk'EVENT AND clk = '1' THEN -- rising edge
+        output_valid_r <= output_valid_r(duv_delay_c-1 downto 0) & '1'; -- left shift for delay
+        --output_valid_r <= std_logic_vector(shift_left(unsigned(output_valid_r), 1));
+        --output_valid_r(0) <= '1';
         
         IF NOT (ENDFILE(input_f)) THEN
             READLINE(input_f, line_in_v);
             for kk in 1 to num_of_operands_c loop
                 read(line_in_v, input_tmp_v(kk));
-                operands_r(operand_width_g*num_of_operands_c-1-(kk-1)*3 DOWNTO operand_width_g*num_of_operands_c-1-(kk-1)*3-2) 
-                <= std_logic_vector(to_signed(input_tmp_v(kk),3));
+                operands_r(operand_width_g*num_of_operands_c-1-(kk-1)*operand_width_g DOWNTO operand_width_g*num_of_operands_c-1-(kk-1)*operand_width_g-(operand_width_g-1)) 
+                <= std_logic_vector(to_signed(input_tmp_v(kk),operand_width_g));
 		     END loop;
         end IF;
     end IF;
@@ -140,21 +141,19 @@ begin -- process checker
 
     ELSIF clk'EVENT and clk = '1' then 
         -- output available to check after two clock cyclyes
-        IF output_valid_r(operand_width_g-1) = '1' THEN
+        IF output_valid_r(duv_delay_c) = '1' THEN
             IF NOT (ENDFILE(ref_results_f)) THEN
                 READLINE(ref_results_f, line_refin_v);
                 read(line_refin_v, ref_input_tmp_v);
                 ASSERT  to_integer(signed(sum)) = ref_input_tmp_v
                     REPORT "Test bench failed"
-                    SEVERITY failure;
+                SEVERITY failure;
                 write(line_out_v, to_integer(signed(sum)));
                 writeline(output_f, line_out_v);
             ELSE
                 report "Simulation done sucessfully!"; 
             end IF;
-
         end IF;
-
     end IF;
 
 end process checker;
