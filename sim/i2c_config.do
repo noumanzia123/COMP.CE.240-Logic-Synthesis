@@ -9,14 +9,20 @@ add wave clk
 add wave rst_n
 add wave curr_state_r
 add wave transmission_r
-add wave max_sclk
-add wave min_sda
+add wave max_sclk_c
+add wave min_sda_c
 --add wave max_sda
 add wave sdat_r
 add wave sclk_r
-add wave counter_sclk
-add wave counter_bit
-add wave counter_sda
+add wave counter_sclk_r
+add wave counter_bit_r
+add wave sdat_inout
+add wave ack_flag_r
+add wave nack_r
+add wave counter_param_r
+add wave param_status_r
+add wave finished_r
+--add wave counter_sda
 --add wave counter_ack
 
 
