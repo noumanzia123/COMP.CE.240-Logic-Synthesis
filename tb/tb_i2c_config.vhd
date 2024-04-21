@@ -45,7 +45,7 @@ architecture testbench of tb_i2c_config is
   signal rst_n : std_logic := '0';      -- only in synthesis
 
   -- The DUV prototype
-  component i2c_config_backup
+  component i2c_config
     generic (
       ref_clk_freq_g : integer;
       i2c_freq_g     : integer;
@@ -73,7 +73,6 @@ architecture testbench of tb_i2c_config is
   -- Counters for receiving bits and bytes
   signal bit_counter_r  : integer range 0 to bit_count_max_c-1;
   signal byte_counter_r : integer range 0 to n_bytes_c-1;
-  
 
   -- States for the FSM
   type   states is (wait_start, read_byte, send_ack, wait_stop);
@@ -82,6 +81,26 @@ architecture testbench of tb_i2c_config is
   -- Previous values of the I2C signals for edge detection
   signal sdat_old_r : std_logic;
   signal sclk_old_r : std_logic;
+
+  type data_type is array (n_params_c-1 downto 0) of std_logic_vector(bit_count_max_c*n_bytes_c-1 downto 0);
+  signal data_register_r : std_logic_vector(bit_count_max_c*n_bytes_c - 1 downto 0);
+  signal byte_register_r : std_logic_vector(bit_count_max_c - 1 downto 0);
+  signal sdat_register_r : std_logic_vector(bit_count_max_c - 1 downto 0);
+  signal param_counter_r : integer range 0 to n_params_c;
+  signal nack : std_logic := '0';
+  signal nack_done : std_logic := '0';
+  constant delay_c : integer := 300;
+  signal wait_delay : integer := 0;
+
+
+  constant data_transfer : data_type := ("001101000001110110000000", "001101000010011100000100",
+                                         "001101000010001000001011", "001101000010100000000000", 
+                                         "001101000010100110000001", "001101000110100100001000",
+                                         "001101000110101000000000", "001101000100011111100001", 
+                                         "001101000110101100001001", "001101000110110000001000", 
+                                         "001101000100101100001000", "001101000100110000001000", 
+                                         "001101000110111010001000", "001101000110111110001000", 
+                                         "001101000101000111110001");
   
 begin  -- testbench
 
@@ -97,7 +116,7 @@ begin  -- testbench
 
 
   -- Component instantiation
-  i2c_config_1 : i2c_config_backup
+  i2c_config_1 : i2c_config
     generic map (
       ref_clk_freq_g => ref_freq_c,
       i2c_freq_g     => i2c_freq_c,
@@ -124,8 +143,15 @@ begin  -- testbench
 
       byte_counter_r <= 0;
       bit_counter_r  <= 0;
+      param_counter_r <= 0;
 
       sdat_r <= 'Z';
+
+      data_register_r <= (OTHERS => '0');
+      byte_register_r <= (OTHERS => '0');
+      sdat_register_r <= (OTHERS => '0');
+      nack <= '0';
+      nack_done <= '0';
       
     elsif clk'event and clk = '1' then  -- rising clock edge
 
@@ -143,7 +169,12 @@ begin  -- testbench
         if curr_state_r = send_ack then
 
           -- Send ack (low = ACK, high = NACK)
-          sdat_r <= '0';
+          if (param_counter_r = 4 and byte_counter_r = 2) and nack_done = '0'  then
+            sdat_r <= '1';
+            nack <= '1';
+          else
+            sdat_r <= '0';
+          end if;
 
         else
 
@@ -162,14 +193,18 @@ begin  -- testbench
         -----------------------------------------------------------------------
         -- Wait for the start condition
         when wait_start =>
-
+          
+          --if nack = '1' then
+          --  nack_done <= '1';
+          --end if;
           -- While clk stays high, the sdat falls
-          if sclk = '1' and sclk_old_r = '1' and
-            sdat_old_r = '1' and sdat = '0' then
-
-            curr_state_r <= read_byte;
-
-          end if;
+            if sclk = '1' and sclk_old_r = '1' and
+            sdat_old_r = '1' and sdat = '0'  then
+              wait_delay <= 0;
+              curr_state_r <= read_byte;
+            else
+              wait_delay <= wait_delay+1;
+            end if;
 
           --------------------------------------------------------------------
           -- Wait for a byte to be read
@@ -188,8 +223,21 @@ begin  -- testbench
               -- When terminal count is reached, let's send the ack
               curr_state_r  <= send_ack;
               bit_counter_r <= 0;
-              
+
             end if;  -- Bit counter terminal count
+
+            if bit_counter_r /= bit_count_max_c then
+              sdat_register_r((bit_count_max_c - bit_counter_r) - 1) <= sdat;
+              data_register_r  <= data_transfer((n_params_c - param_counter_r) - 1);
+              byte_register_r <= data_register_r((bit_count_max_c * (n_bytes_c - byte_counter_r) - 1)
+                                                  downto ((bit_count_max_c * ((n_bytes_c - 1) - byte_counter_r))));
+            else
+              if (param_counter_r = 4) and (nack = '0')
+                and (byte_counter_r = n_bytes_c - 1) and (bit_counter_r = bit_count_max_c) then
+                sdat_r         <= '1';
+                nack           <= '1';
+              end if;
+            end if;
             
           end if;  -- sclk rising clock edge
 
@@ -197,21 +245,40 @@ begin  -- testbench
           -- Send acknowledge
         when send_ack =>
 
+
           -- Detect a rising edge
-          if sclk = '1' and sclk_old_r = '0' then
             
+          if sclk = '1' and sclk_old_r = '0' then
+
             if byte_counter_r /= n_bytes_c-1 then
 
               -- Transmission continues
               byte_counter_r <= byte_counter_r + 1;
               curr_state_r   <= read_byte;
-              
-            else
 
+            else
               -- Transmission is about to stop
               byte_counter_r <= 0;
               curr_state_r   <= wait_stop;
-              
+
+              if nack = '1' and nack_done = '0' then
+                param_counter_r <= param_counter_r;
+                nack_done    <= '1';
+              else
+                param_counter_r <= param_counter_r + 1;
+              end if;
+            end if;
+
+            if byte_counter_r = 0 then
+              assert sdat_register_r = byte_register_r report "Audio codec address is incorrect" severity error;
+            end if;
+
+            if byte_counter_r = 1 then
+              assert sdat_register_r = byte_register_r report "Register address is incorrect" severity error;
+            end if;
+
+            if byte_counter_r = 2 then
+              assert sdat_register_r = byte_register_r report "Configuration Value is incorrect" severity error;
             end if;
 
           end if;
@@ -219,6 +286,8 @@ begin  -- testbench
           ---------------------------------------------------------------------
           -- Wait for the stop condition
         when wait_stop =>
+ 
+          --sdat_r <= 'Z';
 
           -- Stop condition detection: sdat rises while sclk stays high
           if sclk = '1' and sclk_old_r = '1' and
@@ -238,10 +307,11 @@ begin  -- testbench
   -----------------------------------------------------------------------------
 
   -- SDAT should never contain X:s.
+
   assert sdat /= 'X' report "Three state bus in state X" severity error;
+
 
   -- End of simulation, but not during the reset
   assert finished = '0' or rst_n = '0' report
-    "Simulation done" severity failure;
-  
+    "Simulation done" severity failure; 
 end testbench;
