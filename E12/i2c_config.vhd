@@ -59,8 +59,8 @@ signal stop_request : std_logic;
 signal nack : std_logic;
 constant data_width : integer := 8;
 constant bytes_sent : integer := 3;
-constant wait_delay : integer := 300;
-constant start_stop_delay : integer := 300;
+constant wait_delay : integer := 5000;
+constant start_stop_delay : integer := 5000;
 
 type data_type is array (n_params_g-1 downto 0) of std_logic_vector(data_width*bytes_sent-1 downto 0);
 type state is (wait_start,start,write_data,ack,stop,finish);
