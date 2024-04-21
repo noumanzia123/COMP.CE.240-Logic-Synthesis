@@ -90,7 +90,7 @@ architecture testbench of tb_i2c_config is
   signal nack : std_logic := '0';
   signal nack_done : std_logic := '0';
   constant delay_c : integer := 300;
-  signal wait_delay : integer := 0;
+  signal wait_delay : integer range 0 to 1000;
 
 
   constant data_transfer : data_type := ("001101000001110110000000", "001101000010011100000100",
