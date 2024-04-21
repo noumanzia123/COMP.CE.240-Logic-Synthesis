@@ -5,11 +5,11 @@
 -- Author     : Nouman Zia, David Rama Jimeno
 -- Group number : 6
 -- Company    : TUNI
--- Created    : 2024-04-10
+-- Created    : 2024-02-25
 -- Platform   : 
 -- Standard   : VHDL'87
 -------------------------------------------------------------------------------
--- Description: I2C-bus controller which configures the DA7212 audio codec before the synthesizer begins to feed data to it
+-- Description: controller for the DA7212 Audio codec
 -------------------------------------------------------------------------------
 
 -- Include default libraries
@@ -17,203 +17,274 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
--- Declare entity audio_codec_model
-ENTITY i2c_config_backup IS
+-- Declare entity audio_ctrl
+
+ENTITY i2c_config IS
 
     generic (
-        ref_clk_freq_g : integer := 50000000; -- frequency of clk-signal as information to your block
-        i2c_freq_g : integer := 20000; -- i2c-bus (sclk_out) frequency
-        n_params_g : integer := 15; -- number of configuration parameters
-        n_leds_g : integer := 4 -- number of leds on the board
+        ref_clk_freq_g : integer := 50000000; -- clk frequency
+        i2c_freq_g     : integer := 20000; -- frequency of sclk
+        n_params_g     : integer := 15;
+        n_leds_g       : integer := 4
         );
     PORT (
-        clk : in std_logic; -- works as a clock
-        rst_n : in std_logic;
-        sdat_inout  : inout std_logic;
-        sclk_out  : out std_logic;
-        param_status_out : out std_logic_vector(n_leds_g-1 DOWNTO 0);
-        finished_out    : out std_logic
+        clk              : in std_logic;
+        rst_n            : in std_logic;
+        sdat_inout       : inout std_logic;
+        sclk_out         : out std_logic; -- Bit clock
+        param_status_out : out std_logic_vector(n_leds_g-1 downto 0);
+        finished_out     : out std_logic -- Left-right clock
         );   
-END i2c_config_backup;
+END i2c_config;
 
 -------------------------------------------------------------------------------
 -- Architecture 'rtl' is  defined
 
-ARCHITECTURE rtl of i2c_config_backup is
+ARCHITECTURE rtl of i2c_config is
 
 -- Define internal SIGNALs and constants
-CONSTANT max_sclk_c : INTEGER := (ref_clk_freq_g/i2c_freq_g)/2; -- maximum value for sclk counter corresponding to half period (25µsec)
-CONSTANT min_sda_c : INTEGER := max_sclk_c/2; -- sclk counter corresponding to quater duration of sclk period
-CONSTANT data_width_c : INTEGER := 8;
-CONSTANT n_bytes_c : INTEGER := 3;
 
+signal counter_sclk : integer;
+signal sclk_r : std_logic;
+signal sdat_r : std_logic;
+signal wait_done : std_logic;
+signal start_stop_done : std_logic;
+signal wait_counter : integer;
+--signal start_stop_counter : integer;
+signal bits_counter : integer;
+signal byte_counter : integer;
+signal param_counter : integer;
+signal ack_flag : std_logic;
+signal stop_request : std_logic;
+signal nack : std_logic;
+constant data_width : integer := 8;
+constant bytes_sent : integer := 3;
+constant wait_delay : integer := 300;
+constant start_stop_delay : integer := 300;
 
-TYPE  configuration_data_array is ARRAY (0 to n_params_g-1) of std_logic_vector(data_width_c*n_bytes_c-1 DOWNTO 0); -- an array type with elements containing vectors of bits to be sent
-CONSTANT byte_register : configuration_data_array := ("001101000001110110000000", "001101000010011100000100",
-                                                    "001101000010001000001011", "001101000010100000000000",
-                                                    "001101000010100110000001", "001101000110100100001000",
-                                                    "001101000100011111100001", "001101000110101100001001",
-                                                    "001101000110110000001000", "001101000100101100001000",
-                                                    "001101000100110000001000", "001101000110111010001000",
-                                                    "001101000110111110001000", "001101000110111110001000",
-                                                    "001101000101000111110001"); -- constant array
---CONSTANT byte_register : configuration_data_array := ("101010101010101010101010", "101010101010101010101010","101010101010101010101010"); -- constant array
+type data_type is array (n_params_g-1 downto 0) of std_logic_vector(data_width*bytes_sent-1 downto 0);
+type state is (wait_start,start,write_data,ack,stop,finish);
 
- -- Counters for generating clock, sending bits and parameter
-SIGNAL counter_sclk_r : INTEGER; -- counter for sclk
-SIGNAL counter_param_r : INTEGER; -- counter for sda transmission
-SIGNAL counter_bit_r : INTEGER; -- counter for sda transmission
+signal curr_state_r : state;
+signal data_register_r : std_logic_vector(data_width*bytes_sent - 1 downto 0);
+signal byte_register_r : std_logic_vector(data_width - 1 downto 0);
 
--- signals to acknowlege
-SIGNAL ack_flag_r : STD_LOGIC;
-SIGNAL nack_r : STD_LOGIC;
+constant data_transfer : data_type := ("001101000001110110000000", "001101000010011100000100",
+                                       "001101000010001000001011", "001101000010100000000000", 
+                                       "001101000010100110000001", "001101000110100100001000",
+                                       "001101000110101000000000", "001101000100011111100001", 
+                                       "001101000110101100001001", "001101000110110000001000", 
+                                       "001101000100101100001000", "001101000100110000001000", 
+                                       "001101000110111010001000", "001101000110111110001000", 
+                                       "001101000101000111110001");
+begin -- rtl
 
--- internal signals
-SIGNAL sclk_r : STD_LOGIC;
-SIGNAL param_status_r : unsigned(n_leds_g-1 DOWNTO 0); -- counts parameters sent
-SIGNAL finished_r : STD_LOGIC;
-SIGNAL sdat_r : STD_LOGIC;
+  sclk_out <= sclk_r;
+  clk_generation : PROCESS (clk,rst_n)
 
--- register to store data 
-SIGNAL transmission_r : std_logic_vector(data_width_c*n_bytes_c-1 DOWNTO 0);
+  BEGIN	
 
--- Enumerate possible states with human readable names
-type states_type is (initial_state, wait_for_start, start, data_transmit, acknowledgement, stop_transmission, finish);
-signal curr_state_r : states_type;
-signal next_state   : states_type;
+    if (rst_n = '0') then
+      sclk_r <= '1';
+      counter_sclk <= 0;
+    elsif (clk'EVENT and clk='1') then
+      if counter_sclk = (ref_clk_freq_g / i2c_freq_g)/2-1 then
+        if curr_state_r = write_data or curr_state_r = ack then -- The clock operates only in these states
+          sclk_r <= not sclk_r;
+        else 
+          sclk_r <= '1';  -- After the clock cycle it remains low and goes to wait_start
+        end if;
+        counter_sclk <= 0;
+      else
+        counter_sclk <= counter_sclk+1;
+      end if;
+    end if;
 
-BEGIN -- rtl
-    sclk_out <= sclk_r;
-    param_status_out <= std_logic_vector(param_status_r);
-    finished_out <= finished_r;
- 
-    controller  : process (clk, rst_n) -- state machine 
-    
-    begin   -- process single
-        if rst_n = '0' then     -- asynchronous reset (active low)
-            curr_state_r <= initial_state;     -- init state
-            sdat_r <= '1';
-            sclk_r <= '1';
-            ack_flag_r <= '0';
-            counter_sclk_r <= 0;
-            counter_param_r <= 0;
-            counter_bit_r <= 0;
-            param_status_r <= (others => '0');
-            finished_r <= '0';
-            --transmission_r <= "101010101010101010101010"; 
-            transmission_r <= (others => '0');
-        
-        elsif clk'event and clk = '1' then  -- rising clock edge
-            -- FSM always checks what is the current state
-            -- Here that is done with case-clause
-            case curr_state_r is
-                when initial_state =>
-                    transmission_r <= byte_register(counter_param_r);
-                    counter_sclk_r <= counter_sclk_r + 1;
-                    if counter_sclk_r + 1 = min_sda_c THEN
-                        counter_sclk_r <= 0;
-                        curr_state_r <= wait_for_start;
-                    end if;
+  END PROCESS clk_generation;
 
-                when wait_for_start =>
-                --sdat_inout <= sdat_r;
-                    counter_sclk_r <= counter_sclk_r + 1;
-                    if counter_sclk_r + 1 = max_sclk_c THEN
-                        sdat_r <= '0';
-                        counter_sclk_r <= 0;
-                        curr_state_r <= start;
-                    end if;
+  FSM_PROC : PROCESS (clk,rst_n) -- i2c implemented with state machines
 
-                when start =>
-                    counter_sclk_r <= counter_sclk_r + 1;
-                    transmission_r <= byte_register(counter_param_r);
-                    if counter_sclk_r + 1 = max_sclk_c THEN
-                        sclk_r <= '0';
-                        counter_sclk_r <= 0;
-                        curr_state_r <= data_transmit;    
-                    end if;
-                    
-                when data_transmit =>
-                    counter_sclk_r <= counter_sclk_r + 1;
-                    -- sclk generation
-                    IF counter_sclk_r + 1 = max_sclk_c THEN 
-                        sclk_r <= not sclk_r;                
-                    ELSIF counter_sclk_r + 1 = 2*max_sclk_c THEN
-                        sclk_r <= not sclk_r;
-                        counter_sclk_r <= 0;
-                    END IF;
-                    -- data transmit after each quarter of clock duration
-                    IF counter_sclk_r + 1 = min_sda_c AND (counter_bit_r /= data_width_c AND 
-                    counter_bit_r /= 2*data_width_c+1 AND counter_bit_r /= 3*data_width_c+2) THEN
-                        sdat_r <= transmission_r(data_width_c*n_bytes_c-1);                  
-                        transmission_r <= transmission_r(data_width_c*n_bytes_c-2 downto 0) & '0';
-                        counter_bit_r <= counter_bit_r + 1;
-                    -- acknowledge after each byte
-                    ELSIF counter_sclk_r + 1 = min_sda_c AND (counter_bit_r = data_width_c OR 
-                    counter_bit_r = 2*data_width_c+1 OR counter_bit_r = 3*data_width_c+2) THEN
-                        curr_state_r <= acknowledgement;
-                        ack_flag_r <= '1';
-                    END IF;                     
-   
-                when acknowledgement =>
-                    counter_sclk_r <= counter_sclk_r + 1;                    
-                    -- clk generation and check acknowledgement
-                    IF counter_sclk_r + 1 = max_sclk_c THEN 
-                        sclk_r <= not sclk_r;
-                        IF nack_r = '1' THEN -- Check nack_r
-                            curr_state_r <= stop_transmission;
-                        END IF;
-                    ELSIF counter_sclk_r + 1 = 2*max_sclk_c THEN
-                        sclk_r <= not sclk_r;
-                        counter_sclk_r <= 0;
-                        counter_bit_r <= counter_bit_r + 1;
-                        IF counter_bit_r + 1 = n_bytes_c*data_width_c+n_bytes_c THEN -- (27) all 3 bytes written (a full parameter sent)
-                            ack_flag_r <= '0';
-                            counter_param_r <= counter_param_r + 1;
-                            param_status_r <= param_status_r + 1;
-                            IF counter_param_r + 1 = n_params_g THEN -- finish I2C configuration if all parameters written
-                                curr_state_r <= finish;  
-                            ELSE -- send next parameter
-                                curr_state_r <= stop_transmission;
-                            END IF;                        
-                        ELSE  -- otherwise send next byte
-                            ack_flag_r <= '0';
-                            curr_state_r <= data_transmit;
-                        END IF;
-                    END IF;
+  BEGIN	
 
-                    
-                when stop_transmission =>
-                    counter_sclk_r <= counter_sclk_r + 1;
-                    if counter_sclk_r + 1 = max_sclk_c THEN
-                        sclk_r <= '1';
-                    end if;
-                    if counter_sclk_r + 1 = 2*max_sclk_c THEN
-                        sdat_r <= '1';
-                    end if;
-                    if counter_sclk_r + 1 = 3*max_sclk_c THEN
-                        counter_sclk_r <= 0;
-                        counter_bit_r <= 0;
-                        curr_state_r <= wait_for_start;   
-                    end if;
-                
-                when finish =>
-                    finished_r <= '1';
-
-            end case;
-        end if;         
-    end process controller;
-
-    tri_state  : process(ack_flag_r,sdat_r) -- comb process: to decide sending data to codec or receving data from codec
-    begin   -- process tri_state
-            if ack_flag_r = '1'THEN
-                sdat_inout <= 'Z';
-                --IF sdat_inout = '1' THEN -- Check nack_r
-                    --nack_r <= '0';
-                --END IF;
+    if (rst_n = '0') then
+      sdat_r <= '1';
+      sdat_inout <= 'Z';
+      finished_out <= '0';
+      curr_state_r <= wait_start;
+      wait_done <= '0';
+      start_stop_done <= '0';
+      ack_flag <= '0';
+      stop_request <= '0';
+      nack <= '0';
+      param_counter <= 0;
+      byte_counter <= 0;
+      bits_counter <= 0;
+      wait_counter <= 0;
+    elsif (clk'EVENT and clk='1') then
+      case curr_state_r is
+-----------------------------------------------------------------------
+                         --WAIT_START--
+-----------------------------------------------------------------------
+        when wait_start =>
+          if wait_done = '1' and rst_n = '1' then -- We wait until the reset signal is high and we waited the buffer time
+            curr_state_r <= start;
+          else
+            curr_state_r <= wait_start;
+          end if;
+-----------------------------------------------------------------------
+                         --START--
+-----------------------------------------------------------------------
+        when start =>
+          if wait_done = '1' and start_stop_done = '1' then -- In this state we pull the sdat line to low
+            curr_state_r <= write_data;
+          else
+            curr_state_r <= start;
+          end if;
+-----------------------------------------------------------------------
+                        --WRITE_DATA--
+-----------------------------------------------------------------------
+        when write_data =>
+          if bits_counter = data_width and sclk_r = '0'
+           and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/4-1 then -- Data transmission can only be done when the clock is low
+            curr_state_r <= ack;
+          else
+            curr_state_r <= write_data;
+          end if;
+-----------------------------------------------------------------------
+                          --ACK--
+-----------------------------------------------------------------------
+        when ack =>
+          if ack_flag = '1' or nack = '1'  then
+            if stop_request = '1' then
+              curr_state_r <= stop;        -- Once all the three bytes have been sent or a nack is received, we go to stop state
             else
-                sdat_inout <= sdat_r;
+              curr_state_r <= write_data;
             end if;
-    end process tri_state;
-        
+          else
+            curr_state_r <= ack;
+          end if;
+-----------------------------------------------------------------------
+                          --STOP--
+-----------------------------------------------------------------------
+        when stop =>
+          if start_stop_done = '1' then
+            if param_counter = n_params_g then
+              curr_state_r <= finish;     -- Only if all the parameters have been sent we can go to finish state
+            else
+              curr_state_r <= wait_start;
+            end if;
+          else
+            curr_state_r <= stop;
+          end if;
+-----------------------------------------------------------------------
+                       --FINISH--
+-----------------------------------------------------------------------
+        when finish =>
+          curr_state_r <= finish;
+-----------------------------------------------------------------------
+                       --OTHERS--
+-----------------------------------------------------------------------
+        when others =>
+          curr_state_r <= wait_start;
+
+      end case;
+
+      if curr_state_r = wait_start then
+        sdat_r <= '1';
+        if wait_counter = wait_delay-1 and sclk_r = '1' then --Wait delay is the buffer time between stop and start
+          wait_done <= '1';
+          wait_counter <= 0;
+        else
+          wait_counter <= wait_counter + 1;
+        end if;
+      end if;
+
+      if curr_state_r = start then
+        if sclk_r = '1' then
+          start_stop_done <= '1';
+          sdat_r <= '0';
+          wait_done <= '0';
+          nack <= '0';
+        else
+          start_stop_done <= '0';
+        end if;
+        if start_stop_done = '1' then
+          if wait_counter = wait_delay-1 and sclk_r = '1' then 
+            wait_done <= '1';  -- After we pull sdat low, we wait a prudential time before the data transmission
+            wait_counter <= 0;
+          else
+            wait_counter <= wait_counter + 1;
+          end if;
+        end if;
+      end if;
+      
+      if curr_state_r = write_data then
+        wait_done <= '0';
+        ack_flag <= '0';
+        start_stop_done <= '0';
+        data_register_r <= data_transfer(n_params_g-param_counter-1);
+        byte_register_r <= data_register_r((bytes_sent-byte_counter)*data_width-1 downto (bytes_sent-byte_counter-1)*data_width);
+        if bits_counter /= data_width and sclk_r = '0' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/4-1 then
+          sdat_r <= byte_register_r(data_width-bits_counter-1);
+        end if;
+        if sclk_r = '0' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/4-1 then
+          bits_counter <= bits_counter+1;
+        end if;
+      end if;
+
+      if curr_state_r = ack then
+        sdat_inout <= 'Z';
+        if sdat_inout = '1' and sclk_r = '1' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/2-1 then
+          nack <= '1';
+        else
+          nack <= nack;
+        end if;
+        if sclk_r = '1' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/2-1 then
+          ack_flag <= '1';
+          sdat_r <= '0';
+          bits_counter <= 0;
+          byte_counter <= byte_counter + 1;
+          if byte_counter = bytes_sent-1 then
+            stop_request <= '1';
+            byte_counter <= 0;
+          end if;
+        else
+          ack_flag <= '0';
+        end if;
+      end if;
+      
+      if curr_state_r = ack then
+        sdat_inout <= 'Z';
+      else
+        sdat_inout <= sdat_r;
+      end if;
+
+      if curr_state_r = stop then
+        start_stop_done <= '0';
+        stop_request <= '0';
+        sdat_r <= '0';
+        if sclk_r = '1' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/2-1 then
+          start_stop_done <= '1';
+          sdat_r <= '1';
+          if nack = '1' then
+            param_counter <= param_counter;
+          else
+            param_counter <= param_counter + 1;
+          end if;
+        else
+          start_stop_done <= '0';
+        end if;
+      end if;
+      if curr_state_r = finish then
+        finished_out <= '1';
+        sdat_r <= '0';
+      else
+        finished_out <= '0';
+      end if;
+    end if;
+
+  END PROCESS FSM_PROC;
+  
+param_status_out <= std_logic_vector(to_unsigned(param_counter,n_leds_g));
+   
 end rtl;
