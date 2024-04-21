@@ -243,7 +243,9 @@ begin -- rtl
           ack_flag <= '1';
           sdat_r <= '0';
           bits_counter <= 0;
-          byte_counter <= byte_counter + 1;
+          if byte_counter /= bytes_sent-1 then
+            byte_counter <= byte_counter + 1;
+          end if;
           if byte_counter = bytes_sent-1 then
             stop_request <= '1';
             byte_counter <= 0;
