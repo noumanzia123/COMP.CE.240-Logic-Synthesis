@@ -262,7 +262,6 @@ begin -- rtl
       if curr_state_r = stop then
         start_stop_done <= '0';
         stop_request <= '0';
-        sdat_r <= '0';
         if sclk_r = '1' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/2-1 then
           start_stop_done <= '1';
           sdat_r <= '1';
