@@ -44,16 +44,16 @@ ARCHITECTURE rtl of i2c_config is
 
 -- Define internal SIGNALs and constants
 
-signal counter_sclk : integer;
+signal counter_sclk : integer range 0 to 10000;
 signal sclk_r : std_logic;
 signal sdat_r : std_logic;
 signal wait_done : std_logic;
 signal start_stop_done : std_logic;
-signal wait_counter : integer;
+signal wait_counter : integer range 0 to 10000;
 --signal start_stop_counter : integer;
-signal bits_counter : integer;
-signal byte_counter : integer;
-signal param_counter : integer;
+signal bits_counter : integer range 0 to 10000;
+signal byte_counter : integer range 0 to 10000;
+signal param_counter : integer range 0 to 10000;
 signal ack_flag : std_logic;
 signal stop_request : std_logic;
 signal nack : std_logic;
@@ -264,6 +264,7 @@ begin -- rtl
       if curr_state_r = stop then
         start_stop_done <= '0';
         stop_request <= '0';
+        --sdat_r <= '0';
         if sclk_r = '1' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/2-1 then
           start_stop_done <= '1';
           sdat_r <= '1';
