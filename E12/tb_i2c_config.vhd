@@ -194,22 +194,18 @@ begin  -- testbench
         -- Wait for the start condition
         when wait_start =>
           
-          --if nack = '1' then
-          --  nack_done <= '1';
-          --end if;
-          -- While clk stays high, the sdat falls
-            if sclk = '1' and sclk_old_r = '1' and
-            sdat_old_r = '1' and sdat = '0'  then
-              wait_delay <= 0;
+          if sclk = '1' and sclk_old_r = '1' then
+            if wait_delay = delay_c and sdat_old_r = '1' and sdat = '0'  then
               curr_state_r <= read_byte;
-            else
+            elsif wait_delay /= delay_c then
               wait_delay <= wait_delay+1;
             end if;
+          end if;
 
           --------------------------------------------------------------------
           -- Wait for a byte to be read
         when read_byte =>
-
+          wait_delay <= 0;
           -- Detect a rising edge
           if sclk = '1' and sclk_old_r = '0' then
 
