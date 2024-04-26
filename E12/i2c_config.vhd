@@ -224,7 +224,8 @@ begin -- rtl
         start_stop_done <= '0';
         data_register_r <= data_transfer(n_params_g-param_counter-1);
         byte_register_r <= data_register_r((bytes_sent-byte_counter)*data_width-1 downto (bytes_sent-byte_counter-1)*data_width);
-        if bits_counter /= data_width and sclk_r = '0' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/4-1 then
+        if bits_counter /= data_width and bits_counter /= data_width+1 
+        and sclk_r = '0' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/4-1 then
           sdat_r <= byte_register_r(data_width-bits_counter-1);
         end if;
         if sclk_r = '0' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/4-1 then
