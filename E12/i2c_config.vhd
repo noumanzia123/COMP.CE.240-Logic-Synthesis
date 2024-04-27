@@ -57,6 +57,7 @@ signal param_counter : integer range 0 to 10000;
 signal ack_flag : std_logic;
 signal stop_request : std_logic;
 signal nack : std_logic;
+signal nack_done : std_logic;
 constant data_width : integer := 8;
 constant bytes_sent : integer := 3;
 constant wait_delay : integer := 5000;
@@ -116,6 +117,7 @@ begin -- rtl
       ack_flag <= '0';
       stop_request <= '0';
       nack <= '0';
+      nack_done <= '0';
       param_counter <= 0;
       byte_counter <= 0;
       bits_counter <= 0;
@@ -200,6 +202,7 @@ begin -- rtl
       end if;
 
       if curr_state_r = start then
+        nack_done <= '0';
         if sclk_r = '1' then
           start_stop_done <= '1';
           sdat_r <= '0';
@@ -237,14 +240,18 @@ begin -- rtl
         sdat_inout <= 'Z';
         if sdat_inout = '1' and sclk_r = '1' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/2-1 then
           nack <= '1';
+          stop_request <= '1';
+          byte_counter <= 0;
+          bits_counter <= 0;
         else
           nack <= nack;
         end if;
-        if sclk_r = '1' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/2-1 then
+        if sclk_r = '1' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/2-1 
+        and (nack = '0' and nack_done = '0') and sdat_inout = '0'  then
           ack_flag <= '1';
           sdat_r <= '0';
           bits_counter <= 0;
-          if byte_counter /= bytes_sent-1 then
+          if byte_counter /= bytes_sent-1 and nack = '0' then
             byte_counter <= byte_counter + 1;
           end if;
           if byte_counter = bytes_sent-1 then
@@ -266,11 +273,15 @@ begin -- rtl
         start_stop_done <= '0';
         stop_request <= '0';
         --sdat_r <= '0';
+        --if nack = '1' then
+          --nack_done <= '1';
+       -- end if;
         if sclk_r = '1' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/2-1 then
           start_stop_done <= '1';
           sdat_r <= '1';
           if nack = '1' then
             param_counter <= param_counter;
+            nack_done <= '1';
           else
             param_counter <= param_counter + 1;
           end if;
