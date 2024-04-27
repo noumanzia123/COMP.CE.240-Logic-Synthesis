@@ -169,7 +169,7 @@ begin  -- testbench
         if curr_state_r = send_ack then
 
           -- Send ack (low = ACK, high = NACK)
-          if (param_counter_r = 4 and byte_counter_r = 2) and nack_done = '0'  then
+          if (param_counter_r = 3 and byte_counter_r = 0) and nack_done = '0'  then
             sdat_r <= '1';
             nack <= '1';
           else
@@ -228,8 +228,8 @@ begin  -- testbench
               byte_register_r <= data_register_r((bit_count_max_c * (n_bytes_c - byte_counter_r) - 1)
                                                   downto ((bit_count_max_c * ((n_bytes_c - 1) - byte_counter_r))));
             else
-              if (param_counter_r = 4) and (nack = '0')
-                and (byte_counter_r = n_bytes_c - 1) and (bit_counter_r = bit_count_max_c) then
+              if (param_counter_r = 3) and (nack = '0')
+                and (byte_counter_r = 0) and (bit_counter_r = bit_count_max_c) then
                 sdat_r         <= '1';
                 nack           <= '1';
               end if;
@@ -246,7 +246,13 @@ begin  -- testbench
             
           if sclk = '1' and sclk_old_r = '0' then
 
-            if byte_counter_r /= n_bytes_c-1 then
+            if nack = '1' and nack_done = '0' then
+              param_counter_r <= param_counter_r;
+              nack_done    <= '1';
+              byte_counter_r <= 0;
+              curr_state_r   <= wait_stop;
+
+            elsif byte_counter_r /= n_bytes_c-1 then
 
               -- Transmission continues
               byte_counter_r <= byte_counter_r + 1;
@@ -256,13 +262,7 @@ begin  -- testbench
               -- Transmission is about to stop
               byte_counter_r <= 0;
               curr_state_r   <= wait_stop;
-
-              if nack = '1' and nack_done = '0' then
-                param_counter_r <= param_counter_r;
-                nack_done    <= '1';
-              else
-                param_counter_r <= param_counter_r + 1;
-              end if;
+              param_counter_r <= param_counter_r + 1;
             end if;
 
             if byte_counter_r = 0 then
