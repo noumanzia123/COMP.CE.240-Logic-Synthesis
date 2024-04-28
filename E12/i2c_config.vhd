@@ -237,6 +237,8 @@ begin -- rtl
       end if;
 
       if curr_state_r = ack then
+        data_register_r <= (OTHERS => '0');
+        byte_register_r <= (OTHERS => '0');
         sdat_inout <= 'Z';
         if sdat_inout = '1' and sclk_r = '1' and counter_sclk = (ref_clk_freq_g / i2c_freq_g)/2-1 then
           nack <= '1';
