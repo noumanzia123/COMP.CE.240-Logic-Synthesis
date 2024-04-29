@@ -87,20 +87,20 @@ architecture testbench of tb_i2c_config is
   signal byte_register_r : std_logic_vector(bit_count_max_c - 1 downto 0);
   signal sdat_register_r : std_logic_vector(bit_count_max_c - 1 downto 0);
   signal param_counter_r : integer range 0 to n_params_c;
-  signal nack : std_logic := '0';
-  signal nack_done : std_logic := '0';
+  signal nack_r : std_logic := '0';
+  signal nack_done_r : std_logic := '0';
   constant delay_c : integer := 300;
-  signal wait_delay : integer range 0 to 1000;
+  signal wait_delay_r : integer range 0 to 1000;
 
 
-  constant data_transfer : data_type := ("001101000001110110000000", "001101000010011100000100",
-                                         "001101000010001000001011", "001101000010100000000000", 
-                                         "001101000010100110000001", "001101000110100100001000",
-                                         "001101000110101000000000", "001101000100011111100001", 
-                                         "001101000110101100001001", "001101000110110000001000", 
-                                         "001101000100101100001000", "001101000100110000001000", 
-                                         "001101000110111010001000", "001101000110111110001000", 
-                                         "001101000101000111110001");
+  constant data_transfer_c : data_type := ("001101000001110110000000", "001101000010011100000100",
+                                           "001101000010001000001011", "001101000010100000000000", 
+                                           "001101000010100110000001", "001101000110100100001000",
+                                           "001101000110101000000000", "001101000100011111100001", 
+                                           "001101000110101100001001", "001101000110110000001000", 
+                                           "001101000100101100001000", "001101000100110000001000", 
+                                           "001101000110111010001000", "001101000110111110001000", 
+                                           "001101000101000111110001");
   
 begin  -- testbench
 
@@ -150,8 +150,8 @@ begin  -- testbench
       data_register_r <= (OTHERS => '0');
       byte_register_r <= (OTHERS => '0');
       sdat_register_r <= (OTHERS => '0');
-      nack <= '0';
-      nack_done <= '0';
+      nack_r <= '0';
+      nack_done_r <= '0';
       
     elsif clk'event and clk = '1' then  -- rising clock edge
 
@@ -169,9 +169,9 @@ begin  -- testbench
         if curr_state_r = send_ack then
 
           -- Send ack (low = ACK, high = NACK)
-          if (param_counter_r = 3 and byte_counter_r = 0) and nack_done = '0'  then
+          if (param_counter_r = 3 and byte_counter_r = 0) and nack_done_r = '0'  then
             sdat_r <= '1';
-            nack <= '1';
+            nack_r <= '1';
           else
             sdat_r <= '0';
           end if;
@@ -195,17 +195,17 @@ begin  -- testbench
         when wait_start =>
           
           if sclk = '1' and sclk_old_r = '1' then
-            if wait_delay = delay_c and sdat_old_r = '1' and sdat = '0'  then
+            if wait_delay_r = delay_c and sdat_old_r = '1' and sdat = '0'  then
               curr_state_r <= read_byte;
-            elsif wait_delay /= delay_c then
-              wait_delay <= wait_delay+1;
+            elsif wait_delay_r /= delay_c then
+              wait_delay_r <= wait_delay_r+1;
             end if;
           end if;
 
           --------------------------------------------------------------------
           -- Wait for a byte to be read
         when read_byte =>
-          wait_delay <= 0;
+          wait_delay_r <= 0;
           -- Detect a rising edge
           if sclk = '1' and sclk_old_r = '0' then
 
@@ -224,14 +224,14 @@ begin  -- testbench
 
             if bit_counter_r /= bit_count_max_c then
               sdat_register_r((bit_count_max_c - bit_counter_r) - 1) <= sdat;
-              data_register_r  <= data_transfer((n_params_c - param_counter_r) - 1);
+              data_register_r  <= data_transfer_c((n_params_c - param_counter_r) - 1);
               byte_register_r <= data_register_r((bit_count_max_c * (n_bytes_c - byte_counter_r) - 1)
                                                   downto ((bit_count_max_c * ((n_bytes_c - 1) - byte_counter_r))));
             else
-              if (param_counter_r = 3) and (nack = '0')
+              if (param_counter_r = 3) and (nack_r = '0')
                 and (byte_counter_r = 0) and (bit_counter_r = bit_count_max_c) then
                 sdat_r         <= '1';
-                nack           <= '1';
+                nack_r         <= '1';
               end if;
             end if;
             
@@ -246,9 +246,9 @@ begin  -- testbench
             
           if sclk = '1' and sclk_old_r = '0' then
 
-            if nack = '1' and nack_done = '0' then
+            if nack_r = '1' and nack_done_r = '0' then
               param_counter_r <= param_counter_r;
-              nack_done    <= '1';
+              nack_done_r    <= '1';
               byte_counter_r <= 0;
               curr_state_r   <= wait_stop;
 
