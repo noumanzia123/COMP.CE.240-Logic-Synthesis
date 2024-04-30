@@ -1,5 +1,5 @@
 -------------------------------------------------------------------------------
--- Title      : COMP.CE.240 Logic Synthesis, Exercise 11
+-- Title      : COMP.CE.240 Logic Synthesis, Exercise 12
 -------------------------------------------------------------------------------
 -- File       : i2c_config.vhd
 -- Author     : Nouman Zia, David Rama Jimeno
@@ -50,7 +50,7 @@ CONSTANT n_bytes_c : INTEGER := 3;
 
 TYPE  configuration_data_array is ARRAY (0 to n_params_g-1) of std_logic_vector(data_width_c*n_bytes_c-1 DOWNTO 0); -- an array type with elements containing vectors of bits to be sent
 CONSTANT byte_register : configuration_data_array := ("001101000001110110000000", "001101000010011100000100",
-"001101000010001000001010", "001101000010100000000000",
+"001101000010001000001011", "001101000010100000000000",
 "001101000010100110000001", "001101000110100100001000",
 "001101000100011111100001", "001101000110101100001001",
 "001101000110110000001000", "001101000100101100001000",
