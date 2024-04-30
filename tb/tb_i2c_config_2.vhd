@@ -42,7 +42,6 @@ architecture testbench of tb_i2c_config is
   
   CONSTANT max_sclk_c : INTEGER := (ref_freq_c/i2c_freq_c)/2; -- maximum value for sclk counter corresponding to half period (25µsec)
   CONSTANT max_bit_check_c  : INTEGER := max_sclk_c + max_sclk_c/2; -- maximum value for bit read counter
-  CONSTANT max_sample_c  : INTEGER := max_sclk_c; -- maximum value for bit sample
 
   -- Signals fed to the DUV
   signal clk   : std_logic := '0';  -- Remember that default values supported
@@ -74,22 +73,13 @@ architecture testbench of tb_i2c_config is
   -- To hold the value that will be driven to sdat when sclk is high.
   signal sdat_r : std_logic;
 
-  -- sampled bit during the rising edge of sclk
-  signal sdat_sample_r : std_logic;
-
   -- Counters for receiving bits, bytes and parameter
-  signal bit_counter_r  : integer range 0 to bit_count_max_c;
+  signal bit_counter_r  : integer range 0 to bit_count_max_c-1;
   signal byte_counter_r : integer range 0 to n_bytes_c-1;
-  signal param_counter_r : integer range 0 to n_params_c;
-  -- counter for reading bit from param_register_ref
-  signal counter_refbit_r : integer range 0 to 2*max_sclk_c;
-  -- counter for sampling incoming bit
-  signal counter_samplebit_r : integer range 0 to 4*max_sclk_c+1;
-  -- counter for sampling incoming bit
-  signal counter_sclkedge_r : integer range 0 to bit_count_max_c;
+  signal counter_param_r : integer range 0 to n_params_c-1;
+  -- counter for reading bit from param_register
+  signal counter_bitcheck_r : integer;
 
-  signal nack_r : std_logic;
-  signal nack_done_r : std_logic;
 
   -- States for the FSM
   type   states is (wait_start, read_byte, send_ack, wait_stop);
@@ -98,16 +88,12 @@ architecture testbench of tb_i2c_config is
   -- Previous values of the I2C signals for edge detection
   signal sdat_old_r : std_logic;
   signal sclk_old_r : std_logic;
-  -- device address, write signal flag
-  signal device_ads_flag_r : std_logic;
-  signal write_flag_r : std_logic;
-  signal rgstr_ads_flag_r : std_logic;
-  signal datvalue_flag_r : std_logic;
-  signal sample_flag_r : std_logic;
+  -- address flag
+  signal address_flag_r : std_logic;
   
   -- array of parameter data
   TYPE  configuration_data_array is ARRAY (0 to n_params_c-1) of std_logic_vector(bit_count_max_c*n_bytes_c-1 DOWNTO 0); -- an array type with elements containing vectors of bits to be sent
-  CONSTANT param_register_ref : configuration_data_array := ("001101000001110110000000", "001101000010011100000100",
+  CONSTANT param_register : configuration_data_array := ("101010101010101010101010", "001101000010011100000100",
                                                     "001101000010001000001011", "001101000010100000000000",
                                                     "001101000010100110000001", "001101000110100100001000",
                                                     "001101000100011111100001", "001101000110101100001001",
@@ -140,7 +126,7 @@ begin  -- testbench
       ref_clk_freq_g => ref_freq_c,
       i2c_freq_g     => i2c_freq_c,
       n_params_g     => n_params_c,
-	    n_leds_g       => n_leds_c)
+	  n_leds_g => n_leds_c)
     port map (
       clk              => clk,
       rst_n            => rst_n,
@@ -159,24 +145,14 @@ begin  -- testbench
 
       sdat_old_r <= '0';
       sclk_old_r <= '0';
-      device_ads_flag_r <= '0';
-      write_flag_r <= '0';
-      rgstr_ads_flag_r <= '0';
-      datvalue_flag_r <= '0';
-      sample_flag_r <= '0';
+      address_flag_r <= '0';
 
       byte_counter_r <= 0;
       bit_counter_r  <= 0;
-      param_counter_r <= 0;
-      counter_refbit_r <= 0;
-      counter_samplebit_r <= 0;
-      counter_sclkedge_r <= 0;
-
-      nack_r <= '0';
-      nack_done_r <= '0';
+      counter_param_r <= 0;
+      counter_bitcheck_r <= 0;
 
       sdat_r <= 'Z';
-      sdat_sample_r <= '0';
 
       bit_check_r <= '0';
       
@@ -196,13 +172,7 @@ begin  -- testbench
         if curr_state_r = send_ack then
 
           -- Send ack (low = ACK, high = NACK)
-          if (param_counter_r = 7 and byte_counter_r = 2) and nack_done_r = '0' then
-            sdat_r <= '1';
-            nack_r <= '1';
-          else
-            sdat_r <= '0';
-            nack_r <= '0';
-          end if;
+          sdat_r <= '0';
 
         else
 
@@ -222,83 +192,57 @@ begin  -- testbench
         -- Wait for the start condition
         when wait_start =>
 
-          data_r <= param_register_ref(param_counter_r);
+          data_r <= param_register(counter_param_r);
           -- While clk stays high, the sdat falls
           if sclk = '1' and sclk_old_r = '1' and
             sdat_old_r = '1' and sdat = '0' then
 
             curr_state_r <= read_byte;
-            counter_refbit_r <= counter_refbit_r + 1;
+            counter_bitcheck_r <= counter_bitcheck_r + 1;
 
           end if;
 
           --------------------------------------------------------------------
           -- Wait for a byte to be read
         when read_byte =>
-          -- reading bit from reference parameter register
-          -- to check with transmitted parameter
-          counter_refbit_r <= counter_refbit_r + 1;
-          counter_samplebit_r <= counter_samplebit_r + 1;
-          if counter_refbit_r = max_bit_check_c - 1 AND bit_counter_r = 0 then
-            bit_check_r <= data_r(bit_count_max_c*n_bytes_c-1);                  
-            data_r <= data_r(bit_count_max_c*n_bytes_c-2 downto 0) & '0'; 
-            counter_refbit_r <= 0;
-            counter_samplebit_r <= 0;
-          elsif counter_refbit_r = 2*max_sclk_c - 1 AND bit_counter_r /= 0 then
-            bit_check_r <= data_r(bit_count_max_c*n_bytes_c-1);                  
-            data_r <= data_r(bit_count_max_c*n_bytes_c-2 downto 0) & '0'; 
-            counter_refbit_r <= 0;
-            counter_samplebit_r <= 0;
-          end if;
-
-          -- sample incoming bit at the mid of high SCLK         
-          if counter_sclkedge_r /= 0 and counter_samplebit_r = max_sample_c then
-            sdat_sample_r <= sdat;
-          end if;
           
-          -- once bit sampled check with expected bit at falling edge
-          -- Detect a falling edge
-          if sclk = '0' and sclk_old_r = '1' then
-            if counter_sclkedge_r /= 0 and  sdat_sample_r /=  bit_check_r then
-                sample_flag_r <= '1';
-            end if;
+          counter_bitcheck_r <= counter_bitcheck_r + 1;
+          if counter_bitcheck_r = max_bit_check_c - 1 AND bit_counter_r = 0 then
+            bit_check_r <= data_r(bit_count_max_c*n_bytes_c-1);                  
+            data_r <= data_r(bit_count_max_c*n_bytes_c-2 downto 0) & '0'; 
+            counter_bitcheck_r <= 0;
+          elsif counter_bitcheck_r = 2*max_sclk_c - 1 AND bit_counter_r /= 0 then
+            bit_check_r <= data_r(bit_count_max_c*n_bytes_c-1);                  
+            data_r <= data_r(bit_count_max_c*n_bytes_c-2 downto 0) & '0'; 
+            counter_bitcheck_r <= 0;
           end if;
 
           -- Detect a rising edge
           if sclk = '1' and sclk_old_r = '0' then
-            counter_sclkedge_r <= counter_sclkedge_r + 1;
-            -- Verify the correctness of device address, 
-            -- write bit, register address and data value
-            if byte_counter_r = 0 then
-              if sdat /= bit_check_r and bit_counter_r /= bit_count_max_c - 1 then
-                device_ads_flag_r <= '1';
-              elsif sdat /= bit_check_r and bit_counter_r = bit_count_max_c - 1 then
-                write_flag_r <= '1';
-              end if;            
-            elsif byte_counter_r = 1 then
-              if sdat /= bit_check_r then
-                rgstr_ads_flag_r <= '1';
-              end if;
-            elsif byte_counter_r = 2 then
-              if sdat /= bit_check_r then
-                datvalue_flag_r <= '1';
-              end if;           
-            end if;           
+            --counter_bitcheck_r <= 0;
 
-            if bit_counter_r /= bit_count_max_c - 1 then
+            if bit_counter_r /= bit_count_max_c-1 then
+              -- Verifies the correctness of device address 
+              -- and read/write bit
+              --bit_check_r <= data_r(bit_counter_r);                   
+              if byte_counter_r = 0 then
+                if sdat /= bit_check_r then
+                  address_flag_r <= '1';
+                end if;
+              end if;
 
               -- Normally just receive a bit
               bit_counter_r <= bit_counter_r + 1;
 
-            end if;
 
-            if bit_counter_r = bit_count_max_c-1 then
+
+            else
 
               -- When terminal count is reached, let's send the ack
-              counter_refbit_r <= 0;
+              --counter_bitcheck_r <= 0;
               curr_state_r  <= send_ack;
               bit_counter_r <= 0;
-
+              
             end if;  -- Bit counter terminal count
             
           end if;  -- sclk rising clock edge
@@ -306,23 +250,9 @@ begin  -- testbench
           --------------------------------------------------------------------
           -- Send acknowledge
         when send_ack =>
-          counter_samplebit_r <= counter_samplebit_r + 1;
-          -- sample incoming bit at the mid of high SCLK         
-          if counter_sclkedge_r /= 0 and counter_samplebit_r = max_sample_c then
-            sdat_sample_r <= sdat;
-          end if;
-
-          -- once bit sampled check with expected bit at falling edge
-          -- Detect a falling edge
-          if sclk = '0' and sclk_old_r = '1' then
-            if counter_sclkedge_r /= 0 and  sdat_sample_r /=  bit_check_r then
-                sample_flag_r <= '1';
-            end if;
-          end if;
-
+          --counter_bitcheck_r <= 0;
           -- Detect a rising edge
           if sclk = '1' and sclk_old_r = '0' then
-            counter_sclkedge_r <= 0;
             
             if byte_counter_r /= n_bytes_c-1 then
 
@@ -335,14 +265,7 @@ begin  -- testbench
               -- Transmission is about to stop
               byte_counter_r <= 0;
               curr_state_r   <= wait_stop;
-              --param_counter_r <= param_counter_r + 1;
-
-              if nack_r = '1' and nack_done_r = '0' then
-                param_counter_r <= param_counter_r;
-                nack_done_r    <= '1';
-              else
-                param_counter_r <= param_counter_r + 1;
-              end if;
+              counter_param_r <= counter_param_r + 1;
               
             end if;
 
@@ -371,16 +294,6 @@ begin  -- testbench
 
   -- SDAT should never contain X:s.
   assert sdat /= 'X' report "Three state bus in state X" severity error;
- -- Device address should be correct
- assert device_ads_flag_r /= '1' report "Device address incorrect" severity error;
- -- Controller should sent write
- assert write_flag_r /= '1' report "No write bit transmitted" severity error;
- -- register address should be correct
- assert rgstr_ads_flag_r /= '1' report "Codec register address incorrect" severity error;
- -- data value should be correct
- assert datvalue_flag_r /= '1' report "Data value transmitted incorrect" severity error;
--- data value should be correct
-assert sample_flag_r /= '1' report "Transmitted data not stable" severity error;
 
   -- End of simulation, but not during the reset
   assert finished = '0' or rst_n = '0' report

@@ -1,130 +1,233 @@
--------------------------------------------------------------------------------
--- Title      : COMP.CE.240 Logic Synthesis, Exercise 07
--------------------------------------------------------------------------------
--- File       : audio_ctrl.vhd
--- Author     : Nouman Zia, David Rama Jimeno
--- Group number : 6
--- Company    : TUNI
--- Created    : 2024-02-25
--- Platform   : 
--- Standard   : VHDL'87
--------------------------------------------------------------------------------
--- Description: controller for the DA7212 Audio codec
--------------------------------------------------------------------------------
+-- TODO: Add header
 
--- Include default libraries
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
-
--- Declare entity audio_ctrl
-
-ENTITY audio_ctrl IS
-
-    generic (
-        ref_clk_freq_g : integer := 20000000; -- clk frequency
-        sample_rate_g : integer := 48000; -- frequency of lrclk
-        data_width_g : integer := 16
-        );
-    PORT (
-        clk : in std_logic;
-        rst_n : in std_logic;
-        left_data_in  : in std_logic_vector(data_width_g-1 DOWNTO 0);
-        right_data_in   : in std_logic_vector(data_width_g-1 DOWNTO 0);
-        aud_bclk_out  : out std_logic; -- Bit clock
-        aud_data_out  : out std_logic;
-        aud_lrclk_out  : out std_logic -- Left-right clock
-        );   
-END audio_ctrl;
 
 -------------------------------------------------------------------------------
--- Architecture 'rtl' is  defined
+-- Empty entity
+-------------------------------------------------------------------------------
 
-ARCHITECTURE rtl of audio_ctrl is
+entity tb_i2c_config is
+end tb_i2c_config;
 
--- Define internal SIGNALs and constants
-SIGNAL counter1_r  : signed(data_width_g-1 DOWNTO 0); -- counter for lrclk
-SIGNAL counter2_r  : signed(data_width_g-1 DOWNTO 0); -- counter for bclk
-SIGNAL left_channel_data_r : std_logic_vector(data_width_g-1 downto 0);  -- internal data
-SIGNAL right_channel_data_r : std_logic_vector(data_width_g-1 downto 0);  -- internal data
-SIGNAL right_channel_r : STD_LOGIC; -- '1' for counting upwards, '0' for counting downwards
-SIGNAL left_channel_r : STD_LOGIC; -- '1' for counting upwards, '0' for counting downwards
-SIGNAL lrclk_r : STD_LOGIC;
-SIGNAL bclk_r : STD_LOGIC;
-SIGNAL aud_data_r : STD_LOGIC;
-CONSTANT max_lr_c : integer := (ref_clk_freq_g/sample_rate_g)/2; -- limit value for Left-right clock divider 
-CONSTANT max_bit_c : integer := (max_lr_c/(data_width_g))/2; -- limit value for Bit clock divider 
+-------------------------------------------------------------------------------
+-- Architecture
+-------------------------------------------------------------------------------
+architecture testbench of tb_i2c_config is
+
+  -- Number of parameters to expect
+  constant n_params_c     : integer := 15;
+  constant n_leds_c : integer := 4;
+  constant i2c_freq_c     : integer := 20000;
+  constant ref_freq_c     : integer := 50000000;
+  constant clock_period_c : time    := 20 ns;
+
+  -- Every transmission consists several bytes and every byte contains given
+  -- amount of bits. 
+  constant n_bytes_c       : integer := 3;
+  constant bit_count_max_c : integer := 8;
+
+  -- Signals fed to the DUV
+  signal clk   : std_logic := '0';  -- Remember that default values supported
+  signal rst_n : std_logic := '0';      -- only in synthesis
+
+  -- The DUV prototype
+  component i2c_config
+    generic (
+      ref_clk_freq_g : integer;
+      i2c_freq_g     : integer;
+      n_params_g     : integer;
+	  n_leds_g : integer);
+    port (
+      clk              : in    std_logic;
+      rst_n            : in    std_logic;
+      sdat_inout       : inout std_logic;
+      sclk_out         : out   std_logic;
+      param_status_out : out   std_logic_vector(n_leds_g-1 downto 0);
+      finished_out     : out   std_logic
+      );
+  end component;
+
+  -- Signals coming from the DUV
+  signal sdat         : std_logic := 'Z';
+  signal sclk         : std_logic;
+  signal param_status : std_logic_vector(n_leds_c-1 downto 0);
+  signal finished     : std_logic;
+
+  -- To hold the value that will be driven to sdat when sclk is high.
+  signal sdat_r : std_logic;
+
+  -- Counters for receiving bits and bytes
+  signal bit_counter_r  : integer range 0 to bit_count_max_c-1;
+  signal byte_counter_r : integer range 0 to n_bytes_c-1;
+
+  -- States for the FSM
+  type   states is (wait_start, read_byte, send_ack, wait_stop);
+  signal curr_state_r : states;
+
+  -- Previous values of the I2C signals for edge detection
+  signal sdat_old_r : std_logic;
+  signal sclk_old_r : std_logic;
+  
+begin  -- testbench
+
+  clk   <= not clk after clock_period_c/2;
+  rst_n <= '1'     after clock_period_c*4;
+
+  -- Assign sdat_r when sclk is active, otherwise 'Z'.
+  -- Note that sdat_r is usually 'Z'
+  with sclk select
+    sdat <=
+    sdat_r when '1',
+    'Z'    when others;
 
 
-begin -- rtl
-    aud_data_out <= aud_data_r;
-    aud_lrclk_out <= lrclk_r;
-    aud_bclk_out <= bclk_r;
+  -- Component instantiation
+  i2c_config_1 : i2c_config
+    generic map (
+      ref_clk_freq_g => ref_freq_c,
+      i2c_freq_g     => i2c_freq_c,
+      n_params_g     => n_params_c,
+	  n_leds_g => n_leds_c)
+    port map (
+      clk              => clk,
+      rst_n            => rst_n,
+      sdat_inout       => sdat,
+      sclk_out         => sclk,
+      param_status_out => param_status,
+      finished_out     => finished);
 
-    parallel_serial : PROCESS (clk,rst_n) -- process for parallel-serial transfer
-    
-    BEGIN -- process parallel_serial
-        IF rst_n = '0' THEN -- asynchronous reset initialize registers
-            aud_data_r <= '0';
-            left_channel_data_r <= (OTHERS => '0');
-            right_channel_data_r <= (OTHERS => '0'); 
+  -----------------------------------------------------------------------------
+  -- The main process that controls the behavior of the test bench
+  fsm_proc : process (clk, rst_n)
+  begin  -- process fsm_proc
+    if rst_n = '0' then                 -- asynchronous reset (active low)
 
-        ELSIF clk'event AND clk = '1' THEN -- clk edge
-            -- load the data to registers before lrclk rising edge 
-            IF counter2_r + 2 = 2*max_bit_c AND (counter1_r + 1 = 1 OR counter1_r = 2*data_width_g)  THEN 
-                left_channel_data_r <= left_data_in;
-                right_channel_data_r <= right_data_in;
-            END IF;
-            IF left_channel_r = '1' THEN
-                IF counter2_r + 1 = 2*max_bit_c THEN -- sampling left channel at bclk edge by shifting left
-                    aud_data_r <= left_channel_data_r(data_width_g-1);                  
-                    left_channel_data_r <= left_channel_data_r(data_width_g-2 downto 0) & '0';   
-                END IF;             
-            ELSIF right_channel_r = '1' THEN
-                IF counter2_r + 1 = 2*max_bit_c THEN -- sampling right channel at bclk by shifting left    
-                    aud_data_r <= right_channel_data_r(data_width_g-1);                  
-                    right_channel_data_r <= right_channel_data_r(data_width_g-2 downto 0) & '0'; 
-                END IF;
-            END IF;
-        END IF;        
-    
-    END PROCESS parallel_serial;
+      curr_state_r <= wait_start;
 
-    clock_divider: process (clk,rst_n) -- process for generation of clk SIGNALs for DA7212 codec
-    BEGIN -- process clock_divider
-        IF rst_n = '0' THEN -- asynchronous reset initialize registers
-            counter1_r <= (OTHERS => '0'); -- lrclk
-            counter2_r <= (OTHERS => '0'); -- bclk
-            bclk_r <= '0';
-            lrclk_r <= '0';
-            right_channel_r <= '0'; -- flag for right channel data tranmission
-            left_channel_r <= '0';  -- flag for left channel data tranmission
-        ELSIF clk'event AND clk = '1' THEN -- clk edge       
-            counter2_r <= counter2_r + 1;
-            -- BCLK & LRCLK generation 
-            IF counter2_r + 1 = max_bit_c THEN -- bclk set '1' when counter reaches half of the clock period length
-                bclk_r <= '1';
-            ELSIF counter2_r + 1 = 2*max_bit_c THEN -- bclk set '0' when counter reaches full clock period length
-                bclk_r <= '0';
-                counter2_r <= (OTHERS => '0');
-                counter1_r <= counter1_r + 1;
-                IF counter1_r + 1 = 1 THEN -- rising edge of lrclk
-                    lrclk_r <= '1';              
-                ELSIF counter1_r = data_width_g THEN -- falling edge of lrclk
-                    lrclk_r <= '0';
-                ELSIF counter1_r = 2*data_width_g THEN -- rising edge of lrclk
-                    lrclk_r <= '1';
-                    counter1_r <= "0000000000000001";                     
-                END IF;
-            END IF;
-            -- flags for right and left channel data tranmission
-            IF counter2_r + 2 = 2*max_bit_c AND (counter1_r + 1 = 1 OR counter1_r = 2*data_width_g) THEN
-                left_channel_r <= '1';
-                right_channel_r <= '0';
-            ELSIF counter2_r + 2 = 2*max_bit_c AND counter1_r = data_width_g THEN
-                left_channel_r <= '0';
-                right_channel_r <= '1';                    
-            END IF;            
-        END IF;
-    END PROCESS clock_divider;
-end rtl;
+      sdat_old_r <= '0';
+      sclk_old_r <= '0';
+
+      byte_counter_r <= 0;
+      bit_counter_r  <= 0;
+
+      sdat_r <= 'Z';
+      
+    elsif clk'event and clk = '1' then  -- rising clock edge
+
+      -- The previous values are required for the edge detection
+      sclk_old_r <= sclk;
+      sdat_old_r <= sdat;
+
+
+      -- Falling edge detection for acknowledge control
+      -- Must be done on the falling edge in order to be stable during
+      -- the high period of sclk
+      if sclk = '0' and sclk_old_r = '1' then
+
+        -- If we are supposed to send ack
+        if curr_state_r = send_ack then
+
+          -- Send ack (low = ACK, high = NACK)
+          sdat_r <= '0';
+
+        else
+
+          -- Otherwise, sdat is in high impedance state.
+          sdat_r <= 'Z';
+          
+        end if;
+        
+      end if;
+
+
+      -------------------------------------------------------------------------
+      -- FSM
+      case curr_state_r is
+
+        -----------------------------------------------------------------------
+        -- Wait for the start condition
+        when wait_start =>
+
+          -- While clk stays high, the sdat falls
+          if sclk = '1' and sclk_old_r = '1' and
+            sdat_old_r = '1' and sdat = '0' then
+
+            curr_state_r <= read_byte;
+
+          end if;
+
+          --------------------------------------------------------------------
+          -- Wait for a byte to be read
+        when read_byte =>
+
+          -- Detect a rising edge
+          if sclk = '1' and sclk_old_r = '0' then
+
+            if bit_counter_r /= bit_count_max_c-1 then
+
+              -- Normally just receive a bit
+              bit_counter_r <= bit_counter_r + 1;
+
+            else
+
+              -- When terminal count is reached, let's send the ack
+              curr_state_r  <= send_ack;
+              bit_counter_r <= 0;
+              
+            end if;  -- Bit counter terminal count
+            
+          end if;  -- sclk rising clock edge
+
+          --------------------------------------------------------------------
+          -- Send acknowledge
+        when send_ack =>
+
+          -- Detect a rising edge
+          if sclk = '1' and sclk_old_r = '0' then
+            
+            if byte_counter_r /= n_bytes_c-1 then
+
+              -- Transmission continues
+              byte_counter_r <= byte_counter_r + 1;
+              curr_state_r   <= read_byte;
+              
+            else
+
+              -- Transmission is about to stop
+              byte_counter_r <= 0;
+              curr_state_r   <= wait_stop;
+              
+            end if;
+
+          end if;
+
+          ---------------------------------------------------------------------
+          -- Wait for the stop condition
+        when wait_stop =>
+
+          -- Stop condition detection: sdat rises while sclk stays high
+          if sclk = '1' and sclk_old_r = '1' and
+            sdat_old_r = '0' and sdat = '1' then
+
+            curr_state_r <= wait_start;
+            
+          end if;
+
+      end case;
+
+    end if;
+  end process fsm_proc;
+
+  -----------------------------------------------------------------------------
+  -- Asserts for verification
+  -----------------------------------------------------------------------------
+
+  -- SDAT should never contain X:s.
+  assert sdat /= 'X' report "Three state bus in state X" severity error;
+
+  -- End of simulation, but not during the reset
+  assert finished = '0' or rst_n = '0' report
+    "Simulation done" severity failure;
+  
+end testbench;

@@ -2,164 +2,161 @@
 -- Title      : TKT-1212, Exercise 05
 -- Project    : 
 -------------------------------------------------------------------------------
--- File       : tb_adder.vhd
--- Author     : Antti Rasmus
--- Company    : TUT/DCS
--- Created    : 2008-11-28
--- Last update: 2008-11-28
+-- File       : tb_multi_port_adder.vhd
+-- Author     : David Rama Jimeno, Nouman Zia
+-- Group number : 6
+-- Company    : TUNI
+-- Created    : 2024-02-10
 -- Platform   : 
 -- Standard   : VHDL'87
 -------------------------------------------------------------------------------
--- Description: Tests all combinations of summing two 8-bit values
--------------------------------------------------------------------------------
--- Copyright (c) 2008 
--------------------------------------------------------------------------------
--- Revisions  :
--- Date        Version  Author  Description
--- 2024-11-28  1.0      ege	Created
+-- Description: A test bench for the multiport adder
 -------------------------------------------------------------------------------
 
+-- Include default libraries
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
 
+-- Declare entity
+ENTITY tb_multi_port_adder IS
+    generic (
+        operand_width_g : integer := 3
+        );
+END tb_multi_port_adder;
+-----------------------------------------
 
 
-entity tb_multi_port_adder is
-   generic(
-      operand_width_g : integer :=3
-      );
-end tb_multi_port_adder;
+-- Architecture called 'testbench' is  defined below
+ARCHITECTURE testbench of tb_multi_port_adder IS
 
+    -- Define constants
+    CONSTANT period_c : TIME := 10 ns;
+    CONSTANT num_of_operands_c : integer := 4;
+    CONSTANT duv_delay_c : integer := 2; -- the delay unit after which the output is checked
 
-architecture testbench of tb_multi_port_adder is
+    -- create signals
+    SIGNAL clk : std_logic := '0'; -- init values only in tb
+    SIGNAL rst_n : std_logic := '0'; -- init values only in tb
+    SIGNAL operands_r : std_logic_vector(operand_width_g*num_of_operands_c-1 DOWNTO 0);
+    SIGNAL sum : std_logic_vector(operand_width_g-1 DOWNTO 0);
+    SIGNAL output_valid_r : std_logic_vector(duv_delay_c+1-1 DOWNTO 0); --Shift register for delay compensation
 
-  -- Define constants: bit widths and duration of clk period 
+    -- Define two files in read and one in write mode
+    FILE input_f : TEXT OPEN READ_MODE IS "/home/zian/logsyn/tb/input.txt";
+    FILE ref_results_f : TEXT OPEN READ_MODE IS "/home/zian/logsyn/tb/ref_results.txt";
+    FILE output_f : TEXT OPEN WRITE_MODE IS "/home/zian/logsyn/tb/output.txt";
 
-   constant clk_period_c        : time    := 10 ns;
-   constant num_of_operands_g_c : integer := 4;
-   constant duv_delay_c         : integer := 2;
-
-   signal clk   : std_logic := '0';
-   signal rst_n : std_logic := '0';
-   signal end_simulation_r : std_logic;
-
-   signal operands_r     : std_logic_vector(operand_width_g*num_of_operands_g_c-1 downto 0);
-   signal sum            : std_logic_vector(operand_width_g-1 downto 0);
-   signal output_valid_r : std_logic_vector(duv_delay_c+1-1 downto 0);
-
-   file input_f       : text open read_mode is "input.txt";
-   file ref_results_f : text open read_mode is "ref_results.txt";
-   file output_f      : text open write_mode is "output.txt";
-
-  
-  -- Component declaration of DUV
-   component multi_port_adder
-      generic (
-         operand_width_g   : integer;
-         num_of_operands_g : integer
-         );
-      port (
-         clk         : in  std_logic;
-         rst_n       : in  std_logic;
-         operands_in : in std_logic_vector(operand_width_g*num_of_operands_g-1 DOWNTO 0);
-         sum_out     : out std_logic_vector(operand_width_g-1 DOWNTO 0));
-   end component;
-
-  
-  -- Note: Init values are not supported in synthesis
-  
-begin  -- testbench
-
-   -- Instantiate DUV and connect the ports to testbench's signals
-   DUV : multi_port_adder
-      generic map (
-         operand_width_g   => operand_width_g,
-         num_of_operands_g => num_of_operands_g_c
-         )
-      port map (
-         clk         => clk,
-         rst_n       => rst_n,
-         operands_in => operands_r,
-         sum_out     => sum
-         );
-
-   -- Reset the DUV
-   rst_n <= '1' after 4*clk_period_c;
-
-   -- purpose: Generate clock signal for DUV
-   -- type   : combinational
-   -- inputs : clk  (this is a special case for test purposes!)
-   -- outputs: clk  (this is a special case for test purposes!)
-   clk_gen : process (clk)
-   begin  -- process clk_gen
-      clk <= not clk after clk_period_c/2;
-   end process clk_gen;
-
-   -- purpose: Read input files
-   -- type   : combinational
-   -- inputs : input_f
-   -- outputs: clk  (this is a special case for test purposes!)
-
-   input_reader : process (clk,rst_n)
-      type int_array is array (1 to num_of_operands_g_c) of integer; 
-      variable line_in_v : line;
-      variable value_reader_v : int_array;
-   begin -- process input_reader
-
-      if rst_n = '0' then                 -- asynchronous reset (active low)
-         operands_r     <= (others => '0');
-         output_valid_r <= (others => '0'); 
-
-      elsif clk'event and clk ='1' then   -- rising clock edge
-         output_valid_r    <= output_valid_r(duv_delay_c-1 downto 0) & '1';
-         if not (endfile(input_f)) then
-            readline(input_f,line_in_v);
-            for i in num_of_operands_g_c downto 1 loop
-               read(line_in_v,value_reader_v(i));
-               operands_r((operand_width_g *i  - 1) downto (operand_width_g * (i-1))) 
-               <= std_logic_vector(to_signed(value_reader_v(i),operand_width_g));
-            end loop;
-         end if;
-      end if;	
-   end process input_reader;
-
-  -- purpose: Generate all possible inputs values and check the result
-  -- type   : sequential
-  -- inputs : clk, rst_n
-  -- outputs:   
-   checker : process (clk, rst_n)
-      variable line_ref_v : line;
-      variable line_out_v : line;
-      variable value_check_v : integer;
-   begin  -- process input_gen_output_check 
-      if rst_n = '0' then                 -- asynchronous reset (active low)
-         --operands_r     <= (others => '0');
-         --output_valid_r <= (others => '0'); 
-      
-      elsif clk'event and clk = '1' then  -- rising clock edge
     
-         if output_valid_r(duv_delay_c) = '1' then
-            if not (endfile(ref_results_f)) then
-               readline(ref_results_f,line_ref_v);
-               read(line_ref_v,value_check_v);
-               assert to_integer(signed(sum)) = value_check_v
-                  report "output signal is not equal to the sum of the inputs"
-               severity failure;
-               write(line_out_v, (to_integer(signed(sum))));
-               writeline(output_f,line_out_v);
-            else
-               assert end_simulation_r = '0'
-                  report "Simulation ended!" severity failure;
-               end if;
-            end if;
-         end if;
+    -- Declare the components DUT
+    COMPONENT multi_port_adder        
+            generic (
+            operand_width_g : integer;
+            num_of_operands_g  : integer
+            );
 
-      
-      -- Stop the simulator
-   end process checker;
+            PORT (
+            clk : in std_logic;
+            rst_n : in std_logic;
+            operands_in : in std_logic_vector(operand_width_g*num_of_operands_g-1 DOWNTO 0);
+            sum_out : out std_logic_vector(operand_width_g-1 DOWNTO 0)
+            );
+    END COMPONENT;
+
+
+begin -- testbench architecture
+
+    -- Port mappings of the DUT
+    DUT : multi_port_adder
+        generic map (
+            operand_width_g => operand_width_g,
+            num_of_operands_g => num_of_operands_c
+            )
+
+        PORT map (
+        clk => clk, 
+        rst_n => rst_n, 
+        operands_in => operands_r, 
+        sum_out => sum
+        );
+
+    -- create clock and reset signals
+    clk <= NOT clk AFTER period_c/2; -- this style needs init value
+    rst_n <= '0', '1' AFTER 4*period_c;
+
+
+
+
+
+input_reader : process (clk, rst_n) -- synchronous process for reading input files
+
+-- variables for the input and output files
+VARIABLE line_in_v : LINE;
+
+
+-- variables for the value in one line
+TYPE int_array IS ARRAY(1 to num_of_operands_c) OF INTEGER;  
+--VARIABLE input_tmp_v : int _array (num_of_operands_c-1 DOWNTO 0);
+VARIABLE input_tmp_v : int_array;
+VARIABLE output_value_v : INTEGER;
+
+begin -- process input_reader
+    
+    IF rst_n = '0' THEN -- asynchronous reset 
+        operands_r  <= (OTHERS => '0');
+        output_valid_r <= (OTHERS => '0');
+        
+    ELSIF clk'EVENT AND clk = '1' THEN -- rising edge
+        output_valid_r <= output_valid_r(duv_delay_c-1 downto 0) & '1'; -- left shift for delay
+        --output_valid_r <= std_logic_vector(shift_left(unsigned(output_valid_r), 1));
+        --output_valid_r(0) <= '1';
+        
+        IF NOT (ENDFILE(input_f)) THEN
+            READLINE(input_f, line_in_v);
+            for kk in 1 to num_of_operands_c loop
+                read(line_in_v, input_tmp_v(kk));
+                operands_r(operand_width_g*num_of_operands_c-1-(kk-1)*operand_width_g DOWNTO operand_width_g*num_of_operands_c-1-(kk-1)*operand_width_g-(operand_width_g-1)) 
+                <= std_logic_vector(to_signed(input_tmp_v(kk),operand_width_g));
+		     END loop;
+        end IF;
+    end IF;
+
+end process input_reader;
+
+
+
+
+
+checker : process (clk, rst_n) -- synchronous process for the checker 
+
+VARIABLE line_refin_v : LINE;
+VARIABLE line_out_v : LINE;
+
+VARIABLE ref_input_tmp_v : INTEGER;
+
+begin -- process checker
+    
+    IF rst_n = '0' THEN -- asynchronous reset
+
+    ELSIF clk'EVENT and clk = '1' then 
+        -- output available to check after two clock cyclyes
+        IF output_valid_r(duv_delay_c) = '1' THEN
+            IF NOT (ENDFILE(ref_results_f)) THEN
+                READLINE(ref_results_f, line_refin_v);
+                read(line_refin_v, ref_input_tmp_v);
+                ASSERT  to_integer(signed(sum)) = ref_input_tmp_v
+                    REPORT "Test bench failed"
+                SEVERITY failure;
+                write(line_out_v, to_integer(signed(sum)));
+                writeline(output_f, line_out_v);
+            ELSE
+                report "Simulation done sucessfully!"; 
+            end IF;
+        end IF;
+    end IF;
+
+end process checker;
 
 
 end testbench;
-

@@ -1,4 +1,4 @@
-# //  ModelSim SE-64 10.7d Feb 15 2019 Linux 4.18.0-513.11.1.el8_9.x86_64
+# //  ModelSim SE-64 10.7d Feb 15 2019 Linux 4.18.0-513.24.1.el8_9.x86_64
 # //
 # //  Copyright 1991-2019 Mentor Graphics Corporation
 # //  All Rights Reserved.
@@ -11,466 +11,2665 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
+pwd
+# /home/zian/logsyn
 cd sim
 # reading modelsim.ini
-vcom -check_synthesis adder.vhd
+vcom -check_synthesis ../vhd/i2c_config.vhd
 # Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 00:32:13 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis adder.vhd 
-# ** Error: (vcom-7) Failed to open design unit file "adder.vhd" in read mode.
-# No such file or directory. (errno = ENOENT)
-# End time: 00:32:13 on Feb 01,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
-vcom -check_synthesis ..vhd/adder.vhd
-# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 00:32:31 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ..vhd/adder.vhd 
-# ** Error: (vcom-7) Failed to open design unit file "..vhd/adder.vhd" in read mode.
-# No such file or directory. (errno = ENOENT)
-# End time: 00:32:31 on Feb 01,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
-cd ..
-# reading /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/../modelsim.ini
-cd vhd
-ls
-# adder.vhd
-# lock_pkg.vhd
-# lock.vhd
-# lock.vhd.bak
-# lock.vhd.lck
-# ripple_carry_adder_david.vhd
-# ripple_carry_adder.vhd
-# ripple_carry_adder.vhd.bak
-cd ..
-cd sim
-# reading modelsim.ini
-vcom -check_synthesis ..vhd/adder.vhd
-# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 00:33:13 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ..vhd/adder.vhd 
-# ** Error: (vcom-7) Failed to open design unit file "..vhd/adder.vhd" in read mode.
-# No such file or directory. (errno = ENOENT)
-# End time: 00:33:13 on Feb 01,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
-vcom -check_synthesis ..vhd/adder.vhd
-# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 00:33:41 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ..vhd/adder.vhd 
-# ** Error: (vcom-7) Failed to open design unit file "..vhd/adder.vhd" in read mode.
-# No such file or directory. (errno = ENOENT)
-# End time: 00:33:41 on Feb 01,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
-vcom -check_synthesis ../vhd/adder.vhd
-# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 00:34:33 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# Start time: 12:50:44 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
-# -- Compiling entity adder
-# -- Compiling architecture rtl of adder
-# ** Error: ../vhd/adder.vhd(43): Cannot read output "sum_out".
-# 	VHDL 2008 allows reading outputs.
-# 	This facility is enabled by compiling with -2008.
-# ** Error: ../vhd/adder.vhd(47): near "if": syntax error
-# End time: 00:34:33 on Feb 01,2024, Elapsed time: 0:00:00
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 12:50:44 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 12:50:50 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# ** Error: ../tb/tb_i2c_config.vhd(76): near ";": syntax error
+# ** Error: ../tb/tb_i2c_config.vhd(206): near "=": (vcom-1576) expecting == or '+' or '-' or '&'.
+# ** Note: ../tb/tb_i2c_config.vhd(277): VHDL Compiler exiting
+# End time: 12:50:50 on Apr 21,2024, Elapsed time: 0:00:00
 # Errors: 2, Warnings: 0
 # /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
-vcom -check_synthesis ../vhd/adder.vhd
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
 # Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 00:41:57 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# Start time: 12:51:21 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity adder
-# -- Compiling architecture rtl of adder
-# ** Error: ../vhd/adder.vhd(47): near "if": syntax error
-# End time: 00:41:57 on Feb 01,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
-vcom -check_synthesis ../vhd/adder.vhd
-# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 00:43:55 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity adder
-# -- Compiling architecture rtl of adder
-# ** Error: ../vhd/adder.vhd(47): near "if": syntax error
-# End time: 00:43:55 on Feb 01,2024, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
-vcom -check_synthesis ../vhd/adder.vhd
-# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 00:45:03 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity adder
-# -- Compiling architecture rtl of adder
-# End time: 00:45:04 on Feb 01,2024, Elapsed time: 0:00:01
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 12:51:21 on Apr 21,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vcom -check_synthesis ../tb/tb_adder.vhd
-# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 00:45:18 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../tb/tb_adder.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity tb_adder
-# -- Compiling architecture testbench of tb_adder
-# End time: 00:45:18 on Feb 01,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim tb_adder
-# vsim tb_adder 
-# Start time: 00:45:51 on Feb 01,2024
+vsim tb_i2c_config
+# vsim tb_i2c_config 
+# Start time: 12:52:42 on Apr 21,2024
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.tb_adder(testbench)#1
-# Loading work.adder(rtl)#1
-# ** Fatal: (vsim-3348) Port length (10) does not match actual length (9) for port "/tb_adder/adder_1/sum_out".
-#    Time: 0 ns  Iteration: 0  Instance: /tb_adder/adder_1 File: ../vhd/adder.vhd Line: 31
-# FATAL ERROR while loading design
-# Error loading design
-# End time: 00:45:52 on Feb 01,2024, Elapsed time: 0:00:01
+# Loading work.tb_i2c_config(testbench)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/curr_state_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vsim tb_i2c_config
+# End time: 12:53:30 on Apr 21,2024, Elapsed time: 0:00:48
 # Errors: 1, Warnings: 0
-vcom -check_synthesis ../vhd/adder.vhd
-# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 00:48:21 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity adder
-# -- Compiling architecture rtl of adder
-# End time: 00:48:21 on Feb 01,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim tb_adder
-# vsim tb_adder 
-# Start time: 00:48:23 on Feb 01,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# vsim tb_i2c_config 
+# Start time: 12:53:30 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.tb_adder(testbench)#1
-# Loading work.adder(rtl)#1
-add wave  \
-sim:/tb_adder/clk \
-sim:/tb_adder/term1_r \
-sim:/tb_adder/term2_r \
-sim:/tb_adder/sum
-run 7 ms
-# ** Fatal: (vsim-3420) Array lengths do not match. Left is 9 (8 downto 0). Right is 10 (9 downto 0).
-#    Time: 0 ns  Iteration: 0  Process: /tb_adder/adder_1/line__43 File: ../vhd/adder.vhd
-# Fatal error in Architecture rtl at ../vhd/adder.vhd line 43
-# 
-# HDL call sequence:
-# Stopped at ../vhd/adder.vhd 43 Architecture rtl
-# 
-vcom -check_synthesis ../vhd/adder.vhd
-# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 00:50:33 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity adder
-# -- Compiling architecture rtl of adder
-# End time: 00:50:33 on Feb 01,2024, Elapsed time: 0:00:00
+# Loading work.tb_i2c_config(testbench)#1
+vsim -voptargs=+acc tb_i2c_config
+# End time: 12:55:31 on Apr 21,2024, Elapsed time: 0:02:01
 # Errors: 0, Warnings: 0
-vsim tb_adder
-# End time: 00:50:39 on Feb 01,2024, Elapsed time: 0:02:16
-# Errors: 2, Warnings: 0
-# vsim tb_adder 
-# Start time: 00:50:39 on Feb 01,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 12:55:31 on Apr 21,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "i2c_config_backup(rtl)".
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
 # Loading ieee.numeric_std(body)
-# Loading work.tb_adder(testbench)#1
-# Loading work.adder(rtl)#1
+# Loading work.i2c_config_backup(rtl)#1
 add wave -position insertpoint  \
-sim:/tb_adder/clk \
-sim:/tb_adder/rst_n \
-sim:/tb_adder/term1_r \
-sim:/tb_adder/term2_r \
-sim:/tb_adder/sum \
-sim:/tb_adder/expected_sum_r \
-sim:/tb_adder/end_simulation_r \
-sim:/tb_adder/input_w_c \
-sim:/tb_adder/output_w_c \
-sim:/tb_adder/clk_period_c \
-sim:/tb_adder/min_value_c \
-sim:/tb_adder/max_value_c
-vsim 7 ms
-# End time: 00:51:07 on Feb 01,2024, Elapsed time: 0:00:28
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 13:00:36 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 13:00:36 on Apr 21,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vsim 7 ms 
-# Start time: 00:51:07 on Feb 01,2024
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Error: (vopt-13130) Failed to find design unit 7.
-#         Searched libraries:
-#             work
-# ** Error: (vopt-13130) Failed to find design unit ms.
-#         Searched libraries:
-#             work
-# Optimization failed
-# Error loading design
-# End time: 00:51:08 on Feb 01,2024, Elapsed time: 0:00:01
-# Errors: 2, Warnings: 0
-vsim 7ms
-# vsim 7ms 
-# Start time: 00:54:07 on Feb 01,2024
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Error: (vopt-13130) Failed to find design unit 7ms.
-#         Searched libraries:
-#             work
-# Optimization failed
-# Error loading design
-# End time: 00:54:07 on Feb 01,2024, Elapsed time: 0:00:00
+vsim -voptargs=+acc tb_i2c_config
+# End time: 13:00:39 on Apr 21,2024, Elapsed time: 0:05:08
 # Errors: 1, Warnings: 0
-run 7ms
-# No Design Loaded!
-vsim tb_adder
-# vsim tb_adder 
-# Start time: 00:55:25 on Feb 01,2024
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 13:00:39 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
 # Loading ieee.numeric_std(body)
-# Loading work.tb_adder(testbench)#1
-# Loading work.adder(rtl)#1
-run 7ms
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 250 ns  Iteration: 0  Instance: /tb_adder
-# ** Fatal: (vsim-3420) Array lengths do not match. Left is 9 (8 downto 0). Right is 8 (7 downto 0).
-#    Time: 250 ns  Iteration: 0  Process: /tb_adder/adder_1/adder_sync File: ../vhd/adder.vhd
-# Fatal error in Process adder_sync at ../vhd/adder.vhd line 54
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vsim -voptargs=+acc tb_i2c_config
+# End time: 13:01:11 on Apr 21,2024, Elapsed time: 0:00:32
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 13:01:11 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vsim -voptargs=+acc tb_i2c_config
+# End time: 13:02:54 on Apr 21,2024, Elapsed time: 0:01:43
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 13:02:54 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/data_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vsim -voptargs=+acc tb_i2c_config
+# End time: 13:18:42 on Apr 21,2024, Elapsed time: 0:15:48
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 13:18:42 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/curr_state_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 14:14:01 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# ** Error: ../tb/tb_i2c_config.vhd(209): (vcom-1136) Unknown identifier "data_width_c".
+# ** Error: ../tb/tb_i2c_config.vhd(209): (vcom-1590) Bad expression in left operand of infix expression '-'.
+# ** Error: ../tb/tb_i2c_config.vhd(209): Type error resolving infix expression "-" as type std.STANDARD.NATURAL.
+# ** Note: ../tb/tb_i2c_config.vhd(284): VHDL Compiler exiting
+# End time: 14:14:01 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 14:14:53 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 14:14:53 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 14:15:03 on Apr 21,2024, Elapsed time: 0:56:21
+# Errors: 5, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 14:15:03 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/curr_state_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+vsim -voptargs=+acc tb_i2c_config
+# End time: 14:15:35 on Apr 21,2024, Elapsed time: 0:00:32
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 14:15:35 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 14:44:25 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# ** Error: ../tb/tb_i2c_config.vhd(43): (vcom-1136) Unknown identifier "ref_clk_freq_c".
+# ** Error: ../tb/tb_i2c_config.vhd(43): (vcom-1590) Bad expression in left operand of infix expression '/'.
+# ** Error: ../tb/tb_i2c_config.vhd(43): Type error resolving infix expression "/" as type std.STANDARD.INTEGER.
+# ** Note: ../tb/tb_i2c_config.vhd(295): VHDL Compiler exiting
+# End time: 14:44:25 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 14:44:53 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 14:44:53 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 14:44:57 on Apr 21,2024, Elapsed time: 0:29:22
+# Errors: 5, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 14:44:57 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/data_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Fatal: (vsim-3421) Value 1875 is out of range 0 to 1874.
+#    Time: 75090 ns  Iteration: 0  Process: /tb_i2c_config/fsm_proc File: ../tb/tb_i2c_config.vhd Line: 208
+# Fatal error in Process fsm_proc at ../tb/tb_i2c_config.vhd line 208
 # 
 # HDL call sequence:
-# Stopped at ../vhd/adder.vhd 54 Process adder_sync
+# Stopped at ../tb/tb_i2c_config.vhd 208 Process fsm_proc
 # 
-vcom -check_synthesis ../vhd/adder.vhd
-# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 01:01:39 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity adder
-# -- Compiling architecture rtl of adder
-# End time: 01:01:39 on Feb 01,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vcom -check_synthesis ../tb/tb_adder.vhd
-# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 01:01:57 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../tb/tb_adder.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity tb_adder
-# -- Compiling architecture testbench of tb_adder
-# End time: 01:01:57 on Feb 01,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim tb_adder
-# End time: 01:02:04 on Feb 01,2024, Elapsed time: 0:06:39
-# Errors: 2, Warnings: 1
-# vsim tb_adder 
-# Start time: 01:02:04 on Feb 01,2024
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+run
+# Cannot continue because of fatal error.
+# HDL call sequence:
+# Stopped at ../tb/tb_i2c_config.vhd 208 Process fsm_proc
+# 
+vsim -voptargs=+acc tb_i2c_config
+# End time: 14:47:09 on Apr 21,2024, Elapsed time: 0:02:12
+# Errors: 3, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 14:47:09 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
 # Loading ieee.numeric_std(body)
-# Loading work.tb_adder(testbench)#1
-# Loading work.adder(rtl)#1
+# Loading work.i2c_config_backup(rtl)#1
 add wave -position insertpoint  \
-sim:/tb_adder/clk \
-sim:/tb_adder/rst_n \
-sim:/tb_adder/term1_r \
-sim:/tb_adder/term2_r \
-sim:/tb_adder/sum \
-sim:/tb_adder/expected_sum_r \
-sim:/tb_adder/end_simulation_r \
-sim:/tb_adder/input_w_c \
-sim:/tb_adder/output_w_c \
-sim:/tb_adder/clk_period_c \
-sim:/tb_adder/min_value_c \
-sim:/tb_adder/max_value_c
-run 7ms
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 250 ns  Iteration: 0  Instance: /tb_adder
-# ** Fatal: (vsim-3420) Array lengths do not match. Left is 9 (8 downto 0). Right is 8 (7 downto 0).
-#    Time: 250 ns  Iteration: 0  Process: /tb_adder/adder_1/adder_sync File: ../vhd/adder.vhd
-# Fatal error in Process adder_sync at ../vhd/adder.vhd line 54
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Fatal: (vsim-3421) Value 1875 is out of range 0 to 1874.
+#    Time: 75090 ns  Iteration: 0  Process: /tb_i2c_config/fsm_proc File: ../tb/tb_i2c_config.vhd Line: 208
+# Fatal error in Process fsm_proc at ../tb/tb_i2c_config.vhd line 208
 # 
 # HDL call sequence:
-# Stopped at ../vhd/adder.vhd 54 Process adder_sync
+# Stopped at ../tb/tb_i2c_config.vhd 208 Process fsm_proc
 # 
-vcom -check_synthesis ../vhd/adder.vhd
+vsim -voptargs=+acc tb_i2c_config
+# End time: 14:48:46 on Apr 21,2024, Elapsed time: 0:01:37
+# Errors: 2, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 14:48:46 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/bit_check_r \
+sim:/tb_i2c_config/max_bit_check_c
+run
+run
+# ** Fatal: (vsim-3421) Value 1875 is out of range 0 to 1874.
+#    Time: 75090 ns  Iteration: 0  Process: /tb_i2c_config/fsm_proc File: ../tb/tb_i2c_config.vhd Line: 208
+# Fatal error in Process fsm_proc at ../tb/tb_i2c_config.vhd line 208
+# 
+# HDL call sequence:
+# Stopped at ../tb/tb_i2c_config.vhd 208 Process fsm_proc
+# 
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
 # Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 01:03:53 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# Start time: 14:50:59 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity adder
-# -- Compiling architecture rtl of adder
-# End time: 01:03:53 on Feb 01,2024, Elapsed time: 0:00:00
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 14:51:00 on Apr 21,2024, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-vsim tb_adder
-# End time: 01:03:57 on Feb 01,2024, Elapsed time: 0:01:53
-# Errors: 2, Warnings: 1
-# vsim tb_adder 
-# Start time: 01:03:57 on Feb 01,2024
+vsim -voptargs=+acc tb_i2c_config
+# End time: 14:52:08 on Apr 21,2024, Elapsed time: 0:03:22
+# Errors: 2, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 14:52:08 on Apr 21,2024
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
 # Loading ieee.numeric_std(body)
-# Loading work.tb_adder(testbench)#1
-# Loading work.adder(rtl)#1
+# Loading work.i2c_config_backup(rtl)#1
 add wave -position insertpoint  \
-sim:/tb_adder/clk \
-sim:/tb_adder/rst_n \
-sim:/tb_adder/term1_r \
-sim:/tb_adder/term2_r \
-sim:/tb_adder/sum \
-sim:/tb_adder/expected_sum_r \
-sim:/tb_adder/end_simulation_r \
-sim:/tb_adder/input_w_c \
-sim:/tb_adder/output_w_c \
-sim:/tb_adder/clk_period_c \
-sim:/tb_adder/min_value_c \
-sim:/tb_adder/max_value_c
-run 7ms
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 250 ns  Iteration: 0  Instance: /tb_adder
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 350 ns  Iteration: 0  Instance: /tb_adder
-# ** Failure: output signal is not equal to the sum of the inputs
-#    Time: 350 ns  Iteration: 0  Process: /tb_adder/input_gen_output_check File: ../tb/tb_adder.vhd
-# Break in Process input_gen_output_check at ../tb/tb_adder.vhd line 133
-vcom -check_synthesis ../vhd/adder.vhd
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r
+run
+# ** Fatal: (vsim-3421) Value 1875 is out of range 0 to 1874.
+#    Time: 75090 ns  Iteration: 0  Process: /tb_i2c_config/fsm_proc File: ../tb/tb_i2c_config.vhd Line: 208
+# Fatal error in Process fsm_proc at ../tb/tb_i2c_config.vhd line 208
+# 
+# HDL call sequence:
+# Stopped at ../tb/tb_i2c_config.vhd 208 Process fsm_proc
+# 
+run -all
+# Cannot continue because of fatal error.
+# HDL call sequence:
+# Stopped at ../tb/tb_i2c_config.vhd 208 Process fsm_proc
+# 
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
 # Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 01:18:50 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# Start time: 14:53:49 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity adder
-# -- Compiling architecture rtl of adder
-# End time: 01:18:50 on Feb 01,2024, Elapsed time: 0:00:00
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 14:53:49 on Apr 21,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim tb_adder
-# End time: 01:18:58 on Feb 01,2024, Elapsed time: 0:15:01
-# Errors: 1, Warnings: 2
-# vsim tb_adder 
-# Start time: 01:18:58 on Feb 01,2024
+vsim -voptargs=+acc tb_i2c_config
+# End time: 14:53:52 on Apr 21,2024, Elapsed time: 0:01:44
+# Errors: 3, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 14:53:52 on Apr 21,2024
 # ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
 # Loading ieee.numeric_std(body)
-# Loading work.tb_adder(testbench)#1
-# Loading work.adder(rtl)#1
+# Loading work.i2c_config_backup(rtl)#1
 add wave -position insertpoint  \
-sim:/tb_adder/clk \
-sim:/tb_adder/term1_r \
-sim:/tb_adder/term2_r \
-sim:/tb_adder/sum
-run 7ms
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 250 ns  Iteration: 0  Instance: /tb_adder
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 350 ns  Iteration: 0  Instance: /tb_adder
-# ** Failure: output signal is not equal to the sum of the inputs
-#    Time: 350 ns  Iteration: 0  Process: /tb_adder/input_gen_output_check File: ../tb/tb_adder.vhd
-# Break in Process input_gen_output_check at ../tb/tb_adder.vhd line 133
-vcom -check_synthesis ../vhd/adder.vhd
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Fatal: (vsim-3421) Value 1875 is out of range 0 to 1874.
+#    Time: 75090 ns  Iteration: 0  Process: /tb_i2c_config/fsm_proc File: ../tb/tb_i2c_config.vhd Line: 208
+# Fatal error in Process fsm_proc at ../tb/tb_i2c_config.vhd line 208
+# 
+# HDL call sequence:
+# Stopped at ../tb/tb_i2c_config.vhd 208 Process fsm_proc
+# 
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
 # Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 01:22:58 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../vhd/adder.vhd 
+# Start time: 14:56:16 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 14:56:17 on Apr 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 14:56:20 on Apr 21,2024, Elapsed time: 0:02:28
+# Errors: 2, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 14:56:20 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 15:08:44 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# ** Error: ../tb/tb_i2c_config.vhd(250): near "when": (vcom-1576) expecting END.
+# ** Error: ../tb/tb_i2c_config.vhd(261): near "else": (vcom-1576) expecting END or WHEN.
+# ** Error: ../tb/tb_i2c_config.vhd(270): near "if": (vcom-1576) expecting PROCESS.
+# End time: 15:08:44 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 15:09:28 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 15:09:29 on Apr 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 15:09:31 on Apr 21,2024, Elapsed time: 0:13:11
+# Errors: 5, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 15:09:31 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r
+run
+# ** Fatal: (vsim-3421) Value 1875 is out of range 0 to 1874.
+#    Time: 112550 ns  Iteration: 0  Process: /tb_i2c_config/fsm_proc File: ../tb/tb_i2c_config.vhd Line: 208
+# Fatal error in Process fsm_proc at ../tb/tb_i2c_config.vhd line 208
+# 
+# HDL call sequence:
+# Stopped at ../tb/tb_i2c_config.vhd 208 Process fsm_proc
+# 
+run
+# Cannot continue because of fatal error.
+# HDL call sequence:
+# Stopped at ../tb/tb_i2c_config.vhd 208 Process fsm_proc
+# 
+run
+# Cannot continue because of fatal error.
+# HDL call sequence:
+# Stopped at ../tb/tb_i2c_config.vhd 208 Process fsm_proc
+# 
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 15:11:03 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 15:11:03 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 15:11:07 on Apr 21,2024, Elapsed time: 0:01:36
+# Errors: 4, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 15:11:07 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 15:12:00 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 15:12:00 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 15:12:05 on Apr 21,2024, Elapsed time: 0:00:58
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 15:12:05 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/sdat_old_r \
+sim:/tb_i2c_config/sclk_old_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/data_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 18662570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 20137570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 21612570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 22062570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Failure: Simulation done
+#    Time: 22062590 ns  Iteration: 2  Process: /tb_i2c_config/line__297#0 File: ../tb/tb_i2c_config.vhd
+# Break in Architecture testbench at ../tb/tb_i2c_config.vhd line 298
+run
+vsim -voptargs=+acc tb_i2c_config
+# End time: 15:15:26 on Apr 21,2024, Elapsed time: 0:03:21
+# Errors: 13, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 15:15:26 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/data_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 18662570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 20137570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 21612570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 22062570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Failure: Simulation done
+#    Time: 22062590 ns  Iteration: 2  Process: /tb_i2c_config/line__297#0 File: ../tb/tb_i2c_config.vhd
+# Break in Architecture testbench at ../tb/tb_i2c_config.vhd line 298
+run
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 15:17:09 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
-# -- Compiling entity adder
-# -- Compiling architecture rtl of adder
-# End time: 01:22:58 on Feb 01,2024, Elapsed time: 0:00:00
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 15:17:09 on Apr 21,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vcom -check_synthesis ../tb/tb_adder.vhd
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
 # Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
-# Start time: 01:23:16 on Feb 01,2024
-# vcom -reportprogress 300 -check_synthesis ../tb/tb_adder.vhd 
+# Start time: 15:17:13 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 15:17:13 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 15:17:17 on Apr 21,2024, Elapsed time: 0:01:51
+# Errors: 13, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 15:17:18 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "i2c_config_backup(rtl)".
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 18662570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 20137570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 21612570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 22062570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Failure: Simulation done
+#    Time: 22062590 ns  Iteration: 2  Process: /tb_i2c_config/line__297#0 File: ../tb/tb_i2c_config.vhd
+# Break in Architecture testbench at ../tb/tb_i2c_config.vhd line 298
+run
+run
+vsim -voptargs=+acc tb_i2c_config
+# End time: 15:20:31 on Apr 21,2024, Elapsed time: 0:03:13
+# Errors: 13, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 15:20:31 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/sdat_old_r \
+sim:/tb_i2c_config/sclk_old_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 18662570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 20137570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 21612570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 22062570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Failure: Simulation done
+#    Time: 22062590 ns  Iteration: 2  Process: /tb_i2c_config/line__297#0 File: ../tb/tb_i2c_config.vhd
+# Break in Architecture testbench at ../tb/tb_i2c_config.vhd line 298
+run
+vsim -voptargs=+acc tb_i2c_config
+# End time: 16:00:22 on Apr 21,2024, Elapsed time: 0:39:51
+# Errors: 13, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 16:00:22 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/bit_check_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/i2c_config_1/counter_sclk_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/max_sclk_c
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:09:45 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 16:09:45 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 16:09:50 on Apr 21,2024, Elapsed time: 0:09:28
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 16:09:50 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/bit_check_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/i2c_config_1/counter_sclk_r \
+sim:/tb_i2c_config/i2c_config_1/min_sda_c
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:10:47 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
 # -- Loading package std_logic_1164
 # -- Loading package NUMERIC_STD
-# -- Compiling entity tb_adder
-# -- Compiling architecture testbench of tb_adder
-# End time: 01:23:16 on Feb 01,2024, Elapsed time: 0:00:00
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 16:10:47 on Apr 21,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim tb_adder
-# End time: 01:23:22 on Feb 01,2024, Elapsed time: 0:04:24
-# Errors: 1, Warnings: 2
-# vsim tb_adder 
-# Start time: 01:23:22 on Feb 01,2024
-# ** Note: (vsim-8009) Loading existing optimized design _opt
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:10:51 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 16:10:51 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 16:10:54 on Apr 21,2024, Elapsed time: 0:01:04
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 16:10:54 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "i2c_config_backup(rtl)".
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint sim:/tb_i2c_config/*
+add wave -position insertpoint  \
+sim:/tb_i2c_config/i2c_config_1/counter_sclk_r \
+sim:/tb_i2c_config/i2c_config_1/min_sda_c
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:14:16 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 16:14:16 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 16:14:23 on Apr 21,2024, Elapsed time: 0:03:29
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 16:14:23 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:17:48 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 16:17:48 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 16:17:53 on Apr 21,2024, Elapsed time: 0:03:30
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 16:17:53 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/i2c_config_1/sdat_inout
+add wave -position insertpoint  \
+sim:/tb_i2c_config/i2c_config_1/sdat_inout \
+sim:/tb_i2c_config/i2c_config_1/counter_sclk_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/address_flag_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vsim -voptargs=+acc tb_i2c_config
+# End time: 16:25:27 on Apr 21,2024, Elapsed time: 0:07:34
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 16:25:27 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/bit_check_r \
+sim:/tb_i2c_config/max_bit_check_c
+add wave -position insertpoint  \
+sim:/tb_i2c_config/i2c_config_1/counter_sclk_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:31:01 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 16:31:02 on Apr 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 16:31:08 on Apr 21,2024, Elapsed time: 0:05:41
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 16:31:08 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:38:45 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 16:38:45 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 16:38:51 on Apr 21,2024, Elapsed time: 0:07:43
+# Errors: 8, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 16:38:51 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:41:19 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# ** Error (suppressible): ../tb/tb_i2c_config.vhd(96): (vcom-1272) Length of expected is 24; length of actual is 23.
+# ** Note: ../tb/tb_i2c_config.vhd(301): VHDL Compiler exiting
+# End time: 16:41:19 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:42:40 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# ** Error (suppressible): ../tb/tb_i2c_config.vhd(96): (vcom-1272) Length of expected is 24; length of actual is 23.
+# ** Note: ../tb/tb_i2c_config.vhd(301): VHDL Compiler exiting
+# End time: 16:42:40 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:43:11 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# ** Error (suppressible): ../tb/tb_i2c_config.vhd(96): (vcom-1272) Length of expected is 24; length of actual is 23.
+# ** Note: ../tb/tb_i2c_config.vhd(301): VHDL Compiler exiting
+# End time: 16:43:12 on Apr 21,2024, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+# /opt/lintula/modelsim/10.7d/modeltech/linux_x86_64/vcom failed.
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:43:53 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 16:43:54 on Apr 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:44:01 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 16:44:01 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 16:44:06 on Apr 21,2024, Elapsed time: 0:05:15
+# Errors: 5, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 16:44:06 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "i2c_config_backup(rtl)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/bit_check_r
+run
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:56:00 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 16:56:00 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 16:56:05 on Apr 21,2024, Elapsed time: 0:11:59
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 16:56:05 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/curr_state_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r
+run
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:57:08 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 16:57:09 on Apr 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 16:57:17 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 16:57:17 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 16:57:26 on Apr 21,2024, Elapsed time: 0:01:21
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 16:57:26 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/counter_bitcheck_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/curr_state_r
+run
+run
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 1412570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+run
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:03:10 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 17:03:10 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:03:16 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 17:03:16 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:03:18 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 17:03:18 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:03:24 on Apr 21,2024, Elapsed time: 0:05:58
+# Errors: 6, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:03:24 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk
+add wave -position insertpoint  \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r
+run
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:04:20 on Apr 21,2024, Elapsed time: 0:00:56
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:04:20 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk
+add wave -position insertpoint  \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 1412570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:05:55 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 17:05:55 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:06:01 on Apr 21,2024, Elapsed time: 0:01:41
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:06:01 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status
+add wave -position insertpoint  \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 1412570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:14:08 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 17:14:09 on Apr 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/bit_check_r \
+sim:/tb_i2c_config/max_bit_check_c
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:15:28 on Apr 21,2024, Elapsed time: 0:09:27
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:15:28 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/bit_check_r
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 1412570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:17:22 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 17:17:22 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:17:26 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 17:17:26 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:17:31 on Apr 21,2024, Elapsed time: 0:02:03
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:17:31 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "i2c_config_backup(rtl)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/bit_check_r \
+sim:/tb_i2c_config/max_bit_check_c
+run
+# ** Error: Three state bus in state X
+#    Time: 962570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:25:40 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 17:25:40 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:25:43 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 17:25:43 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:25:48 on Apr 21,2024, Elapsed time: 0:08:17
+# Errors: 2, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:25:48 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "i2c_config_backup(rtl)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:26:04 on Apr 21,2024, Elapsed time: 0:00:16
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:26:04 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r
+run
+run
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:27:23 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 17:27:23 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:27:29 on Apr 21,2024, Elapsed time: 0:01:25
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:27:29 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/bit_check_r
+run
+run
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:35:02 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 17:35:03 on Apr 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:35:08 on Apr 21,2024, Elapsed time: 0:07:39
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:35:08 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r
+run
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 18662570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 20137570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 21612570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 22062570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Failure: Simulation done
+#    Time: 22062590 ns  Iteration: 2  Process: /tb_i2c_config/line__299#0 File: ../tb/tb_i2c_config.vhd
+# Break in Architecture testbench at ../tb/tb_i2c_config.vhd line 300
+run
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:39:02 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 17:39:02 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:39:09 on Apr 21,2024, Elapsed time: 0:04:01
+# Errors: 12, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:39:09 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/bit_check_r
+run
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# Causality operation skipped due to absence of debug database file
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:48:19 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 17:48:19 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:48:24 on Apr 21,2024, Elapsed time: 0:09:15
+# Errors: 1, Warnings: 1
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:48:24 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk
+add wave -position insertpoint  \
+sim:/tb_i2c_config/counter_bitcheck_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/counter_bitcheck_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/curr_state_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r
+run
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 17:57:37 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 17:57:38 on Apr 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 17:57:44 on Apr 21,2024, Elapsed time: 0:09:20
+# Errors: 7, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 17:57:44 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/bit_check_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/curr_state_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/address_flag_r
+run
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 18662570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 20137570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 21612570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:05:15 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 18:05:15 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 18:05:24 on Apr 21,2024, Elapsed time: 0:07:40
+# Errors: 10, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 18:05:24 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/param_status \
+sim:/tb_i2c_config/finished \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+vsim -voptargs=+acc i2c_config
+# End time: 18:08:45 on Apr 21,2024, Elapsed time: 0:03:21
+# Errors: 7, Warnings: 0
+# vsim -voptargs="+acc" i2c_config 
+# Start time: 18:08:45 on Apr 21,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "i2c_config(rtl)".
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading work.tb_adder(testbench)#1
-# Loading work.adder(rtl)#1
-run 7ms
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 250 ns  Iteration: 0  Instance: /tb_adder
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 350 ns  Iteration: 0  Instance: /tb_adder
-# ** Failure: output signal is not equal to the sum of the inputs
-#    Time: 350 ns  Iteration: 0  Process: /tb_adder/input_gen_output_check File: ../tb/tb_adder.vhd
-# Break in Process input_gen_output_check at ../tb/tb_adder.vhd line 133
+# Loading work.i2c_config(rtl)#1
+do i2c_config.do
+# Error opening /home/zian/logsyn/vhd/i2c_config_backup.vhd
+# Path name '/home/zian/logsyn/vhd/i2c_config_backup.vhd' doesn't exist.
+# .main_pane.objects.interior.cs.body.tree
+# .main_pane.locals.interior.cs.body
+# .main_pane.wave.interior.cs.body.pw.wf
+run
+run
+run
+run
+run
+run
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:22:42 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 18:22:42 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc i2c_config
+# End time: 18:22:48 on Apr 21,2024, Elapsed time: 0:14:03
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" i2c_config 
+# Start time: 18:22:48 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config(rtl)#1
+do i2c_config.do
+# Error opening /home/zian/logsyn/vhd/i2c_config_backup.vhd
+# Path name '/home/zian/logsyn/vhd/i2c_config_backup.vhd' doesn't exist.
+# .main_pane.objects.interior.cs.body.tree
+# .main_pane.locals.interior.cs.body
+# .main_pane.wave.interior.cs.body.pw.wf
+run
+run
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:27:54 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 18:27:54 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc i2c_config
+# End time: 18:28:00 on Apr 21,2024, Elapsed time: 0:05:12
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" i2c_config 
+# Start time: 18:28:00 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config(rtl)#1
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:29:40 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 18:29:40 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim i2c_config
+# End time: 18:29:48 on Apr 21,2024, Elapsed time: 0:01:48
+# Errors: 0, Warnings: 0
+# vsim i2c_config 
+# Start time: 18:29:48 on Apr 21,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config(rtl)#1
+do i2c_config.do
+# Error opening /home/zian/logsyn/vhd/i2c_config_backup.vhd
+# Path name '/home/zian/logsyn/vhd/i2c_config_backup.vhd' doesn't exist.
+# .main_pane.objects.interior.cs.body.tree
+# .main_pane.locals.interior.cs.body
+# .main_pane.wave.interior.cs.body.pw.wf
+run
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:31:33 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 18:31:33 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+do i2c_config.do
+# Error opening /home/zian/logsyn/vhd/i2c_config_backup.vhd
+# Path name '/home/zian/logsyn/vhd/i2c_config_backup.vhd' doesn't exist.
+# .main_pane.objects.interior.cs.body.tree
+# .main_pane.locals.interior.cs.body
+# .main_pane.wave.interior.cs.body.pw.wf
+vsim i2c_config
+# End time: 18:31:46 on Apr 21,2024, Elapsed time: 0:01:58
+# Errors: 2, Warnings: 0
+# vsim i2c_config 
+# Start time: 18:31:46 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config(rtl)#1
+do i2c_config.do
+# Error opening /home/zian/logsyn/vhd/i2c_config_backup.vhd
+# Path name '/home/zian/logsyn/vhd/i2c_config_backup.vhd' doesn't exist.
+# .main_pane.objects.interior.cs.body.tree
+# .main_pane.locals.interior.cs.body
+# .main_pane.wave.interior.cs.body.pw.wf
+run
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:32:33 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 18:32:33 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim i2c_config
+# End time: 18:32:39 on Apr 21,2024, Elapsed time: 0:00:53
+# Errors: 1, Warnings: 0
+# vsim i2c_config 
+# Start time: 18:32:39 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config(rtl)#1
+do i2c_config.do
+# Error opening /home/zian/logsyn/vhd/i2c_config_backup.vhd
+# Path name '/home/zian/logsyn/vhd/i2c_config_backup.vhd' doesn't exist.
+# .main_pane.objects.interior.cs.body.tree
+# .main_pane.locals.interior.cs.body
+# .main_pane.wave.interior.cs.body.pw.wf
+run
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:35:13 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 18:35:14 on Apr 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim i2c_config
+# End time: 18:35:18 on Apr 21,2024, Elapsed time: 0:02:39
+# Errors: 1, Warnings: 0
+# vsim i2c_config 
+# Start time: 18:35:18 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config(rtl)#1
+vsim i2c_config
+# End time: 18:35:28 on Apr 21,2024, Elapsed time: 0:00:10
+# Errors: 0, Warnings: 0
+# vsim i2c_config 
+# Start time: 18:35:28 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config(rtl)#1
+do i2c_config.do
+# Error opening /home/zian/logsyn/vhd/i2c_config_backup.vhd
+# Path name '/home/zian/logsyn/vhd/i2c_config_backup.vhd' doesn't exist.
+# .main_pane.objects.interior.cs.body.tree
+# .main_pane.locals.interior.cs.body
+# .main_pane.wave.interior.cs.body.pw.wf
+run
+run
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:37:47 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 18:37:47 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:37:57 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 18:37:57 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc i2c_config
+# End time: 18:38:11 on Apr 21,2024, Elapsed time: 0:02:43
+# Errors: 1, Warnings: 0
+# vsim -voptargs="+acc" i2c_config 
+# Start time: 18:38:11 on Apr 21,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "i2c_config(rtl)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config(rtl)#1
+vsim -voptargs=+acc tb_i2c_config
+# End time: 18:38:51 on Apr 21,2024, Elapsed time: 0:00:40
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 18:38:51 on Apr 21,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "i2c_config_backup(rtl)".
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
 add wave -position insertpoint  \
-sim:/tb_adder/clk \
-sim:/tb_adder/rst_n \
-sim:/tb_adder/term1_r \
-sim:/tb_adder/term2_r \
-sim:/tb_adder/sum \
-sim:/tb_adder/expected_sum_r \
-sim:/tb_adder/end_simulation_r \
-sim:/tb_adder/input_w_c \
-sim:/tb_adder/output_w_c \
-sim:/tb_adder/clk_period_c \
-sim:/tb_adder/min_value_c \
-sim:/tb_adder/max_value_c
-run 7 ms
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 450 ns  Iteration: 0  Instance: /tb_adder
-# ** Failure: output signal is not equal to the sum of the inputs
-#    Time: 450 ns  Iteration: 0  Process: /tb_adder/input_gen_output_check File: ../tb/tb_adder.vhd
-# Break in Process input_gen_output_check at ../tb/tb_adder.vhd line 133
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/bit_check_r \
+sim:/tb_i2c_config/max_bit_check_c
+run
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 8337570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 11287570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 11737570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 18662570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 20137570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 21612570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Fatal: (vsim-3421) Value 15 is out of range 0 to 14.
+#    Time: 22037590 ns  Iteration: 0  Process: /tb_i2c_config/fsm_proc File: ../tb/tb_i2c_config.vhd Line: 268
+# Fatal error in Process fsm_proc at ../tb/tb_i2c_config.vhd line 268
+# 
+# HDL call sequence:
+# Stopped at ../tb/tb_i2c_config.vhd 268 Process fsm_proc
+# 
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:42:51 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 18:42:51 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 18:42:58 on Apr 21,2024, Elapsed time: 0:04:07
+# Errors: 15, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 18:42:58 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk
+add wave -position insertpoint  \
+sim:/tb_i2c_config/sdat_r \
+sim:/tb_i2c_config/bit_counter_r \
+sim:/tb_i2c_config/byte_counter_r \
+sim:/tb_i2c_config/counter_param_r \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/curr_state_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r \
+sim:/tb_i2c_config/max_bit_check_c
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 8337570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 11287570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 11737570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:46:58 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 18:46:59 on Apr 21,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vcom -check_synthesis ../vhd/i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:47:04 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../vhd/i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity i2c_config_backup
+# -- Compiling architecture rtl of i2c_config_backup
+# End time: 18:47:04 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 18:47:12 on Apr 21,2024, Elapsed time: 0:04:14
+# Errors: 10, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 18:47:12 on Apr 21,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 1 FSM in architecture body "tb_i2c_config(testbench)".
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+vsim -voptargs=+acc tb_i2c_config
+# End time: 18:47:31 on Apr 21,2024, Elapsed time: 0:00:19
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 18:47:31 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk
+add wave -position insertpoint  \
+sim:/tb_i2c_config/curr_state_r \
+sim:/tb_i2c_config/bit_check_r \
+sim:/tb_i2c_config/max_bit_check_c
+add wave -position insertpoint  \
+sim:/tb_i2c_config/address_flag_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r
+run
+# ** Error: Three state bus in state X
+#    Time: 2437570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 4362570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 6862570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 7312570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 8337570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 9812570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 10262570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 11287570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 11737570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 14237570 ns  Iteration: 2  Instance: /tb_i2c_config
+run
+# ** Error: Three state bus in state X
+#    Time: 18662570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 20137570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Error: Three state bus in state X
+#    Time: 21612570 ns  Iteration: 2  Instance: /tb_i2c_config
+# ** Fatal: (vsim-3421) Value 15 is out of range 0 to 14.
+#    Time: 22037590 ns  Iteration: 0  Process: /tb_i2c_config/fsm_proc File: ../tb/tb_i2c_config.vhd Line: 268
+# Fatal error in Process fsm_proc at ../tb/tb_i2c_config.vhd line 268
+# 
+# HDL call sequence:
+# Stopped at ../tb/tb_i2c_config.vhd 268 Process fsm_proc
+# 
+run
+# Cannot continue because of fatal error.
+# HDL call sequence:
+# Stopped at ../tb/tb_i2c_config.vhd 268 Process fsm_proc
+# 
+vcom -check_synthesis ../tb/tb_i2c_config.vhd
+# Model Technology ModelSim SE-64 vcom 10.7d Compiler 2019.02 Feb 15 2019
+# Start time: 18:50:06 on Apr 21,2024
+# vcom -reportprogress 300 -check_synthesis ../tb/tb_i2c_config.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_i2c_config
+# -- Compiling architecture testbench of tb_i2c_config
+# End time: 18:50:06 on Apr 21,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc tb_i2c_config
+# End time: 18:50:14 on Apr 21,2024, Elapsed time: 0:02:43
+# Errors: 16, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 18:50:14 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+vsim -voptargs=+acc tb_i2c_config
+# End time: 18:50:21 on Apr 21,2024, Elapsed time: 0:00:07
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" tb_i2c_config 
+# Start time: 18:50:21 on Apr 21,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_i2c_config(testbench)#1
+# Loading ieee.numeric_std(body)
+# Loading work.i2c_config_backup(rtl)#1
+add wave -position insertpoint  \
+sim:/tb_i2c_config/clk \
+sim:/tb_i2c_config/rst_n \
+sim:/tb_i2c_config/sdat \
+sim:/tb_i2c_config/sclk
+add wave -position insertpoint  \
+sim:/tb_i2c_config/counter_bitcheck_r \
+sim:/tb_i2c_config/bit_check_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/sdat_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/max_sclk_c
+add wave -position insertpoint  \
+sim:/tb_i2c_config/bit_check_r
+add wave -position insertpoint  \
+sim:/tb_i2c_config/address_flag_r
+run
