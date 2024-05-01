@@ -54,7 +54,7 @@ architecture testbench of tb_i2c_config is
       ref_clk_freq_g : integer;
       i2c_freq_g     : integer;
       n_params_g     : integer;
-	  n_leds_g : integer);
+	    n_leds_g       : integer);
     port (
       clk              : in    std_logic;
       rst_n            : in    std_logic;
@@ -74,7 +74,9 @@ architecture testbench of tb_i2c_config is
   -- To hold the value that will be driven to sdat when sclk is high.
   signal sdat_r : std_logic;
 
-  -- sampled bit during the rising edge of sclk
+  -- storing incoming bit for later comparison with sampled bit
+  signal sdat_temp_r : std_logic;
+  -- sampled bit at the middle of sclk high
   signal sdat_sample_r : std_logic;
 
   -- Counters for receiving bits, bytes and parameter
@@ -103,7 +105,7 @@ architecture testbench of tb_i2c_config is
   signal write_flag_r : std_logic;
   signal rgstr_ads_flag_r : std_logic;
   signal datvalue_flag_r : std_logic;
-  signal sample_flag_r : std_logic;
+  signal data_stable_flag_r : std_logic;
   
   -- array of parameter data
   TYPE  configuration_data_array is ARRAY (0 to n_params_c-1) of std_logic_vector(bit_count_max_c*n_bytes_c-1 DOWNTO 0); -- an array type with elements containing vectors of bits to be sent
@@ -163,7 +165,7 @@ begin  -- testbench
       write_flag_r <= '0';
       rgstr_ads_flag_r <= '0';
       datvalue_flag_r <= '0';
-      sample_flag_r <= '0';
+      data_stable_flag_r <= '0';
 
       byte_counter_r <= 0;
       bit_counter_r  <= 0;
@@ -177,6 +179,7 @@ begin  -- testbench
 
       sdat_r <= 'Z';
       sdat_sample_r <= '0';
+      sdat_temp_r <= '0';
 
       bit_check_r <= '0';
       
@@ -255,18 +258,18 @@ begin  -- testbench
           if counter_sclkedge_r /= 0 and counter_samplebit_r = max_sample_c then
             sdat_sample_r <= sdat;
           end if;
-          
-          -- once bit sampled check with expected bit at falling edge
-          -- Detect a falling edge
-          if sclk = '0' and sclk_old_r = '1' then
-            if counter_sclkedge_r /= 0 and  sdat_sample_r /=  bit_check_r then
-                sample_flag_r <= '1';
+          -- compare sampled bit at next clock edge with the bit 
+          -- received at the rising SCLK to verify data is stable
+          if counter_sclkedge_r /= 0 and counter_samplebit_r = max_sample_c+1 then
+            if sdat_sample_r /=  sdat_temp_r then
+              data_stable_flag_r <= '1';
             end if;
           end if;
-
+  
           -- Detect a rising edge
           if sclk = '1' and sclk_old_r = '0' then
             counter_sclkedge_r <= counter_sclkedge_r + 1;
+            sdat_temp_r <= sdat; -- storing incoming bit at rising edge
             -- Verify the correctness of device address, 
             -- write bit, register address and data value
             if byte_counter_r = 0 then
@@ -312,18 +315,19 @@ begin  -- testbench
             sdat_sample_r <= sdat;
           end if;
 
-          -- once bit sampled check with expected bit at falling edge
-          -- Detect a falling edge
-          if sclk = '0' and sclk_old_r = '1' then
-            if counter_sclkedge_r /= 0 and  sdat_sample_r /=  bit_check_r then
-                sample_flag_r <= '1';
+          -- compare sampled bit at next clock edge with the bit 
+          -- received at the rising SCLK to verify data is stable
+          if counter_sclkedge_r /= 0 and counter_samplebit_r = max_sample_c+1 then
+            if sdat_sample_r /=  sdat_temp_r then
+              data_stable_flag_r <= '1';
             end if;
           end if;
 
           -- Detect a rising edge
           if sclk = '1' and sclk_old_r = '0' then
             counter_sclkedge_r <= 0;
-            
+            sdat_temp_r <= sdat; -- storing incoming bit at rising edge
+
             if byte_counter_r /= n_bytes_c-1 then
 
               -- Transmission continues
@@ -374,13 +378,13 @@ begin  -- testbench
  -- Device address should be correct
  assert device_ads_flag_r /= '1' report "Device address incorrect" severity error;
  -- Controller should sent write
- assert write_flag_r /= '1' report "No write bit transmitted" severity error;
+ assert write_flag_r /= '1' report "W/R bit incorrectly set" severity error;
  -- register address should be correct
  assert rgstr_ads_flag_r /= '1' report "Codec register address incorrect" severity error;
  -- data value should be correct
  assert datvalue_flag_r /= '1' report "Data value transmitted incorrect" severity error;
 -- data value should be correct
-assert sample_flag_r /= '1' report "Transmitted data not stable" severity error;
+assert data_stable_flag_r /= '1' report "Transmitted data not stable" severity error;
 
   -- End of simulation, but not during the reset
   assert finished = '0' or rst_n = '0' report
