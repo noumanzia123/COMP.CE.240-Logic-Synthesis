@@ -18,7 +18,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 -- Declare entity audio_codec_model
-ENTITY i2c_config_backup IS
+ENTITY i2c_config IS
 
     generic (
         ref_clk_freq_g : integer := 50000000; -- frequency of clk-signal as information to your block
@@ -34,12 +34,12 @@ ENTITY i2c_config_backup IS
         param_status_out : out std_logic_vector(n_leds_g-1 DOWNTO 0);
         finished_out    : out std_logic
         );   
-END i2c_config_backup;
+END i2c_config;
 
 -------------------------------------------------------------------------------
 -- Architecture 'rtl' is  defined
 
-ARCHITECTURE rtl of i2c_config_backup is
+ARCHITECTURE rtl of i2c_config is
 
 -- Define internal SIGNALs and constants
 CONSTANT max_sclk_c : INTEGER := (ref_clk_freq_g/i2c_freq_g)/2; -- maximum value for sclk counter corresponding to half period (25µsec)
@@ -49,14 +49,14 @@ CONSTANT n_bytes_c : INTEGER := 3;
 
 
 TYPE  configuration_data_array is ARRAY (0 to n_params_g-1) of std_logic_vector(data_width_c*n_bytes_c-1 DOWNTO 0); -- an array type with elements containing vectors of bits to be sent
-CONSTANT byte_register : configuration_data_array := ("001101000001110110000000", "001101000010011100000100",
-"001101000010001000001011", "001101000010100000000000",
-"001101000010100110000001", "001101000110100100001000",
-"001101000100011111100001", "001101000110101100001001",
-"001101000110110000001000", "001101000100101100001000",
-"001101000100110000001000", "001101000110111010001000",
-"001101000110111110001000", "001101000110111110001000",
-"001101000101000111110001"); -- constant array
+CONSTANT byte_register : configuration_data_array := ("001101100001110010000000", "001101000010011100000100",
+                                                    "001101000010001000001011", "001101000010100000000000",
+                                                    "001101000010100110000001", "001101000110100100001000",
+                                                    "001101000100011111100001", "001101000110101100001001",
+                                                    "001101000110110000001000", "001101000100101100001000",
+                                                    "001101000100110000001000", "001101000110111010001000",
+                                                    "001101000110111110001000", "001101000110111110001000",
+                                                    "001101000101000111110000"); -- constant array
 --CONSTANT byte_register : configuration_data_array := ("101010101010101010101010", "101010101010101010101010","101010101010101010101010"); -- constant array
 
  -- Counters for generating clock, sending bits and parameter

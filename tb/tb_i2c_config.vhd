@@ -49,7 +49,7 @@ architecture testbench of tb_i2c_config is
   signal rst_n : std_logic := '0';      -- only in synthesis
 
   -- The DUV prototype
-  component i2c_config_backup
+  component i2c_config
     generic (
       ref_clk_freq_g : integer;
       i2c_freq_g     : integer;
@@ -135,7 +135,7 @@ begin  -- testbench
 
 
   -- Component instantiation
-  i2c_config_1 : i2c_config_backup
+  i2c_config_1 : i2c_config
     generic map (
       ref_clk_freq_g => ref_freq_c,
       i2c_freq_g     => i2c_freq_c,

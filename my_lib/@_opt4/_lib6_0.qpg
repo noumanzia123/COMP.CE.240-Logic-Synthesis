@@ -49,10 +49,10 @@ n@_opt3
 R4
 R0
 T_opt4
-!s110 1714461991
-VlNB:FO]9Yl?YE5WU>6a?M1
+!s110 1714565386
+VXf[aS?9oF[[N3<8AUOEi=0
 R1
-=1-000ae431a4f1-66309d26-dda07-62401
+=1-000ae431a4f1-6632310a-22431-e95a6
 R5
 R3
 n@_opt4
@@ -181,24 +181,24 @@ R33
 R18
 R19
 Ei2c_config
-Z34 w1713544175
+Z34 w1714565318
 R7
 R8
 R9
 R10
-Z35 8../vhd/i2c_config_backup.vhd
-Z36 F../vhd/i2c_config_backup.vhd
+Z35 8../vhd/i2c_config.vhd
+Z36 F../vhd/i2c_config.vhd
 l0
 L21
 VSHaDLF;6^HHJog5CIi[Qz2
 !s100 7MnJnmE0V<GmAahCO<nDK1
 R13
 32
-Z37 !s110 1713544647
+Z37 !s110 1714565351
 !i10b 1
-Z38 !s108 1713544647.000000
-Z39 !s90 -reportprogress|300|-check_synthesis|../vhd/i2c_config_backup.vhd|
-Z40 !s107 ../vhd/i2c_config_backup.vhd|
+Z38 !s108 1714565350.000000
+Z39 !s90 -reportprogress|300|-check_synthesis|../vhd/i2c_config.vhd|
+Z40 !s107 ../vhd/i2c_config.vhd|
 !i113 0
 R18
 R19
@@ -209,8 +209,8 @@ R9
 DEx4 work 10 i2c_config 0 22 SHaDLF;6^HHJog5CIi[Qz2
 l86
 L42
-VRZH8Xi5XKihz[IAlKWSh>0
-!s100 V03YB=64ghb@U_]9IHGWj3
+VA7lGSTe<Ucz`oC0N<<NCz2
+!s100 @CGX<2N@@T@@T2LdW616e3
 R13
 32
 R37
@@ -222,24 +222,24 @@ R40
 R18
 R19
 Ei2c_config_backup
-Z41 w1714461859
+Z41 w1714562536
 R7
 R8
 R9
 R10
-Z42 8../vhd/i2c_config.vhd
-Z43 F../vhd/i2c_config.vhd
+R35
+R36
 l0
 L21
 V>?dbo`3XG>3_9U<PJde442
 !s100 :Jf5N2LEXce0zAB?P5E:_2
 R13
 32
-Z44 !s110 1714461897
+Z42 !s110 1714562544
 !i10b 1
-Z45 !s108 1714461897.000000
-Z46 !s90 -reportprogress|300|-check_synthesis|../vhd/i2c_config.vhd|
-Z47 !s107 ../vhd/i2c_config.vhd|
+Z43 !s108 1714562544.000000
+R39
+R40
 !i113 0
 R18
 R19
@@ -250,43 +250,43 @@ R9
 DEx4 work 17 i2c_config_backup 0 22 >?dbo`3XG>3_9U<PJde442
 l86
 L42
-V6TfP;07NcbCE?V10f9JZ83
-!s100 JldDZmX:[[Y7<QkB:FK0f2
+V[ODBVK0JdaAlKoV;1l<0k2
+!s100 lcLBk?4k`GH;1G3F]eRZg1
 R13
 32
-R44
+R42
 !i10b 1
-R45
-R46
-R47
+R43
+R39
+R40
 !i113 0
 R18
 R19
 Elock
-Z48 w1705753320
-Z49 DPx4 work 8 lock_pkg 0 22 GcM7Xz1S8F[_TVB:OLKzJ2
+Z44 w1705753320
+Z45 DPx4 work 8 lock_pkg 0 22 GcM7Xz1S8F[_TVB:OLKzJ2
 R7
 R8
 R9
 R10
-Z50 8../vhd/lock.vhd
-Z51 F../vhd/lock.vhd
+Z46 8../vhd/lock.vhd
+Z47 F../vhd/lock.vhd
 l0
 L6
 VTlMKEkdCS]n@0J9@_41oN2
 !s100 @@TEdSC8i4`Fj<`RgEEW[1
 R13
 32
-Z52 !s110 1706190468
+Z48 !s110 1706190468
 !i10b 1
-Z53 !s108 1706190468.000000
-Z54 !s90 -reportprogress|300|-check_synthesis|../vhd/lock.vhd|../vhd/lock_pkg.vhd|../tb/tb_lock.vhd|
-Z55 !s107 ../tb/tb_lock.vhd|../vhd/lock_pkg.vhd|../vhd/lock.vhd|
+Z49 !s108 1706190468.000000
+Z50 !s90 -reportprogress|300|-check_synthesis|../vhd/lock.vhd|../vhd/lock_pkg.vhd|../tb/tb_lock.vhd|
+Z51 !s107 ../tb/tb_lock.vhd|../vhd/lock_pkg.vhd|../vhd/lock.vhd|
 !i113 0
 R18
 R19
 Artl
-R49
+R45
 R7
 R8
 R9
@@ -297,11 +297,11 @@ VRc?2H]PABd_lEX4]Ya]Uz0
 !s100 fUQW8cgOPlME9G=_4AJm=2
 R13
 32
-R52
+R48
 !i10b 1
-R53
-R54
-R55
+R49
+R50
+R51
 !i113 0
 R18
 R19
@@ -316,32 +316,32 @@ VGcM7Xz1S8F[_TVB:OLKzJ2
 !s100 89EhC@[7N>NoGmUm[NWea1
 R13
 32
-R52
+R48
 !i10b 1
-R53
-R54
-R55
+R49
+R50
+R51
 !i113 0
 R18
 R19
 Emulti_port_adder
-Z56 w1711063174
+Z52 w1711063174
 R8
 R9
 R10
-Z57 8../vhd/multi_port_adder.vhd
-Z58 F../vhd/multi_port_adder.vhd
+Z53 8../vhd/multi_port_adder.vhd
+Z54 F../vhd/multi_port_adder.vhd
 l0
 L21
 VRVe5N8m4H;^CSQEE3efnk3
 !s100 <T5mZDO0mZ3dA5Bh:kSaf0
 R13
 32
-Z59 !s110 1711979691
+Z55 !s110 1711979691
 !i10b 1
-Z60 !s108 1711979691.000000
-Z61 !s90 -reportprogress|300|-check_synthesis|../vhd/multi_port_adder.vhd|
-Z62 !s107 ../vhd/multi_port_adder.vhd|
+Z56 !s108 1711979691.000000
+Z57 !s90 -reportprogress|300|-check_synthesis|../vhd/multi_port_adder.vhd|
+Z58 !s107 ../vhd/multi_port_adder.vhd|
 !i113 0
 R18
 R19
@@ -355,32 +355,32 @@ VPK;zK=5ToQBU1Ji0;IBS13
 !s100 E1H^Ob@h48gLeMD9hE3UU3
 R13
 32
-R59
+R55
 !i10b 1
-R60
-R61
-R62
+R56
+R57
+R58
 !i113 0
 R18
 R19
 Eripple_carry_adder
-Z63 w1706353407
+Z59 w1706353407
 R8
 R9
 R10
-Z64 8../vhd/ripple_carry_adder.vhd
-Z65 F../vhd/ripple_carry_adder.vhd
+Z60 8../vhd/ripple_carry_adder.vhd
+Z61 F../vhd/ripple_carry_adder.vhd
 l0
 L28
 VO_U5XjF>Ah9:=maJI4<Oo0
 !s100 eePi7^j0JLEEffnQk`O402
 R13
 32
-Z66 !s110 1706353536
+Z62 !s110 1706353536
 !i10b 1
-Z67 !s108 1706353536.000000
-Z68 !s90 -reportprogress|300|-check_synthesis|../vhd/ripple_carry_adder.vhd|../tb/tb_ripple_carry_adder.vhd|
-Z69 !s107 ../tb/tb_ripple_carry_adder.vhd|../vhd/ripple_carry_adder.vhd|
+Z63 !s108 1706353536.000000
+Z64 !s90 -reportprogress|300|-check_synthesis|../vhd/ripple_carry_adder.vhd|../tb/tb_ripple_carry_adder.vhd|
+Z65 !s107 ../tb/tb_ripple_carry_adder.vhd|../vhd/ripple_carry_adder.vhd|
 !i113 0
 R18
 R19
@@ -394,33 +394,33 @@ VO3CK<MUi<m<ZJjWFa72za2
 !s100 _Iek30=QR>dI68JkEJ43A1
 R13
 32
-R66
+R62
 !i10b 1
-R67
-R68
-R69
+R63
+R64
+R65
 !i113 0
 R18
 R19
 Esynthesizer
-Z70 w1711062545
+Z66 w1711062545
 R7
 R8
 R9
 R10
-Z71 8../vhd/synthesizer.vhd
-Z72 F../vhd/synthesizer.vhd
+Z67 8../vhd/synthesizer.vhd
+Z68 F../vhd/synthesizer.vhd
 l0
 L21
 VgbYioR5?4]A5;7eJW4Qf73
 !s100 `7V:kLiRDdk7]1NNICEGL1
 R13
 32
-Z73 !s110 1711062743
+Z69 !s110 1711062743
 !i10b 1
-Z74 !s108 1711062743.000000
-Z75 !s90 -reportprogress|300|-check_synthesis|../vhd/synthesizer.vhd|
-Z76 !s107 ../vhd/synthesizer.vhd|
+Z70 !s108 1711062743.000000
+Z71 !s90 -reportprogress|300|-check_synthesis|../vhd/synthesizer.vhd|
+Z72 !s107 ../vhd/synthesizer.vhd|
 !i113 0
 R18
 R19
@@ -435,33 +435,33 @@ VoVe2FOXhZQ`S^Lbo5lWU`2
 !s100 ShoA14KFOTZ6i3Z<F7oJD0
 R13
 32
-R73
+R69
 !i10b 1
-R74
-R75
-R76
+R70
+R71
+R72
 !i113 0
 R18
 R19
 Etb_adder
-Z77 w1706740198
+Z73 w1706740198
 R7
 R8
 R9
 R10
-Z78 8../tb/tb_adder.vhd
-Z79 F../tb/tb_adder.vhd
+Z74 8../tb/tb_adder.vhd
+Z75 F../tb/tb_adder.vhd
 l0
 L26
 VEU>F==dPfmG?AWS78glej3
 !s100 =J1I<ZaYmdQ;>_6o6Xz@F0
 R13
 32
-Z80 !s110 1706793431
+Z76 !s110 1706793431
 !i10b 1
-Z81 !s108 1706793430.000000
-Z82 !s90 -reportprogress|300|-check_synthesis|../vhd/adder.vhd|../tb/tb_adder.vhd|
-Z83 !s107 ../tb/tb_adder.vhd|../vhd/adder.vhd|
+Z77 !s108 1706793430.000000
+Z78 !s90 -reportprogress|300|-check_synthesis|../vhd/adder.vhd|../tb/tb_adder.vhd|
+Z79 !s107 ../tb/tb_adder.vhd|../vhd/adder.vhd|
 !i113 0
 R18
 R19
@@ -476,33 +476,33 @@ V6O<P4:f@HfR4=H2AIYAY10
 !s100 j5J6MVif0_l>clHh1PW:m3
 R13
 32
-R80
+R76
 !i10b 1
-R81
-R82
-R83
+R77
+R78
+R79
 !i113 0
 R18
 R19
 Etb_audio_ctrl
-Z84 w1711326030
+Z80 w1711326030
 R7
 R8
 R9
 R10
-Z85 8../vhd/tb_audio_ctrl.vhd
-Z86 F../vhd/tb_audio_ctrl.vhd
+Z81 8../vhd/tb_audio_ctrl.vhd
+Z82 F../vhd/tb_audio_ctrl.vhd
 l0
 L21
 Vfd<5j?aJ05GG;1CT<iH=f3
 !s100 cH[bRkdSz7?V]`Vza7dCi1
 R13
 32
-Z87 !s110 1711326048
+Z83 !s110 1711326048
 !i10b 1
-Z88 !s108 1711326048.000000
-Z89 !s90 -reportprogress|300|-check_synthesis|../vhd/tb_audio_ctrl.vhd|
-Z90 !s107 ../vhd/tb_audio_ctrl.vhd|
+Z84 !s108 1711326048.000000
+Z85 !s90 -reportprogress|300|-check_synthesis|../vhd/tb_audio_ctrl.vhd|
+Z86 !s107 ../vhd/tb_audio_ctrl.vhd|
 !i113 0
 R18
 R19
@@ -517,32 +517,32 @@ V2zJQQMEZ7z]GWE:nTBWRb2
 !s100 TP]k[=`7Rg[VLKlSzGkF:1
 R13
 32
-R87
+R83
 !i10b 1
-R88
-R89
-R90
+R84
+R85
+R86
 !i113 0
 R18
 R19
 Etb_i2c_config
-Z91 w1714225810
+Z87 w1714565319
 R8
 R9
 R10
-Z92 8../tb/tb_i2c_config.vhd
-Z93 F../tb/tb_i2c_config.vhd
+Z88 8../tb/tb_i2c_config.vhd
+Z89 F../tb/tb_i2c_config.vhd
 l0
 L23
 V_?[;X5::ezdCK@<EDF_1<2
 !s100 neH1IooYLWR^INViIOBo]3
 R13
 32
-Z94 !s110 1714461905
+Z90 !s110 1714565358
 !i10b 1
-Z95 !s108 1714461905.000000
-Z96 !s90 -reportprogress|300|-check_synthesis|../tb/tb_i2c_config.vhd|
-Z97 !s107 ../tb/tb_i2c_config.vhd|
+Z91 !s108 1714565358.000000
+Z92 !s90 -reportprogress|300|-check_synthesis|../tb/tb_i2c_config.vhd|
+Z93 !s107 ../tb/tb_i2c_config.vhd|
 !i113 0
 R18
 R19
@@ -552,43 +552,59 @@ R9
 DEx4 work 13 tb_i2c_config 0 22 _?[;X5::ezdCK@<EDF_1<2
 l124
 L29
-ViOHQf>VlGC3Y:kMXjKac03
-!s100 ZHgemT>:JG]B@zK;:[CA62
+V?bRRMiT>?gQma:AzNIi@m3
+!s100 OIneBlW0T706D8WM<__@50
 R13
 32
-R94
+R90
 !i10b 1
-R95
-R96
-R97
+R91
+R92
+R93
 !i113 0
 R18
 R19
 Etb_i2c_config_backup
-Z98 w1713624307
+Z94 w1713624307
 R8
 R9
 R10
-Z99 8../tb/tb_i2c_config_backup.vhd
-Z100 F../tb/tb_i2c_config_backup.vhd
+Z95 8../tb/tb_i2c_config_backup.vhd
+Z96 F../tb/tb_i2c_config_backup.vhd
 l0
 L10
 V5HV_[2dF>dLYHXDceSz:B0
 !s100 3gk]6<7B[?60hd?ZHoJdh3
 R13
 32
-Z101 !s110 1713624321
+Z97 !s110 1713624321
 !i10b 1
-Z102 !s108 1713624321.000000
-Z103 !s90 -reportprogress|300|-check_synthesis|../tb/tb_i2c_config_backup.vhd|
-Z104 !s107 ../tb/tb_i2c_config_backup.vhd|
+Z98 !s108 1713624321.000000
+Z99 !s90 -reportprogress|300|-check_synthesis|../tb/tb_i2c_config_backup.vhd|
+Z100 !s107 ../tb/tb_i2c_config_backup.vhd|
 !i113 0
 R18
 R19
 Atestbench
 R8
 R9
-DEx4 work 20 tb_i2cm255
+DEx4 work 20 tb_i2c_config_backup 0 22 5HV_[2dF>dLYHXDceSz:B0
+l72
+L16
+VZCgIm27fDDVj7D5QKH^1H1
+!s100 A43jNZiS3oY5LHQAmOW240
+R13
+32
+R97
+!i10b 1
+R98
+R99
+R100
+!i113 0
+R18
+R19
+Etb_lock
+Z101 w17051m255
 K4
 z2
 !s95 MTI
