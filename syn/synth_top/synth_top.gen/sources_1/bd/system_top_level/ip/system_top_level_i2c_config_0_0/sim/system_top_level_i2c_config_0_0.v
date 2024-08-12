@@ -74,7 +74,12 @@ output wire sclk_out;
 output wire [3 : 0] param_status_out;
 output wire finished_out;
 
-  i2c_config inst (
+  i2c_config #(
+    .ref_clk_freq_g(50000000),
+    .i2c_freq_g(20000),
+    .n_params_g(15),
+    .n_leds_g(4)
+  ) inst (
     .clk(clk),
     .rst_n(rst_n),
     .sdat_inout(sdat_inout),

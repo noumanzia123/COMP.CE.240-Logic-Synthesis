@@ -3,8 +3,8 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Thu Apr  4 15:57:54 2024
-# Process ID: 18324
+# Start of session at: Thu May  2 15:51:58 2024
+# Process ID: 13812
 # Current directory: P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.runs/synth_1
 # Command line: vivado.exe -log system_top_level_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_top_level_wrapper.tcl
 # Log file: P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.runs/synth_1/system_top_level_wrapper.vds
@@ -12,7 +12,7 @@
 # Running On: WKS-94958-LT, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 34047 MB
 #-----------------------------------------------------------
 source system_top_level_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:09 . Memory (MB): peak = 425.031 ; gain = 161.883
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 427.406 ; gain = 164.625
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.1/data/ip'.
@@ -26,11 +26,11 @@ INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:s
 INFO: [IP_Flow 19-4728] Bus Interface 'rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
 WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
 WARNING: [IP_Flow 19-11770] Clock interface 'clk' has no FREQ_HZ parameter.
-add_files: Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 456.410 ; gain = 31.379
+add_files: Time (s): cpu = 00:00:01 ; elapsed = 00:00:13 . Memory (MB): peak = 459.398 ; gain = 31.992
 Command: read_checkpoint -auto_incremental -incremental {P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.srcs/utils_1/imports/synth_1/system_top_level_wrapper.dcp}
 INFO: [Vivado 12-5825] Read reference checkpoint from P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.srcs/utils_1/imports/synth_1/system_top_level_wrapper.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
-Command: synth_design -top system_top_level_wrapper -part xc7z020clg400-1
+Command: synth_design -top system_top_level_wrapper -part xc7z020clg400-1 -fsm_extraction one_hot
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
@@ -39,11 +39,11 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 11848
+INFO: [Synth 8-7075] Helper process launched with PID 13264
 INFO: [Synth 8-11241] undeclared symbol 'clk_out1_system_top_level_clk_wiz_0_0_en_clk', assumed default net type 'wire' [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_clk_wiz_0_0/system_top_level_clk_wiz_0_0_clk_wiz.v:190]
 INFO: [Synth 8-11241] undeclared symbol 'clk_out2_system_top_level_clk_wiz_0_0_en_clk', assumed default net type 'wire' [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_clk_wiz_0_0/system_top_level_clk_wiz_0_0_clk_wiz.v:202]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1288.234 ; gain = 411.426
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1287.516 ; gain = 410.844
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'system_top_level_wrapper' [P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/hdl/system_top_level_wrapper.v:13]
 INFO: [Synth 8-6157] synthesizing module 'system_top_level' [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/synth/system_top_level.v:13]
@@ -75,178 +75,8 @@ INFO: [Synth 8-6155] done synthesizing module 'BUFH' (0#1) [C:/Xilinx/Vivado/202
 INFO: [Synth 8-6155] done synthesizing module 'system_top_level_clk_wiz_0_0_clk_wiz' (0#1) [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_clk_wiz_0_0/system_top_level_clk_wiz_0_0_clk_wiz.v:69]
 INFO: [Synth 8-6155] done synthesizing module 'system_top_level_clk_wiz_0_0' (0#1) [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_clk_wiz_0_0/system_top_level_clk_wiz_0_0.v:69]
 INFO: [Synth 8-6157] synthesizing module 'system_top_level_i2c_config_0_0' [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_i2c_config_0_0/synth/system_top_level_i2c_config_0_0.v:53]
-INFO: [Synth 8-6157] synthesizing module 'i2c_config' [P:/INTRA_HOME/DATA/Logic Synthesis/6/verilog/i2c_config.v:15]
-INFO: [Synth 8-6157] synthesizing module 'LUT6' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT4' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT5' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized0' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized0' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized1' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized1' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized2' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized2' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT1' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79430]
-INFO: [Synth 8-6155] done synthesizing module 'LUT1' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79430]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized0' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized0' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized0' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized0' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized1' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized1' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized1' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized1' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'FDCE' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:38932]
-INFO: [Synth 8-6155] done synthesizing module 'FDCE' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:38932]
-INFO: [Synth 8-6157] synthesizing module 'GND' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:40127]
-INFO: [Synth 8-6155] done synthesizing module 'GND' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:40127]
-INFO: [Synth 8-6157] synthesizing module 'VCC' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:135864]
-INFO: [Synth 8-6155] done synthesizing module 'VCC' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:135864]
-INFO: [Synth 8-6157] synthesizing module 'LUT3' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6155] done synthesizing module 'LUT3' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized2' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized2' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized3' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized3' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized2' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized2' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized4' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized4' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized3' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized3' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized0' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized0' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized3' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized3' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'FDPE' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:39088]
-INFO: [Synth 8-6155] done synthesizing module 'FDPE' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:39088]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized4' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized4' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized5' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized5' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized6' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized6' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized1' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized1' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized7' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized7' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized5' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized5' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized4' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized4' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized5' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized5' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized8' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized8' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized6' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized6' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT2' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79464]
-INFO: [Synth 8-6155] done synthesizing module 'LUT2' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79464]
-INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized2' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized2' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized7' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized7' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized6' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized6' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized9' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized9' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT2__parameterized0' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79464]
-INFO: [Synth 8-6155] done synthesizing module 'LUT2__parameterized0' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79464]
-INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized3' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized3' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized8' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized8' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized10' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized10' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized7' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized7' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized11' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized11' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT2__parameterized1' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79464]
-INFO: [Synth 8-6155] done synthesizing module 'LUT2__parameterized1' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79464]
-INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized4' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized4' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6157] synthesizing module 'OBUF' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:91121]
-INFO: [Synth 8-6155] done synthesizing module 'OBUF' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:91121]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized12' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized12' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized8' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized8' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized5' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized5' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized9' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized9' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized10' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized10' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized11' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized11' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized12' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized12' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized13' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized13' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized14' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized14' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized15' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized15' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized16' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized16' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized6' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized6' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized17' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized17' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized18' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized18' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized19' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized19' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized20' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized20' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'FDRE' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:39148]
-INFO: [Synth 8-6155] done synthesizing module 'FDRE' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:39148]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized13' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized13' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized14' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized14' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized15' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized15' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized16' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized16' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized7' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized7' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized9' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized9' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'IOBUF' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:76334]
-INFO: [Synth 8-6155] done synthesizing module 'IOBUF' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:76334]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized21' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized21' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized17' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized17' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized22' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized22' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized10' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized10' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized18' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized18' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized19' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized19' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT3__parameterized8' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6155] done synthesizing module 'LUT3__parameterized8' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79502]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized20' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized20' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized11' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized11' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized21' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized21' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized22' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized22' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT6__parameterized23' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6155] done synthesizing module 'LUT6__parameterized23' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79640]
-INFO: [Synth 8-6157] synthesizing module 'LUT4__parameterized23' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6155] done synthesizing module 'LUT4__parameterized23' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79544]
-INFO: [Synth 8-6157] synthesizing module 'LUT5__parameterized12' [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'LUT5__parameterized12' (0#1) [C:/Xilinx/Vivado/2023.1/scripts/rt/data/unisim_comp.v:79590]
-INFO: [Synth 8-6155] done synthesizing module 'i2c_config' (0#1) [P:/INTRA_HOME/DATA/Logic Synthesis/6/verilog/i2c_config.v:15]
+INFO: [Synth 8-638] synthesizing module 'i2c_config' [P:/INTRA_HOME/DATA/Logic Synthesis/6/E12/i2c_config.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'i2c_config' (0#1) [P:/INTRA_HOME/DATA/Logic Synthesis/6/E12/i2c_config.vhd:42]
 INFO: [Synth 8-6155] done synthesizing module 'system_top_level_i2c_config_0_0' (0#1) [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_i2c_config_0_0/synth/system_top_level_i2c_config_0_0.v:53]
 WARNING: [Synth 8-7071] port 'finished_out' of module 'system_top_level_i2c_config_0_0' is unconnected for instance 'i2c_config_0' [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/synth/system_top_level.v:65]
 WARNING: [Synth 8-7023] instance 'i2c_config_0' of module 'system_top_level_i2c_config_0_0' has 6 connections declared, but only 5 given [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/synth/system_top_level.v:65]
@@ -300,27 +130,27 @@ INFO: [Synth 8-6157] synthesizing module 'util_vector_logic_v2_0_2_util_vector_l
 INFO: [Synth 8-6155] done synthesizing module 'util_vector_logic_v2_0_2_util_vector_logic' (0#1) [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ipshared/3d84/hdl/util_vector_logic_v2_0_vl_rfs.v:45]
 INFO: [Synth 8-6155] done synthesizing module 'system_top_level_util_vector_logic_0_0' (0#1) [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_util_vector_logic_0_0/synth/system_top_level_util_vector_logic_0_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'system_top_level_util_vector_logic_1_0' [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_util_vector_logic_1_0/synth/system_top_level_util_vector_logic_1_0.v:53]
-INFO: [Common 17-14] Message 'Synth 8-6157' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-6157] synthesizing module 'util_vector_logic_v2_0_2_util_vector_logic__parameterized0' [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ipshared/3d84/hdl/util_vector_logic_v2_0_vl_rfs.v:45]
 INFO: [Synth 8-6155] done synthesizing module 'util_vector_logic_v2_0_2_util_vector_logic__parameterized0' (0#1) [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ipshared/3d84/hdl/util_vector_logic_v2_0_vl_rfs.v:45]
 INFO: [Synth 8-6155] done synthesizing module 'system_top_level_util_vector_logic_1_0' (0#1) [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_util_vector_logic_1_0/synth/system_top_level_util_vector_logic_1_0.v:53]
 INFO: [Synth 8-6155] done synthesizing module 'system_top_level' (0#1) [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/synth/system_top_level.v:13]
-INFO: [Common 17-14] Message 'Synth 8-6155' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-6155] done synthesizing module 'system_top_level_wrapper' (0#1) [P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/hdl/system_top_level_wrapper.v:13]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 1383.621 ; gain = 506.812
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:25 . Memory (MB): peak = 1383.035 ; gain = 506.363
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 1383.621 ; gain = 506.812
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:25 . Memory (MB): peak = 1383.035 ; gain = 506.363
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 1383.621 ; gain = 506.812
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:25 . Memory (MB): peak = 1383.035 ; gain = 506.363
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1383.621 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1383.035 ; gain = 0.000
 WARNING: [Netlist 29-345] The value of SIM_DEVICE on instance 'system_top_level_i/clk_wiz_0/inst/clkout1_buf' of type 'BUFGCE' is 'ULTRASCALE'; it is being changed to match the current FPGA architecture, '7SERIES'. For functional simulation to match hardware behavior, the value of SIM_DEVICE should be changed in the source netlist. 
 WARNING: [Netlist 29-345] The value of SIM_DEVICE on instance 'system_top_level_i/clk_wiz_0/inst/clkout2_buf' of type 'BUFGCE' is 'ULTRASCALE'; it is being changed to match the current FPGA architecture, '7SERIES'. For functional simulation to match hardware behavior, the value of SIM_DEVICE should be changed in the source netlist. 
-INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -346,24 +176,23 @@ Parsing XDC File [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.g
 Finished Parsing XDC File [p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_clk_wiz_0_0/system_top_level_clk_wiz_0_0_late.xdc] for cell 'system_top_level_i/clk_wiz_0/inst'
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1442.082 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1447.398 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 3 instances were transformed.
+  A total of 2 instances were transformed.
   BUFGCE => BUFGCTRL: 2 instances
-  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.093 . Memory (MB): peak = 1442.082 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.097 . Memory (MB): peak = 1447.398 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:26 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:39 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:26 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:39 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -371,15 +200,28 @@ Start Applying 'set_property' XDC Constraints
 Applied set_property KEEP_HIERARCHY = SOFT for system_top_level_i/clk_wiz_0/inst. (constraint file  {P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.runs/synth_1/dont_touch.xdc}, line 25).
 Applied set_property KEEP_HIERARCHY = SOFT for system_top_level_i. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for system_top_level_i/synthesizer_0. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for system_top_level_i/i2c_config_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for system_top_level_i/clk_wiz_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for system_top_level_i/util_vector_logic_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for system_top_level_i/util_vector_logic_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_top_level_i/i2c_config_0. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:26 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:39 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'curr_state_r_reg' in module 'i2c_config'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+           initial_state |                          0000001 |                              000
+          wait_for_start |                          0000010 |                              001
+                   start |                          0000100 |                              010
+           data_transmit |                          0001000 |                              011
+         acknowledgement |                          0010000 |                              100
+                  finish |                          0100000 |                              110
+       stop_transmission |                          1000000 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'curr_state_r_reg' using encoding 'one-hot' in module 'i2c_config'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:30 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:44 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -389,18 +231,33 @@ Detailed RTL Component Info :
 	   2 Input   18 Bit       Adders := 1     
 	   2 Input   17 Bit       Adders := 2     
 	   2 Input   16 Bit       Adders := 11    
+	   2 Input   13 Bit       Adders := 1     
+	   2 Input   12 Bit       Adders := 2     
+	   2 Input    5 Bit       Adders := 2     
+	   2 Input    4 Bit       Adders := 2     
 +---XORs : 
 	   2 Input      4 Bit         XORs := 1     
 +---Registers : 
+	               24 Bit    Registers := 1     
 	               18 Bit    Registers := 1     
 	               17 Bit    Registers := 2     
 	               16 Bit    Registers := 6     
+	               12 Bit    Registers := 1     
 	                8 Bit    Registers := 2     
-	                1 Bit    Registers := 9     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                1 Bit    Registers := 14    
 +---Muxes : 
+	   7 Input   24 Bit        Muxes := 1     
 	   2 Input   16 Bit        Muxes := 14    
 	   3 Input   16 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 20    
+	   2 Input   12 Bit        Muxes := 4     
+	   7 Input   12 Bit        Muxes := 1     
+	   7 Input    7 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 3     
+	   7 Input    5 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 29    
+	   7 Input    1 Bit        Muxes := 12    
 	   4 Input    1 Bit        Muxes := 1     
 	   3 Input    1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
@@ -419,28 +276,27 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-INFO: [Synth 8-3332] Sequential element (inst/finished_out_OBUF_inst) is unused and will be removed from module system_top_level_i2c_config_0_0.
-INFO: [Synth 8-3332] Sequential element (inst/finished_out_reg) is unused and will be removed from module system_top_level_i2c_config_0_0.
+INFO: [Synth 8-3332] Sequential element (inst/FSM_onehot_curr_state_r_reg[5]) is unused and will be removed from module system_top_level_i2c_config_0_0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:38 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:54 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:44 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:59 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:44 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:01:00 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:45 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:01:00 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -458,37 +314,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:50 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished IO Insertion : Time (s): cpu = 00:00:33 ; elapsed = 00:01:05 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:50 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:33 ; elapsed = 00:01:05 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:50 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:01:06 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:50 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:01:06 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:50 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:01:06 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:50 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:01:06 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -504,62 +360,52 @@ Report Cell Usage:
 +------+----------+------+
 |      |Cell      |Count |
 +------+----------+------+
-|1     |BUFG      |     2|
+|1     |BUFG      |     1|
 |2     |BUFGCE    |     2|
 |3     |BUFH      |     2|
-|4     |CARRY4    |    64|
-|5     |LUT1      |    67|
-|6     |LUT2      |    56|
-|7     |LUT3      |    47|
-|8     |LUT4      |   143|
-|9     |LUT5      |    22|
-|10    |LUT6      |    56|
+|4     |CARRY4    |    76|
+|5     |LUT1      |    77|
+|6     |LUT2      |    84|
+|7     |LUT3      |    43|
+|8     |LUT4      |   135|
+|9     |LUT5      |    16|
+|10    |LUT6      |    79|
 |11    |PLLE2_ADV |     1|
-|12    |FDCE      |   215|
-|13    |FDPE      |    11|
-|14    |FDRE      |    30|
-|15    |IBUF      |     8|
+|12    |FDCE      |   241|
+|13    |FDPE      |     7|
+|14    |FDRE      |    16|
+|15    |IBUF      |     6|
 |16    |IOBUF     |     1|
-|17    |OBUF      |    13|
+|17    |OBUF      |     9|
 +------+----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:50 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:01:06 . Memory (MB): peak = 1447.398 ; gain = 570.727
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:46 . Memory (MB): peak = 1442.082 ; gain = 506.812
-Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:50 . Memory (MB): peak = 1442.082 ; gain = 565.273
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:01:01 . Memory (MB): peak = 1447.398 ; gain = 506.363
+Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:01:06 . Memory (MB): peak = 1447.398 ; gain = 570.727
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1442.082 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 1447.398 ; gain = 0.000
 WARNING: [Netlist 29-345] The value of SIM_DEVICE on instance 'system_top_level_i/clk_wiz_0/inst/clkout1_buf' of type 'BUFGCE' is 'ULTRASCALE'; it is being changed to match the current FPGA architecture, '7SERIES'. For functional simulation to match hardware behavior, the value of SIM_DEVICE should be changed in the source netlist. 
 WARNING: [Netlist 29-345] The value of SIM_DEVICE on instance 'system_top_level_i/clk_wiz_0/inst/clkout2_buf' of type 'BUFGCE' is 'ULTRASCALE'; it is being changed to match the current FPGA architecture, '7SERIES'. For functional simulation to match hardware behavior, the value of SIM_DEVICE should be changed in the source netlist. 
-INFO: [Netlist 29-17] Analyzing 68 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 80 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. system_top_level_i/i2c_config_0/inst/clk_IBUF_inst 
-Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
-WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. system_top_level_i/i2c_config_0/inst/rst_n_IBUF_inst 
-Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
-WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. system_top_level_i/i2c_config_0/inst/param_status_out_OBUF[0]_inst 
-Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
-WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. system_top_level_i/i2c_config_0/inst/param_status_out_OBUF[1]_inst 
-Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
-WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. system_top_level_i/i2c_config_0/inst/param_status_out_OBUF[2]_inst 
-Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
-WARNING: [Opt 31-33] Removing redundant OBUF since it is not driving a top-level port. system_top_level_i/i2c_config_0/inst/param_status_out_OBUF[3]_inst 
-Resolution: The tool has removed redundant OBUF. To resolve this warning, check for redundant OBUF in the input design.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1442.082 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1447.398 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 3 instances were transformed.
   BUFGCE => BUFGCTRL: 2 instances
   IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Synth Design complete | Checksum: f8392d71
+Synth Design complete | Checksum: 33cd7c43
 INFO: [Common 17-83] Releasing license: Synthesis
-269 Infos, 21 Warnings, 0 Critical Warnings and 0 Errors encountered.
+100 Infos, 15 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:35 ; elapsed = 00:01:05 . Memory (MB): peak = 1442.082 ; gain = 979.895
+synth_design: Time (s): cpu = 00:00:38 ; elapsed = 00:01:22 . Memory (MB): peak = 1447.398 ; gain = 984.234
+INFO: [Common 17-600] The following parameters have non-default value.
+tcl.collectionResultDisplayLimit
 INFO: [Common 17-1381] The checkpoint 'P:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.runs/synth_1/system_top_level_wrapper.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:00 ; elapsed = 00:00:09 . Memory (MB): peak = 1442.082 ; gain = 0.000
+write_checkpoint: Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 1447.398 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file system_top_level_wrapper_utilization_synth.rpt -pb system_top_level_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Apr  4 15:59:41 2024...
+INFO: [Common 17-206] Exiting Vivado at Thu May  2 15:53:57 2024...

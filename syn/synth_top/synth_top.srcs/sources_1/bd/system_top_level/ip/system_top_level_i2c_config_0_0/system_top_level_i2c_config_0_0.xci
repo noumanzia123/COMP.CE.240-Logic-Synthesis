@@ -8,7 +8,17 @@
     "gen_directory": "../../../../../../synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_i2c_config_0_0",
     "parameters": {
       "component_parameters": {
+        "ref_clk_freq_g": [ { "value": "50000000", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "i2c_freq_g": [ { "value": "20000", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "n_params_g": [ { "value": "15", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "n_leds_g": [ { "value": "4", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "system_top_level_i2c_config_0_0", "resolve_type": "user", "usage": "all" } ]
+      },
+      "model_parameters": {
+        "ref_clk_freq_g": [ { "value": "50000000", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "i2c_freq_g": [ { "value": "20000", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "n_params_g": [ { "value": "15", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "n_leds_g": [ { "value": "4", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],

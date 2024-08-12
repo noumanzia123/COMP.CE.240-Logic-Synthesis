@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Thu Apr  4 15:59:35 2024
+| Date         : Thu May  2 15:53:53 2024
 | Host         : WKS-94958-LT running 64-bit major release  (build 9200)
 | Command      : report_utilization -file system_top_level_wrapper_utilization_synth.rpt -pb system_top_level_wrapper_utilization_synth.pb
 | Design       : system_top_level_wrapper
@@ -31,11 +31,11 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             |  350 |     0 |          0 |     53200 |  0.66 |
-|   LUT as Logic          |  350 |     0 |          0 |     53200 |  0.66 |
+| Slice LUTs*             |  390 |     0 |          0 |     53200 |  0.73 |
+|   LUT as Logic          |  390 |     0 |          0 |     53200 |  0.73 |
 |   LUT as Memory         |    0 |     0 |          0 |     17400 |  0.00 |
-| Slice Registers         |  256 |     0 |          0 |    106400 |  0.24 |
-|   Register as Flip Flop |  256 |     0 |          0 |    106400 |  0.24 |
+| Slice Registers         |  264 |     0 |          0 |    106400 |  0.25 |
+|   Register as Flip Flop |  264 |     0 |          0 |    106400 |  0.25 |
 |   Register as Latch     |    0 |     0 |          0 |    106400 |  0.00 |
 | F7 Muxes                |    0 |     0 |          0 |     26600 |  0.00 |
 | F8 Muxes                |    0 |     0 |          0 |     13300 |  0.00 |
@@ -56,10 +56,10 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |            _ |         Set |            - |
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
-| 11    |          Yes |           - |          Set |
-| 215   |          Yes |           - |        Reset |
+| 7     |          Yes |           - |          Set |
+| 241   |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 30    |          Yes |       Reset |            - |
+| 16    |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -115,7 +115,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +------------+------+-------+------------+-----------+-------+
 |  Site Type | Used | Fixed | Prohibited | Available | Util% |
 +------------+------+-------+------------+-----------+-------+
-| BUFGCTRL   |    4 |     0 |          0 |        32 | 12.50 |
+| BUFGCTRL   |    3 |     0 |          0 |        32 |  9.38 |
 | BUFIO      |    0 |     0 |          0 |        16 |  0.00 |
 | MMCME2_ADV |    0 |     0 |          0 |         4 |  0.00 |
 | PLLE2_ADV  |    1 |     0 |          0 |         4 | 25.00 |
@@ -148,23 +148,23 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-----------+------+---------------------+
 |  Ref Name | Used | Functional Category |
 +-----------+------+---------------------+
-| FDCE      |  215 |        Flop & Latch |
-| LUT4      |  143 |                 LUT |
-| LUT1      |   67 |                 LUT |
-| CARRY4    |   64 |          CarryLogic |
-| LUT6      |   56 |                 LUT |
-| LUT2      |   56 |                 LUT |
-| LUT3      |   47 |                 LUT |
-| FDRE      |   30 |        Flop & Latch |
-| LUT5      |   22 |                 LUT |
-| FDPE      |   11 |        Flop & Latch |
+| FDCE      |  241 |        Flop & Latch |
+| LUT4      |  135 |                 LUT |
+| LUT2      |   84 |                 LUT |
+| LUT6      |   79 |                 LUT |
+| LUT1      |   77 |                 LUT |
+| CARRY4    |   76 |          CarryLogic |
+| LUT3      |   43 |                 LUT |
+| LUT5      |   16 |                 LUT |
+| FDRE      |   16 |        Flop & Latch |
 | OBUF      |    9 |                  IO |
 | IBUF      |    7 |                  IO |
+| FDPE      |    7 |        Flop & Latch |
 | BUFH      |    2 |               Clock |
 | BUFGCTRL  |    2 |               Clock |
-| BUFG      |    2 |               Clock |
 | PLLE2_ADV |    1 |               Clock |
 | OBUFT     |    1 |                  IO |
+| BUFG      |    1 |               Clock |
 +-----------+------+---------------------+
 
 

@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg400-1" LaunchTime="1712235632">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg400-1" LaunchTime="1714742657">
+  <File Type="OPT-HWDEF" Name="system_top_level_wrapper.hwdef"/>
+  <File Type="ROUTE-BUS-SKEW" Name="system_top_level_wrapper_bus_skew_routed.rpt"/>
+  <File Type="PA-DCP" Name="system_top_level_wrapper.dcp"/>
   <File Type="ROUTE-PWR" Name="system_top_level_wrapper_power_routed.rpt"/>
   <File Type="PA-TCL" Name="system_top_level_wrapper.tcl"/>
-  <File Type="ROUTE-PWR-SUM" Name="system_top_level_wrapper_power_summary_routed.pb"/>
-  <File Type="REPORTS-TCL" Name="system_top_level_wrapper_reports.tcl"/>
-  <File Type="OPT-RQA-PB" Name="system_top_level_wrapper_rqa_opted.pb"/>
-  <File Type="BITSTR-MMI" Name="system_top_level_wrapper.mmi"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="system_top_level_wrapper_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="system_top_level_wrapper_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="system_top_level_wrapper_power_summary_routed.pb"/>
+  <File Type="OPT-RQA-PB" Name="system_top_level_wrapper_rqa_opted.pb"/>
+  <File Type="REPORTS-TCL" Name="system_top_level_wrapper_reports.tcl"/>
   <File Type="OPT-TIMING" Name="system_top_level_wrapper_timing_summary_opted.rpt"/>
   <File Type="OPT-DCP" Name="system_top_level_wrapper_opt.dcp"/>
   <File Type="OPT-DRC" Name="system_top_level_wrapper_drc_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="system_top_level_wrapper.hwdef"/>
   <File Type="PWROPT-DCP" Name="system_top_level_wrapper_pwropt.dcp"/>
   <File Type="PWROPT-DRC" Name="system_top_level_wrapper_drc_pwropted.rpt"/>
   <File Type="PWROPT-TIMING" Name="system_top_level_wrapper_timing_summary_pwropted.rpt"/>
@@ -51,7 +52,6 @@
   <File Type="ROUTE-TIMING-RPX" Name="system_top_level_wrapper_timing_summary_routed.rpx"/>
   <File Type="ROUTE-SIMILARITY" Name="system_top_level_wrapper_incremental_reuse_routed.rpt"/>
   <File Type="ROUTE-CLK" Name="system_top_level_wrapper_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW" Name="system_top_level_wrapper_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="system_top_level_wrapper_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="system_top_level_wrapper_bus_skew_routed.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="system_top_level_wrapper_postroute_physopt.dcp"/>
@@ -65,6 +65,7 @@
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="system_top_level_wrapper_bus_skew_postroute_physopted.rpx"/>
   <File Type="BITSTR-NKY" Name="system_top_level_wrapper.nky"/>
   <File Type="BITSTR-BMM" Name="system_top_level_wrapper_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="system_top_level_wrapper.mmi"/>
   <File Type="PDI-FILE" Name="system_top_level_wrapper.pdi"/>
   <File Type="BOOT-PDI-FILE" Name="system_top_level_wrapper_soc.pdi"/>
   <File Type="PL-PDI-FILE" Name="system_top_level_wrapper_pld.pdi"/>
@@ -116,10 +117,9 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../verilog/i2c_config.v">
+    <File Path="$PPRDIR/../../E12/i2c_config.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
@@ -151,6 +151,7 @@
       </FileInfo>
     </File>
     <Config>
+      <Option Name="TargetConstrsFile" Val="$PPRDIR/../../xdc/synth.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>
@@ -161,6 +162,7 @@
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="UsedInSteps" Val="synth_1_copy_1"/>
         <Attr Name="AutoDcp" Val="1"/>
       </FileInfo>
     </File>
@@ -169,7 +171,9 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023"/>
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2023">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
     <Step Id="init_design"/>
     <Step Id="opt_design"/>
     <Step Id="power_opt_design"/>

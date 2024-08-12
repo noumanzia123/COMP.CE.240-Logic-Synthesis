@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1712235468" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/system_top_level_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1714742636" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/system_top_level_wrapper.dcp">
   <File Type="PA-TCL" Name="system_top_level_wrapper.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="system_top_level_wrapper_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="system_top_level_wrapper_reports.tcl"/>
@@ -41,10 +41,9 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../verilog/i2c_config.v">
+    <File Path="$PPRDIR/../../E12/i2c_config.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
@@ -76,6 +75,7 @@
       </FileInfo>
     </File>
     <Config>
+      <Option Name="TargetConstrsFile" Val="$PPRDIR/../../xdc/synth.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>
@@ -86,6 +86,7 @@
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="UsedInSteps" Val="synth_1_copy_1"/>
         <Attr Name="AutoDcp" Val="1"/>
       </FileInfo>
     </File>
@@ -94,7 +95,11 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
-    <Step Id="synth_design"/>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
+    <Step Id="synth_design">
+      <Option Id="FsmExtraction">1</Option>
+    </Step>
   </Strategy>
 </GenRun>

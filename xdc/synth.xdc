@@ -4,13 +4,13 @@
 ## - rename the used ports (in each line, after get_ports) according to the top level signal names in the project
 
 ## Clock signal 125 MHz
-set_property -dict { PACKAGE_PIN H16   IOSTANDARD LVCMOS33 } [get_ports { pin_clk125mhz }]; #IO_L13P_T2_MRCC_35 Sch=sysclk
-create_clock -add -name sys_clk_pin -period 8.00 -waveform {0 4} [get_ports { pin_clk125mhz }];
+set_property -dict {PACKAGE_PIN H16 IOSTANDARD LVCMOS33} [get_ports pin_clk125mhz]
+create_clock -period 8.000 -name sys_clk_pin -waveform {0.000 4.000} -add [get_ports pin_clk125mhz]
 
 
 ##Switches
 
-set_property -dict { PACKAGE_PIN M20   IOSTANDARD LVCMOS33 } [get_ports { pin_rst_n }]; #IO_L7N_T1_AD2N_35 Sch=sw[0]
+set_property -dict {PACKAGE_PIN M20 IOSTANDARD LVCMOS33} [get_ports pin_rst_n]
 #set_property -dict { PACKAGE_PIN M19   IOSTANDARD LVCMOS33 } [get_ports { sw[1] }]; #IO_L7P_T1_AD2P_35 Sch=sw[1]
 
 ##RGB LEDs
@@ -24,17 +24,17 @@ set_property -dict { PACKAGE_PIN M20   IOSTANDARD LVCMOS33 } [get_ports { pin_rs
 
 ##LEDs
 
-set_property -dict { PACKAGE_PIN R14   IOSTANDARD LVCMOS33 } [get_ports { pin_leds_i2c[0] }]; #IO_L6N_T0_VREF_34 Sch=led[0]
-set_property -dict { PACKAGE_PIN P14   IOSTANDARD LVCMOS33 } [get_ports { pin_leds_i2c[1] }]; #IO_L6P_T0_34 Sch=led[1]
-set_property -dict { PACKAGE_PIN N16   IOSTANDARD LVCMOS33 } [get_ports { pin_leds_i2c[2] }]; #IO_L21N_T3_DQS_AD14N_35 Sch=led[2]
-set_property -dict { PACKAGE_PIN M14   IOSTANDARD LVCMOS33 } [get_ports { pin_leds_i2c[3] }]; #IO_L23P_T3_35 Sch=led[3]
+set_property -dict {PACKAGE_PIN R14 IOSTANDARD LVCMOS33} [get_ports {pin_leds_i2c[0]}]
+set_property -dict {PACKAGE_PIN P14 IOSTANDARD LVCMOS33} [get_ports {pin_leds_i2c[1]}]
+set_property -dict {PACKAGE_PIN N16 IOSTANDARD LVCMOS33} [get_ports {pin_leds_i2c[2]}]
+set_property -dict {PACKAGE_PIN M14 IOSTANDARD LVCMOS33} [get_ports {pin_leds_i2c[3]}]
 
 ##Buttons
 
-set_property -dict { PACKAGE_PIN D19   IOSTANDARD LVCMOS33 } [get_ports { pin_keys[0] }]; #IO_L4P_T0_35 Sch=btn[0]
-set_property -dict { PACKAGE_PIN D20   IOSTANDARD LVCMOS33 } [get_ports { pin_keys[1] }]; #IO_L4N_T0_35 Sch=btn[1]
-set_property -dict { PACKAGE_PIN L20   IOSTANDARD LVCMOS33 } [get_ports { pin_keys[2] }]; #IO_L9N_T1_DQS_AD3N_35 Sch=btn[2]
-set_property -dict { PACKAGE_PIN L19   IOSTANDARD LVCMOS33 } [get_ports { pin_keys[3] }]; #IO_L9P_T1_DQS_AD3P_35 Sch=btn[3]
+set_property -dict {PACKAGE_PIN D19 IOSTANDARD LVCMOS33} [get_ports {pin_keys[0]}]
+set_property -dict {PACKAGE_PIN D20 IOSTANDARD LVCMOS33} [get_ports {pin_keys[1]}]
+set_property -dict {PACKAGE_PIN L20 IOSTANDARD LVCMOS33} [get_ports {pin_keys[2]}]
+set_property -dict {PACKAGE_PIN L19 IOSTANDARD LVCMOS33} [get_ports {pin_keys[3]}]
 
 ##Pmod Header JA
 
@@ -69,7 +69,7 @@ set_property -dict { PACKAGE_PIN L19   IOSTANDARD LVCMOS33 } [get_ports { pin_ke
 #set_property -dict { PACKAGE_PIN G18   IOSTANDARD LVCMOS33 } [get_ports { m_data }]; #IO_L16N_T2_35 Sch=m_data
 
 ##ChipKit Single Ended Analog Inputs
-##NOTE: The ck_an_p pins can be used as single ended analog inputs with voltages from 0-3.3V (Chipkit Analog pins A0-A5). 
+##NOTE: The ck_an_p pins can be used as single ended analog inputs with voltages from 0-3.3V (Chipkit Analog pins A0-A5).
 ##      These signals should only be connected to the XADC core. When using these pins as digital I/O, use pins ck_io[14-19].
 
 #set_property -dict { PACKAGE_PIN D18   IOSTANDARD LVCMOS33 } [get_ports { ck_an_n[0] }]; #IO_L3N_T0_DQS_AD1N_35 Sch=ck_an_n[0]
@@ -124,10 +124,10 @@ set_property -dict { PACKAGE_PIN L19   IOSTANDARD LVCMOS33 } [get_ports { pin_ke
 
 ##ChipKit Digital I/O High
 
-set_property -dict { PACKAGE_PIN U5    IOSTANDARD LVCMOS33 } [get_ports { pin_aud_bitclk  }]; #IO_L19N_T3_VREF_13 Sch=ck_io[26]
-set_property -dict { PACKAGE_PIN V5    IOSTANDARD LVCMOS33 } [get_ports { pin_aud_lr_clk }]; #IO_L6N_T0_VREF_13 Sch=ck_io[27]
-set_property -dict { PACKAGE_PIN V6    IOSTANDARD LVCMOS33 } [get_ports { pin_aud_data  }]; #IO_L22P_T3_13 Sch=ck_io[28]
-set_property -dict { PACKAGE_PIN U7    IOSTANDARD LVCMOS33 } [get_ports { pin_aud_mclk  }]; #IO_L11P_T1_SRCC_13 Sch=ck_io[29]
+set_property -dict {PACKAGE_PIN U5 IOSTANDARD LVCMOS33} [get_ports pin_aud_bitclk]
+set_property -dict {PACKAGE_PIN V5 IOSTANDARD LVCMOS33} [get_ports pin_aud_lr_clk]
+set_property -dict {PACKAGE_PIN V6 IOSTANDARD LVCMOS33} [get_ports pin_aud_data]
+set_property -dict {PACKAGE_PIN U7 IOSTANDARD LVCMOS33} [get_ports pin_aud_mclk]
 #set_property -dict { PACKAGE_PIN V7    IOSTANDARD LVCMOS33 } [get_ports { ck_io[30] }]; #IO_L11N_T1_SRCC_13 Sch=ck_io[30]
 #set_property -dict { PACKAGE_PIN U8    IOSTANDARD LVCMOS33 } [get_ports { ck_io[31] }]; #IO_L17N_T2_13 Sch=ck_io[31]
 #set_property -dict { PACKAGE_PIN V8    IOSTANDARD LVCMOS33 } [get_ports { ck_io[32] }]; #IO_L15P_T2_DQS_13 Sch=ck_io[32]
@@ -151,8 +151,8 @@ set_property -dict { PACKAGE_PIN U7    IOSTANDARD LVCMOS33 } [get_ports { pin_au
 
 ## ChipKit I2C
 
-set_property -dict { PACKAGE_PIN P16   IOSTANDARD LVCMOS33 } [get_ports { pin_i2c_sclk}]; #IO_L24N_T3_34 Sch=ck_scl
-set_property -dict { PACKAGE_PIN P15   IOSTANDARD LVCMOS33 } [get_ports { pin_i2c_sdata}]; #IO_L24P_T3_34 Sch=ck_sda
+set_property -dict {PACKAGE_PIN P16 IOSTANDARD LVCMOS33} [get_ports pin_i2c_sclk]
+set_property -dict {PACKAGE_PIN P15 IOSTANDARD LVCMOS33} [get_ports pin_i2c_sdata]
 
 ##HDMI Rx
 
@@ -184,6 +184,46 @@ set_property -dict { PACKAGE_PIN P15   IOSTANDARD LVCMOS33 } [get_ports { pin_i2
 #set_property -dict { PACKAGE_PIN M17   IOSTANDARD LVCMOS33 } [get_ports { hdmi_tx_scl }]; #IO_L8P_T1_AD10P_35 Sch=hdmi_tx_scl
 #set_property -dict { PACKAGE_PIN M18   IOSTANDARD LVCMOS33 } [get_ports { hdmi_tx_sda }]; #IO_L8N_T1_AD10N_35 Sch=hdmi_tx_sda
 
-##Crypto SDA 
+##Crypto SDA
 
 #set_property -dict { PACKAGE_PIN J15   IOSTANDARD LVCMOS33 } [get_ports { crypto_sda }]; #IO_25_35 Sch=crypto_sda
+
+
+create_debug_core u_ila_0 ila
+set_property ALL_PROBE_SAME_MU true [get_debug_cores u_ila_0]
+set_property ALL_PROBE_SAME_MU_CNT 2 [get_debug_cores u_ila_0]
+set_property C_ADV_TRIGGER false [get_debug_cores u_ila_0]
+set_property C_DATA_DEPTH 1024 [get_debug_cores u_ila_0]
+set_property C_EN_STRG_QUAL true [get_debug_cores u_ila_0]
+set_property C_INPUT_PIPE_STAGES 0 [get_debug_cores u_ila_0]
+set_property C_TRIGIN_EN false [get_debug_cores u_ila_0]
+set_property C_TRIGOUT_EN false [get_debug_cores u_ila_0]
+set_property port_width 1 [get_debug_ports u_ila_0/clk]
+connect_debug_port u_ila_0/clk [get_nets [list system_top_level_i/clk_wiz_0/inst/clk_out1]]
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe0]
+set_property port_width 5 [get_debug_ports u_ila_0/probe0]
+connect_debug_port u_ila_0/probe0 [get_nets [list {system_top_level_i/i2c_config_0/inst/FSM_onehot_curr_state_r_reg_n_0_[0]} {system_top_level_i/i2c_config_0/inst/FSM_onehot_curr_state_r_reg_n_0_[1]} {system_top_level_i/i2c_config_0/inst/FSM_onehot_curr_state_r_reg_n_0_[2]} {system_top_level_i/i2c_config_0/inst/FSM_onehot_curr_state_r_reg_n_0_[3]} {system_top_level_i/i2c_config_0/inst/FSM_onehot_curr_state_r_reg_n_0_[6]}]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe1]
+set_property port_width 1 [get_debug_ports u_ila_0/probe1]
+connect_debug_port u_ila_0/probe1 [get_nets [list system_top_level_i/i2c_config_0/sclk_out]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe2]
+set_property port_width 1 [get_debug_ports u_ila_0/probe2]
+connect_debug_port u_ila_0/probe2 [get_nets [list system_top_level_i/i2c_config_0/sdat_inout_IBUF]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe3]
+set_property port_width 1 [get_debug_ports u_ila_0/probe3]
+connect_debug_port u_ila_0/probe3 [get_nets [list system_top_level_i/i2c_config_0/sdat_inout_OBUF]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe4]
+set_property port_width 1 [get_debug_ports u_ila_0/probe4]
+connect_debug_port u_ila_0/probe4 [get_nets [list system_top_level_i/i2c_config_0/sdat_inout_TRI]]
+create_debug_port u_ila_0 probe
+set_property PROBE_TYPE DATA_AND_TRIGGER [get_debug_ports u_ila_0/probe5]
+set_property port_width 12 [get_debug_ports u_ila_0/probe5]
+connect_debug_port u_ila_0/probe5 [get_nets [list {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[0]} {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[1]} {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[2]} {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[3]} {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[4]} {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[5]} {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[6]} {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[7]} {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[8]} {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[9]} {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[10]} {system_top_level_i/i2c_config_0/inst/counter_sclk_r_reg_n_0_[11]}]]
+set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
+set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
+set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
+connect_debug_port dbg_hub/clk [get_nets u_ila_0_clk_out1]

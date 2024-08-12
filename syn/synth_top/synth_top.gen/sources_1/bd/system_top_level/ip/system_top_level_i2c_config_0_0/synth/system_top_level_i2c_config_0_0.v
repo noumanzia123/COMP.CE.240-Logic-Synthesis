@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "i2c_config,Vivado 2023.1" *)
 (* CHECK_LICENSE_TYPE = "system_top_level_i2c_config_0_0,i2c_config,{}" *)
-(* CORE_GENERATION_INFO = "system_top_level_i2c_config_0_0,i2c_config,{x_ipProduct=Vivado 2023.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=i2c_config,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+(* CORE_GENERATION_INFO = "system_top_level_i2c_config_0_0,i2c_config,{x_ipProduct=Vivado 2023.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=i2c_config,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,ref_clk_freq_g=50000000,i2c_freq_g=20000,n_params_g=15,n_leds_g=4}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module system_top_level_i2c_config_0_0 (
@@ -75,7 +75,12 @@ output wire sclk_out;
 output wire [3 : 0] param_status_out;
 output wire finished_out;
 
-  i2c_config inst (
+  i2c_config #(
+    .ref_clk_freq_g(50000000),
+    .i2c_freq_g(20000),
+    .n_params_g(15),
+    .n_leds_g(4)
+  ) inst (
     .clk(clk),
     .rst_n(rst_n),
     .sdat_inout(sdat_inout),

@@ -9,9 +9,6 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_top_
 # IP: bd/system_top_level/ip/system_top_level_synthesizer_0_0/system_top_level_synthesizer_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_top_level_synthesizer_0_0 || ORIG_REF_NAME==system_top_level_synthesizer_0_0} -quiet] -quiet
 
-# IP: bd/system_top_level/ip/system_top_level_i2c_config_0_0/system_top_level_i2c_config_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_top_level_i2c_config_0_0 || ORIG_REF_NAME==system_top_level_i2c_config_0_0} -quiet] -quiet
-
 # IP: bd/system_top_level/ip/system_top_level_clk_wiz_0_0/system_top_level_clk_wiz_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_top_level_clk_wiz_0_0 || ORIG_REF_NAME==system_top_level_clk_wiz_0_0} -quiet] -quiet
 
@@ -20,6 +17,9 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_top_
 
 # IP: bd/system_top_level/ip/system_top_level_util_vector_logic_1_0/system_top_level_util_vector_logic_1_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_top_level_util_vector_logic_1_0 || ORIG_REF_NAME==system_top_level_util_vector_logic_1_0} -quiet] -quiet
+
+# IP: bd/system_top_level/ip/system_top_level_i2c_config_0_0/system_top_level_i2c_config_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==system_top_level_i2c_config_0_0 || ORIG_REF_NAME==system_top_level_i2c_config_0_0} -quiet] -quiet
 
 # XDC: p:/INTRA_HOME/DATA/Logic Synthesis/6/syn/synth_top/synth_top.gen/sources_1/bd/system_top_level/ip/system_top_level_clk_wiz_0_0/system_top_level_clk_wiz_0_0_board.xdc
 set_property KEEP_HIERARCHY SOFT [get_cells [split [join [get_cells -hier -filter {REF_NAME==system_top_level_clk_wiz_0_0 || ORIG_REF_NAME==system_top_level_clk_wiz_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
